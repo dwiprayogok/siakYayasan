@@ -1,4 +1,4 @@
-{{-- <!DOCTYPE html>
+<!-- {{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -39,7 +39,7 @@
         </div>
     </div>
 </body>
-</html> --}}
+</html> --}} -->
 
 
 <html>
@@ -80,7 +80,17 @@
                 <label class="text-gray-800 text-sm mb-2 block">Password</label>
                 <input name="password" type="password" class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500" placeholder="Enter password" />
                 </div>
-            </div>
+                <div>
+                <!-- <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label> -->
+                <label  class="text-gray-800 text-sm mb-2 block">Pilih Role</label>
+                <select id="role" class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500">
+                <option value="US">Admin</option>
+                <option value="CA">Siswa</option>
+                <option value="FR">Guru</option>
+                </select>
+
+
+                </div>
 
             <div class="!mt-8">
                 <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Buat Akun</button>

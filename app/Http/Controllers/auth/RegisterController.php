@@ -23,8 +23,7 @@ class RegisterController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->role = 'admin';
-        $user->active = 1;
+        $user->role = $request->role;
         $user->save();
         //return back()->with('success', 'Register successfully');
 
