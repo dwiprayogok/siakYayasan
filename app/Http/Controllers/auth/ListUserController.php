@@ -12,7 +12,7 @@ class ListUserController extends Controller
     //
     public function index() : View
     {
-        $users = User::latest()->paginate(5);
+        $users = User::latest()->paginate(10);
 
         //render view with users
         return view('listuser', compact('users'));
