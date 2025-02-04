@@ -2,9 +2,7 @@
 @section('konten')
 
 <section class="bg-gray-200 dark:bg-gray-200  sm:p-20">
-
-    
-    <h1 class="text-3xl py-4 border-b mb-10">Data Guru</h1>
+    <h1 class="text-2xl py-4 border-b mb-5">Data Guru</h1>
 
     <div class="bg-gray-200 dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
         <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">

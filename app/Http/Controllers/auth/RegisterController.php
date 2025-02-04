@@ -23,20 +23,9 @@ class RegisterController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->role = $request->role;
+        $user->role =$request->input('role');
         $user->save();
-        //return back()->with('success', 'Register successfully');
-
-
-        // $user = User::create([
-        //     'email' => $request->email,
-        //     'name' => $request->name,
-        //     'password' => Hash::make($request->password),
-        //     'role' => $request->role,
-        //     'active' => 1
-        // ]);
-
         Session::flash('message', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
-        return redirect('/');
+        return redirect('register');
     }
 }

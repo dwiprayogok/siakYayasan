@@ -31,11 +31,13 @@ Route::post('register/action', [RegisterController::class, 'actionregister'])->n
 
 Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('guru', [GuruController::class, 'index'])->name('guru')->middleware('auth');
-Route::get('siswa', [ListSiswaController::class, 'index'])->name('siswa')->middleware('auth');
+
 Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
 
 
-Route::resource('listuser', ListUserController::class);
+//Route::resource('listuser', ListUserController::class);
+Route::get('/listuser', [ListUserController::class, 'searchUser']);
 
 
+Route::get('siswa', [ListSiswaController::class, 'index'])->name('siswa')->middleware('auth');
 
