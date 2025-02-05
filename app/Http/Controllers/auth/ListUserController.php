@@ -30,7 +30,7 @@ class ListUserController extends Controller
 
     // }
 
-    public function searchUser(Request $request)
+    public function index(Request $request)
     {
         $query = User::query();
 
@@ -45,4 +45,5 @@ class ListUserController extends Controller
 
         return view('listuser', compact('users'));
     }
+    
 }

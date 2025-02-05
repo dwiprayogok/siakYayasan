@@ -7,8 +7,6 @@
   <div class="grid lg:grid-cols-2 gap-12 lg:max-w-6xl max-w-2xl mx-auto">
     <div class="text-left">
       <h3 class = " text-3xl">Selamat Datang <b>{{Auth::user()->name}}</b> </h3>
-      <button id="myButton">Click Me</button>
-
       <br>
       <h2 class="text-gray-800 text-3xl font-bold mb-6">Visi</h2>
       <p class="mb-4 text-sm text-gray-500"> Terwujudna lulusan yang cerdas , beriman & bertaqwa , berjiwa wirausaha , siap kerja dan berakhlak mulia.</p>
@@ -51,11 +49,11 @@
 </div>
 
 
-<script>
+{{-- <script>
   document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("myButton").addEventListener("click", function () {
           alert("Button clicked!");
       });
   });
-</script>
+</script> --}}
 @endsection
