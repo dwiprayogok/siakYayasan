@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layout.master')
 @section('konten')
 
 <section class="bg-gray-100 dark:bg-gray-100 sm:p-20">

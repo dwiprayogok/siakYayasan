@@ -1,9 +1,7 @@
-@extends('master')
+@extends('layout.master')
 
  
 @section('konten')
-
-
 
 
 

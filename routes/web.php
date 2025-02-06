@@ -8,7 +8,7 @@ use App\Http\Controllers\auth\JadwalPelajaranController;
 use App\Http\Controllers\auth\ListNilaiController;
 use App\Http\Controllers\auth\ListSiswaController;
 use App\Http\Controllers\auth\RegisterController;
-use App\Http\Controllers\auth\ListUserController;
+use App\Http\Controllers\auth\UserController;
 
 Route::get('/', function () {
     return view('login');
@@ -33,13 +33,14 @@ Route::post('register/action', [RegisterController::class, 'actionregister'])->n
 Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('guru', [GuruController::class, 'index'])->name('guru')->middleware('auth');
 Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
-
+Route::get('siswa', [ListSiswaController::class, 'index'])->name('siswa')->middleware('auth');
 Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
 
 
-Route::resource('listuser', ListUserController::class);
-//Route::get('/listuser', [ListUserController::class, 'searchUser']);
+//Route::resource('/user', UserController::class);
 
+Route::get('/user', [UserController::class, 'index'])->name('user')->middleware('auth');
+Route::post('/user', [UserController::class, 'store'])->name('users.store');
+Route::put('user/{id}', [UserController::class, 'show'])->name('user.show');
 
-Route::get('siswa', [ListSiswaController::class, 'index'])->name('siswa')->middleware('auth');
 

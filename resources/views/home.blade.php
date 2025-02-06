@@ -1,5 +1,5 @@
 
-@extends('master')
+@extends('layout.master')
 
 @section('konten')
 <div class="font-Apple Color Emoji bg-gray-100 px-4 py-12">
