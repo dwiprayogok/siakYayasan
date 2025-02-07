@@ -4,13 +4,13 @@
 </head>
 <body>
 
-<section class="bg-gray-50 dark:bg-gray-900">
+<section class="bg-white dark:bg-white">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
   <img src="\iconYapa.png" alt="logo" style="margin: 0; border: 0; padding: 0; display: block; width:150px !important; height:150px !important"/>
-      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-black-900 dark:text-black">
           Yayasan Pendidikan Islam Al-isti'aanah    
       </a>
-      <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <div class="w-full bg-white rounded-xl shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
             @if(session('error'))
             <div class="alert alert-danger">
@@ -34,7 +34,7 @@
                       required="">
                   </div>
                   <div class="flex items-center justify-between">
-                      <a href="/forgotPassword" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Lupa password?</a>
+                      <a href="{{route('password.request')}}" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Lupa password?</a>
                   </div>
                   <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
 
