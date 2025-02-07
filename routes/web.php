@@ -20,10 +20,6 @@ Route::get('/', function () {
     
 });
 
-
-
-
-
 Route::get('forgotpassword', [ForgotPasswordController::class, 'create'])
     ->name('password.request');
 
@@ -35,30 +31,6 @@ Route::get('resetpassword/{token}', [ResetPasswordController::class, 'create'])
 
 Route::post('resetpassword', [ResetPasswordController::class, 'store'])
     ->name('password.update');
-
-    
-//Route::view('/forgotpassword', 'forgotpassword')->name('password.request');
-
-// Route::get('forgotpassowrd',[ForgotPasswordController::class, 'ForgotPassword'])->middleware('auth')->name(
-//     'password.email');
-
-// Route::post('forgotpassword', function (Request $request) {
-// $request->validate(['email' => 'required|email']);
-
-// $status = Password::sendResetLink(
-//     $request->only('email')
-// );
-
-// return $status === Password::ResetLinkSent
-//             ? back()->with(['status' => __($status)])
-//             : back()->withErrors(['email' => __($status)]);
-// })->middleware('guest')->name('password.email');
-
-
-// Route::get('/resetpassword/{token}', function (string $token) {
-//     return view('forgotpassword', ['token' => $token]);
-// })->middleware('guest')->name('password.reset');
-
 
 
 Route::get('/', [LoginController::class, 'login'])->name('login');
