@@ -1,3 +1,6 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 <!-- Main modal -->
 <div id="updateModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
@@ -16,27 +19,30 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" method="POST" action="#">
+            <form class="p-4 md:p-5" id="editUserForm">
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Neame" required="">
+                        <input type="hidden" name="UserID" id="UserID" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ID" required="">
                     </div>
                     <div class="col-span-2">
-                      <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-                      <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Username" required="">
+                        <label for="updateName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                        <input type="text" name="updateName" id="updateName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Neame" required="">
+                    </div>
+                    <div class="col-span-2">
+                      <label for="updateUsername" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                      <input type="text" name="updateUsername" id="updateUsername" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Username" required="">
                   </div>
                   <div class="col-span-2">
-                      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                      <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Email" required="">
+                      <label for="updateEmail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                      <input type="email" name="updateEmail" id="updateEmail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Email" required="">
                     </div>
                     <div class="col-span-2">
-                      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                      <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" required="">
+                      <label for="updatePassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                      <input type="password" name="updatePassword" id="updatePassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" required="">
                     </div>
                   <div class="col-span-2">
-                      <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">role</label>
-                      <select id="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                      <label for="updateRole" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">role</label>
+                      <select id="updateRole" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                           <option selected="">Pilih role</option>
                           <option value="admin">Admin</option>
                           <option value="siswa">Siswa</option>
@@ -46,15 +52,149 @@
                     
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                        Update product
-                    </button>
-                    <button type="button" class="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
-                        <svg class="mr-1 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
-                        Delete
-                    </button>
+                    <button type="submit" id="update" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                        Update user
+                    </button>      
+                    <button type="button" class="inline-flex items-center hover:text-white border border-white  focus:ring-4 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-black dark:focus:ring-whiite" data-modal-toggle="updateModal">
+                        Tutup
+                    </button>      
                 </div>
             </form>
         </div>
     </div>
 </div> 
+
+
+<script>
+    //button create post event
+    $('body').on('click', '#btnUpdate', function () {
+
+        let userid = $(this).data('id');
+        console.log("userid",userid);
+
+        //fetch update post with ajax
+        $.ajax({
+            url: `/users/${userid}`,
+            type: "GET",
+            cache: false,
+            success:function(response){
+                console.log(response);
+                // //fill data to form
+                $('#UserID').val(response.id);
+                $('#updateName').val(response.name);
+                $('#updateUsername').val(response.username);
+                $('#updateEmail').val(response.email);
+                $('#updateRole').val(response.role);
+
+            }
+        });
+    });
+
+
+    // Update user data
+    $('#editUserForm').submit(function(e) {
+        e.preventDefault();
+        let userid = $(this).data('UserID');
+
+        var formData = {
+            _token: $('input[name=_token]').val(),
+            userid: $('#UserID').val(),
+            name: $('#updateName').val(),
+            username: $('#updateUsername').val(),
+            email: $('#updateEmail').val(),
+            role: $('#updateRole').val(),
+            password: $('#updatePassword').val(),
+        };
+
+        console.log("formData",formData);
+        console.log("userId",userid);
+
+
+        $.post('/users/' + userid + '/update', formData, function(response) {
+            alert(response.success);
+            $('#updateModal').modal('hide');
+            location.reload(); // Refresh page to see changes
+        }).fail(function(xhr) {
+            alert('Error: ' + xhr.responseJSON.message);
+        });
+    });
+
+ //action update post
+//  $('#update').click(function(e) {
+//         e.preventDefault();
+
+//         //define variable
+//         let userid     = $('#userid').val();
+//         let name        = $('#updateName').val();
+//         let username    = $('#updateUsername').val();
+//         let email        = $('#updateEmail').val();
+//         let role        = $('#updateRole').val();
+//         let token   = $("meta[name='csrf-token']").attr("content");
+
+//         console.log("userid",userid);
+//         console.log("name",name);
+//         console.log("username",username);
+//         console.log("email",email);
+//         console.log("role",role);
+
+        
+//         //ajax
+//         // $.ajax({
+
+//         //     url: `/users/${userid}`,
+//         //     type: "PUT",
+//         //     cache: false,
+//         //     data: {
+//         //         "title": userid,
+//         //         "username": name,
+//         //         "username": username,
+//         //         "email": email,
+//         //         "role": role
+//         //         "_token": token
+//         //     },
+//         //     success:function(response){
+
+//         //         //show success message
+//         //         Swal.fire({
+//         //             type: 'success',
+//         //             icon: 'success',
+//         //             title: `${response.message}`,
+//         //             showConfirmButton: false,
+//         //             timer: 3000
+//         //         });
+
+//         //         // return redirect()->route('user')->with(['success' => 'Data Berhasil Diubah!']);
+                
+
+
+//         //     },
+//         //     error:function(error){
+                
+//         //         if(error.responseJSON.title[0]) {
+
+//         //             //show alert
+//         //             $('#alert-title-edit').removeClass('d-none');
+//         //             $('#alert-title-edit').addClass('d-block');
+
+//         //             //add message to alert
+//         //             $('#alert-title-edit').html(error.responseJSON.title[0]);
+//         //         } 
+
+//         //         if(error.responseJSON.content[0]) {
+
+//         //             //show alert
+//         //             $('#alert-content-edit').removeClass('d-none');
+//         //             $('#alert-content-edit').addClass('d-block');
+
+//         //             //add message to alert
+//         //             $('#alert-content-edit').html(error.responseJSON.content[0]);
+//         //         } 
+
+//         //     }
+
+//         // });
+
+//     });
+
+
+</script>

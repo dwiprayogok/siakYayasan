@@ -5,6 +5,8 @@ namespace App\Http\Controllers\auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+
 
 
 class UserController extends Controller
@@ -69,8 +71,14 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+
         $user = User::find($id);
+        
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
         return response()->json($user);
     }
 
@@ -80,37 +88,55 @@ class UserController extends Controller
     public function edit(string $id)
     {
         //
-        //get product by ID
         $user = User::findOrFail($id);
-
-        //render view with product
         return view('user.edit', compact('users'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,string $id)
     {
-        //
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
-            'role' => 'required|string|max:10',
-            'email' => 'required|email|unique:users',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'username' => 'required',
+            'role' => 'required',
+            'email' => 'required',
             'password' => 'required|min:8',
         ]);
 
+        //check if validation fails
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
 
-        $user = User::findOrFail($id);
+        if (!$id) {
+            return response()->json(['error' => 'User ID is missing'], 400);
+        }
+    
+        // Find the user or return a 404 error
+        $user = User::find($id);
+        
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
         $user->update([
-            'name'         => $request->title,
-            'username'   => $request->username,
+            'id'            => $request->id,
+            'name'          => $request->name,
+            'username'      => $request->username,
             'email'         => $request->email,
-            'role'         => $request->input('role'),
-            'password'         => bcrypt($request->password)
+            'role'          => $request->input('role'),
+            'password'      => bcrypt($request->password)
         ]);
-        return redirect()->route('user')->with(['success' => 'Data Berhasil Diubah!']);
+
+        return response()->json(['success' => 'User updated successfully!']);
+
+        //return response
+        // return response()->json([
+        //     'success' => true,
+        //     'message' => 'Data Berhasil Diudapte!',
+        //     'data'    => $user  
+        // ]);
     }
 
     /**

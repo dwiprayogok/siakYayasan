@@ -1,3 +1,6 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 <!-- Main modal -->
 <div id="detailModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
@@ -16,23 +19,35 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" method="POST" action="#">
+            <form class="p-4 md:p-5">
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" name="name" id="modalName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Neame" required="">
+                        <label for="detailName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                        <input type="text" name="name" id="detailName" class="bg-gray-50 border border-gray-300
+                         text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5
+                          dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500
+                           dark:focus:border-primary-500" placeholder="Name" required="" readonly>
                     </div>
                     <div class="col-span-2">
-                      <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-                      <input type="text" name="username" id="modalusername" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Username" required="">
+                      <label for="detailUsername" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                      <input type="text" name="username" id="detailUsername" class="bg-gray-50 border border-gray-300
+                       text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5
+                        dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500
+                         dark:focus:border-primary-500" placeholder="Username" required="" readonly>
                   </div>
                   <div class="col-span-2">
-                      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                      <input type="email" name="email" id="modalemail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Email" required="">
+                      <label for="detailEmail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                      <input type="email" name="email" id="detailEmail" class="bg-gray-50 border border-gray-300
+                       text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5
+                        dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500
+                        dark:focus:border-primary-500" placeholder="Email" required="" readonly>
                     </div>
                     <div class="col-span-2">
-                        <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-                        <input type="role" name="role" id="modalrole" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" required="">
+                        <label for="detailRole" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
+                        <input type="role" name="role" id="detailRole" class="bg-gray-50 border border-gray-300
+                        text-gray-900 text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5
+                         dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-800
+                          dark:focus:border-primary-800" placeholder="Role" required="" readonly>
                       </div>  
                 </div>
             
@@ -40,3 +55,30 @@
         </div>
     </div>
 </div> 
+<script>
+    //button create post event
+    $('body').on('click', '#detail', function () {
+
+        let userid = $(this).data('id');
+        console.log("userid",userid);
+
+        //fetch detail post with ajax
+        $.ajax({
+            url: `/users/${userid}`,
+            type: "GET",
+            cache: false,
+            success:function(response){
+                console.log(response.name);
+                // //fill data to form
+                $('#detailName').val(response.name);
+                $('#detailUsername').val(response.username);
+                $('#detailEmail').val(response.email);
+                $('#detailRole').val(response.role);
+
+            }
+        });
+    });
+
+</script>
+
+

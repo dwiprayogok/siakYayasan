@@ -55,6 +55,10 @@ Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middl
 
 Route::get('/user', [UserController::class, 'index'])->name('user')->middleware('auth');
 Route::post('/user', [UserController::class, 'store'])->name('users.store');
-Route::put('user/{id}', [UserController::class, 'show'])->name('user.show');
+Route::get('/users/{id}', [UserController::class, 'show']);
+//Route::put('/users/{id}', [UserController::class, 'update']);
+Route::post('/users/{id}/update', [UserController::class, 'update']);
+
+
 
 
