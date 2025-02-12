@@ -53,6 +53,7 @@ class UserController extends Controller
             'username' => $request->username,
             'role' => $request->input('role'),
             'password' => bcrypt($request->password),
+            'active' => $request->input('active'),
         ]);
 
         //return response()->json(['message' => 'User created successfully!', 'user' => $user]);

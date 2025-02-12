@@ -67,8 +67,16 @@
       {{-- <div class="container">
             @yield('konten')
       </div> --}}
+      {{-- <div class="d-flex justify-content-center pb-10">
+            @yield('konten')
+        </div> --}}
 
-      
-@extends('layout.footer')
+      <div style="width: 100%;
+        position: fixed;
+        bottom: 0;
+        padding-top: 10px;" >
+            @extends('layout.footer')
+      </div>
+
 </body>
 </html>

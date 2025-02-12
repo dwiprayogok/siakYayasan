@@ -30,6 +30,7 @@
                             <th scope="col" class="px-4 py-3  dark:text-white">Username</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Email</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Role</th>
+                            <th scope="col" class="px-4 py-3  dark:text-white">Status</th>
                             <th scope="col" class="px-4 py-6  dark:text-white">Actions</th>
                         </tr>
                     </thead>
@@ -38,9 +39,31 @@
                         @foreach ( $users as $user )
                         <tr class="border-b dark:border-gray-700">
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->name }}</td>
+                            
+                            @if ($user->username === '')
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">-----</td>    
+                            @else
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->username }}</td>
+                            @endif
+
+                            
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->email }}</td>
+
+                            @if ($user->role === '')
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">-----</td>    
+                            @else
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->role }}</td>
+                            @endif
+
+
+                            
+                            @if ($user->active === 1)
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">Aktif</td>    
+                            @elseif ($user->active === 0)
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">Tidak Aktif</td>    
+                            @else
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">-</td>    
+                            @endif
                             <td class="p-4">
                                 <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $user->id }}" data-modal-target="updateModal" data-modal-toggle="updateModal"  > 
                                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-blue-500 hover:fill-blue-700"
