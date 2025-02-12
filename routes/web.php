@@ -45,9 +45,27 @@ Route::post('register/action', [RegisterController::class, 'actionregister'])->n
 
 
 Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+
 Route::get('guru', [GuruController::class, 'index'])->name('guru')->middleware('auth');
+Route::post('/guru', [GuruController::class, 'store'])->name('guru.store');
+Route::get('/guru/{id}', [GuruController::class, 'show']);
+Route::post('/guru/{id}/update', [GuruController::class, 'update']);
+Route::delete('/guru/{id}', [GuruController::class, 'destroy']);
+
+
 Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
+Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
+Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
+Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
+
 Route::get('siswa', [ListSiswaController::class, 'index'])->name('siswa')->middleware('auth');
+Route::get('siswa', [ListSiswaController::class, 'index'])->name('siswa')->middleware('auth');
+Route::get('siswa', [ListSiswaController::class, 'index'])->name('siswa')->middleware('auth');
+Route::get('siswa', [ListSiswaController::class, 'index'])->name('siswa')->middleware('auth');
+
+Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
+Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
+Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
 Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
 
 
@@ -58,7 +76,5 @@ Route::post('/user', [UserController::class, 'store'])->name('users.store');
 Route::get('/users/{id}', [UserController::class, 'show']);
 //Route::put('/users/{id}', [UserController::class, 'update']);
 Route::post('/users/{id}/update', [UserController::class, 'update']);
-
-
-
+Route::delete('/users/{id}', [UserController::class, 'destroy']);
 

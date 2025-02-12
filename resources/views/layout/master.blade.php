@@ -67,5 +67,8 @@
       {{-- <div class="container">
             @yield('konten')
       </div> --}}
+
+      
+@extends('layout.footer')
 </body>
 </html>

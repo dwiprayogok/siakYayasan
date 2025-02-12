@@ -23,10 +23,9 @@
             </div>
             
             <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" id="user-table">
+                <table class="w-full text-sm text-left text-black dark:text-black" id="user-table">
                     <thead class="text-xs text-black uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-4 py-3  dark:text-white">No</th>
                             <th scope="col" class="px-4 py-3 dark:text-white">Nama</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Username</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Email</th>
@@ -38,7 +37,6 @@
                     <tbody>
                         @foreach ( $users as $user )
                         <tr class="border-b dark:border-gray-700">
-                            <td scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black" >{{ $loop->iteration }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->name }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->username }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->email }}</td>
@@ -55,7 +53,7 @@
                                       data-original="#000000" />
                                   </svg>
                                 </button>
-                                <button class="mr-4 delete" title="delete" id="delete"  data-id="{{ $user->id }}" data-modal-target="deleteModal" data-modal-toggle="deleteModal">
+                                <button class="mr-4 btnDelete" title="delete" id="btnDelete" data-id="{{ $user->id }}" data-modal-target="deleteModal" data-modal-toggle="deleteModal">
                                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-red-500 hover:fill-red-700" viewBox="0 0 24 24">
                                     <path
                                       d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
@@ -76,7 +74,11 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $users->links() }}
+                <br>
+                <div class="d-flex justify-content-center mb-3 mr-3 ml-3">
+                    {{ $users->links() }}
+                </div>
+                
             </div>
         </div>
     </div>

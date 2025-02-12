@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-span-2">
                       <label for="updatePassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                      <input type="password" name="updatePassword" id="updatePassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" required="">
+                      <input type="password" name="updatePassword" id="updatePassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" >
                     </div>
                   <div class="col-span-2">
                       <label for="updateRole" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">role</label>
@@ -70,7 +70,6 @@
     $('body').on('click', '#btnUpdate', function () {
 
         let userid = $(this).data('id');
-        console.log("userid",userid);
 
         //fetch update post with ajax
         $.ajax({
@@ -94,8 +93,8 @@
     // Update user data
     $('#editUserForm').submit(function(e) {
         e.preventDefault();
-        let userid = $(this).data('UserID');
-
+        let userid = $('#UserID').val();
+        
         var formData = {
             _token: $('input[name=_token]').val(),
             userid: $('#UserID').val(),
@@ -106,95 +105,11 @@
             password: $('#updatePassword').val(),
         };
 
-        console.log("formData",formData);
-        console.log("userId",userid);
-
-
         $.post('/users/' + userid + '/update', formData, function(response) {
             alert(response.success);
-            $('#updateModal').modal('hide');
             location.reload(); // Refresh page to see changes
         }).fail(function(xhr) {
             alert('Error: ' + xhr.responseJSON.message);
         });
     });
-
- //action update post
-//  $('#update').click(function(e) {
-//         e.preventDefault();
-
-//         //define variable
-//         let userid     = $('#userid').val();
-//         let name        = $('#updateName').val();
-//         let username    = $('#updateUsername').val();
-//         let email        = $('#updateEmail').val();
-//         let role        = $('#updateRole').val();
-//         let token   = $("meta[name='csrf-token']").attr("content");
-
-//         console.log("userid",userid);
-//         console.log("name",name);
-//         console.log("username",username);
-//         console.log("email",email);
-//         console.log("role",role);
-
-        
-//         //ajax
-//         // $.ajax({
-
-//         //     url: `/users/${userid}`,
-//         //     type: "PUT",
-//         //     cache: false,
-//         //     data: {
-//         //         "title": userid,
-//         //         "username": name,
-//         //         "username": username,
-//         //         "email": email,
-//         //         "role": role
-//         //         "_token": token
-//         //     },
-//         //     success:function(response){
-
-//         //         //show success message
-//         //         Swal.fire({
-//         //             type: 'success',
-//         //             icon: 'success',
-//         //             title: `${response.message}`,
-//         //             showConfirmButton: false,
-//         //             timer: 3000
-//         //         });
-
-//         //         // return redirect()->route('user')->with(['success' => 'Data Berhasil Diubah!']);
-                
-
-
-//         //     },
-//         //     error:function(error){
-                
-//         //         if(error.responseJSON.title[0]) {
-
-//         //             //show alert
-//         //             $('#alert-title-edit').removeClass('d-none');
-//         //             $('#alert-title-edit').addClass('d-block');
-
-//         //             //add message to alert
-//         //             $('#alert-title-edit').html(error.responseJSON.title[0]);
-//         //         } 
-
-//         //         if(error.responseJSON.content[0]) {
-
-//         //             //show alert
-//         //             $('#alert-content-edit').removeClass('d-none');
-//         //             $('#alert-content-edit').addClass('d-block');
-
-//         //             //add message to alert
-//         //             $('#alert-content-edit').html(error.responseJSON.content[0]);
-//         //         } 
-
-//         //     }
-
-//         // });
-
-//     });
-
-
 </script>

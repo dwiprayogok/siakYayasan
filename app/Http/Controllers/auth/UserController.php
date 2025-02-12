@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index(Request $request)
     {
         //
@@ -26,22 +24,18 @@ class UserController extends Controller
                   ->orWhere('email', 'LIKE', "%$search%");
         }
 
-        $users = $query->paginate(10); // Paginate results
+        $users = $query->paginate(5); // Paginate results
 
         return view('user', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+  
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+  
     public function store(Request $request)
     {
         $request->validate([
@@ -66,15 +60,10 @@ class UserController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
+   
     public function show(string $id)
     {
-
-
         $user = User::find($id);
-        
         if (!$user) {
             return response()->json(['error' => 'User not found'], 404);
         }
@@ -82,9 +71,7 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+   
     public function edit(string $id)
     {
         //
@@ -92,9 +79,7 @@ class UserController extends Controller
         return view('user.edit', compact('users'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request,string $id)
     {
         $validator = Validator::make($request->all(), [
@@ -102,7 +87,6 @@ class UserController extends Controller
             'username' => 'required',
             'role' => 'required',
             'email' => 'required',
-            'password' => 'required|min:8',
         ]);
 
         //check if validation fails
@@ -130,20 +114,14 @@ class UserController extends Controller
         ]);
 
         return response()->json(['success' => 'User updated successfully!']);
-
-        //return response
-        // return response()->json([
-        //     'success' => true,
-        //     'message' => 'Data Berhasil Diudapte!',
-        //     'data'    => $user  
-        // ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        return response()->json(['success' => 'User deleted successfully']);
+        
     }
 }
