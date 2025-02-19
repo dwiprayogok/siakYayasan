@@ -7,4 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class guru extends Model
 {
     //
+
+    protected $fillable = [
+        'kode_guru',
+        'name',
+        'nip',
+        'role',
+        'education',
+    ];
 }

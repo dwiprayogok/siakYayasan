@@ -3,41 +3,29 @@
 namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ListSiswaController extends Controller
+class SiswaController extends Controller
 {
     
-    //   public function index()
-    //   {
-    //       return view('siswa');
-    //   }
-
-    //   public function getUsers()
-    //   {
-    //       //return response()->json(User::all());
-    //       $users = User::all();
-    //       return view('siswa', compact('users'));
-
-    //   }
+ 
 
     public function index(Request $request)
     {
         //
-        $query = User::query();
+        $query = siswa::query();
 
         // Search by name or email
         if ($request->has('search')) {
             $search = $request->input('search');
-            $query->where('name', 'LIKE', "%$search%")
-                  ->orWhere('email', 'LIKE', "%$search%");
+            $query->where('name', 'LIKE', "%$search%");
         }
 
-        $users = $query->paginate(5); // Paginate results
+        $siswas = $query->orderBy('id', 'asc')->paginate(10);
 
-        return view('siswa', compact('users'));
+        return view('siswa', compact('siswas'));
     }
 
   
@@ -50,20 +38,18 @@ class ListSiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
-            'role' => 'required|string|max:10',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
+            'name' => 'required',
+            'nis' => 'required',
+            'gender' => 'required',
+            'class' => 'required',
         ]);
 
         // Create and store the user
-        $user = User::create([
+        $user = siswa::create([
             'name' => $request->name,
-            'email' => $request->email,
-            'username' => $request->username,
-            'role' => $request->input('role'),
-            'password' => bcrypt($request->password),
+            'nis' => $request->email,
+            'gender' => $request->username,
+            'class' => $request->class,
         ]);
 
         //return response()->json(['message' => 'User created successfully!', 'user' => $user]);
@@ -74,20 +60,20 @@ class ListSiswaController extends Controller
    
     public function show(string $id)
     {
-        $user = User::find($id);
-        if (!$user) {
+        $s = siswa::find($id);
+        if (!$s) {
             return response()->json(['error' => 'User not found'], 404);
         }
 
-        return response()->json($user);
+        return response()->json($s);
     }
 
    
     public function edit(string $id)
     {
         //
-        $user = User::findOrFail($id);
-        return view('siswa.edit', compact('users'));
+        $user = siswa::findOrFail($id);
+        return view('siswa.edit', compact('siswas'));
     }
 
 
@@ -95,9 +81,9 @@ class ListSiswaController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'username' => 'required',
-            'role' => 'required',
-            'email' => 'required',
+            'nis' => 'required',
+            'gender' => 'required',
+            'class' => 'required',
         ]);
 
         //check if validation fails
@@ -110,18 +96,18 @@ class ListSiswaController extends Controller
         }
     
         // Find the user or return a 404 error
-        $user = User::find($id);
+        $user = siswa::find($id);
         
         if (!$user) {
             return response()->json(['error' => 'User not found'], 404);
         }
         $user->update([
-            'id'            => $request->id,
-            'name'          => $request->name,
-            'username'      => $request->username,
-            'email'         => $request->email,
-            'role'          => $request->input('role'),
-            'password'      => bcrypt($request->password)
+        'id_student'        => $request->id,
+        'name'              => $request->name,
+        'nis'               => $request->nis,
+        'gender'            => $request->gender,
+        'class'             => $request->class,
+        'name_of_parent'    => $request->name_of_parent
         ]);
 
         return response()->json(['success' => 'User updated successfully!']);
@@ -129,7 +115,7 @@ class ListSiswaController extends Controller
 
     public function destroy(string $id)
     {
-        $user = User::find($id);
+        $user = siswa::find($id);
         $user->delete();
 
         return response()->json(['success' => 'User deleted successfully']);

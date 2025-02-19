@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\guru;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -14,18 +14,21 @@ class GuruController extends Controller
     public function index(Request $request)
     {
         //
-        $query = User::query();
+
+        $query = guru::query();
 
         // Search by name or email
         if ($request->has('search')) {
             $search = $request->input('search');
             $query->where('name', 'LIKE', "%$search%")
-                  ->orWhere('email', 'LIKE', "%$search%");
+                  ->orWhere('kode_guru', 'LIKE', "%$search%");
         }
 
-        $users = $query->paginate(5); // Paginate results
+        //$gurus = $query->paginate(10); // Paginate results
+        $gurus = $query->orderBy('id', 'asc')->paginate(10);
 
-        return view('guru', compact('users'));
+        
+        return view('guru', compact('gurus'));
     }
 
   
@@ -46,45 +49,46 @@ class GuruController extends Controller
         ]);
 
         // Create and store the user
-        $user = User::create([
+        $gurus = guru::create([
             'name' => $request->name,
             'email' => $request->email,
             'username' => $request->username,
             'role' => $request->input('role'),
             'password' => bcrypt($request->password),
+            'active' => $request->input('active'),
         ]);
 
         return redirect()->route('guru')->with('success', 'User added successfully!');
-
     }
 
    
     public function show(string $id)
     {
-        $user = User::find($id);
-        if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
+        $gurus = guru::find($id);
+        if (!$gurus) {
+            return response()->json(['error' => 'Guru not found'], 404);
         }
 
-        return response()->json($user);
+        return response()->json($gurus);
     }
 
    
     public function edit(string $id)
     {
         //
-        $user = User::findOrFail($id);
-        return view('guru.edit', compact('users'));
+        $gurus = guru::findOrFail($id);
+        return view('guru.edit', compact('gurus'));
+     
     }
 
 
     public function update(Request $request,string $id)
     {
         $validator = Validator::make($request->all(), [
+            'kode_guru' => 'required',
             'name' => 'required',
-            'username' => 'required',
+            'nip' => 'required',
             'role' => 'required',
-            'email' => 'required',
         ]);
 
         //check if validation fails
@@ -97,18 +101,17 @@ class GuruController extends Controller
         }
     
         // Find the user or return a 404 error
-        $user = User::find($id);
+        $gurus = guru::find($id);
         
-        if (!$user) {
+        if (!$gurus) {
             return response()->json(['error' => 'User not found'], 404);
         }
-        $user->update([
-            'id'            => $request->id,
+        $gurus->update([
+            'kode_guru'     => $request->kode_guru,
             'name'          => $request->name,
-            'username'      => $request->username,
-            'email'         => $request->email,
-            'role'          => $request->input('role'),
-            'password'      => bcrypt($request->password)
+            'nip'           => $request->nip,
+            'role'          => $request->role,
+            'education'     => $request->input('ediucation'),
         ]);
 
         return response()->json(['success' => 'User updated successfully!']);
@@ -116,8 +119,8 @@ class GuruController extends Controller
 
     public function destroy(string $id)
     {
-        $user = User::find($id);
-        $user->delete();
+        $g = guru::find($id);
+        $g->delete();
 
         return response()->json(['success' => 'User deleted successfully']);
         

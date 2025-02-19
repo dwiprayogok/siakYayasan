@@ -7,7 +7,7 @@ use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\HomeController;
 use App\Http\Controllers\auth\JadwalPelajaranController;
 use App\Http\Controllers\auth\ListNilaiController;
-use App\Http\Controllers\auth\ListSiswaController;
+use App\Http\Controllers\auth\SiswaController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\auth\ResetPasswordController;
 use App\Http\Controllers\auth\UserController;
@@ -58,10 +58,10 @@ Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name
 Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
 Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
 
-Route::get('siswa', [ListSiswaController::class, 'index'])->name('siswa')->middleware('auth');
-Route::get('siswa', [ListSiswaController::class, 'index'])->name('siswa')->middleware('auth');
-Route::get('siswa', [ListSiswaController::class, 'index'])->name('siswa')->middleware('auth');
-Route::get('siswa', [ListSiswaController::class, 'index'])->name('siswa')->middleware('auth');
+Route::get('siswa', [SiswaController::class, 'index'])->name('siswa')->middleware('auth');
+Route::get('siswa', [SiswaController::class, 'index'])->name('siswa')->middleware('auth');
+Route::get('siswa', [SiswaController::class, 'index'])->name('siswa')->middleware('auth');
+Route::get('siswa', [SiswaController::class, 'index'])->name('siswa')->middleware('auth');
 
 Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
 Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
