@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\guru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
+
 
 
 class GuruController extends Controller
@@ -21,7 +23,7 @@ class GuruController extends Controller
         if ($request->has('search')) {
             $search = $request->input('search');
             $query->where('name', 'LIKE', "%$search%")
-                  ->orWhere('kode_guru', 'LIKE', "%$search%");
+                  ->orWhere('nip', 'LIKE', "%$search%");
         }
 
         //$gurus = $query->paginate(10); // Paginate results
@@ -41,21 +43,29 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
-            'role' => 'required|string|max:10',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
+            'kode_guru' => 'required',
+            'name' => 'required',
+            'nip' => 'required',
+            'sk' => 'required',
+            'tanggal_lahir' => 'required',
+            'role' => 'required',
+            'education' => 'required',
+            
         ]);
+
+        $formattedDate = Carbon::createFromFormat('m/d/Y', $request->tanggal_lahir)->format('Y-m-d');
+
 
         // Create and store the user
         $gurus = guru::create([
+            'kode_guru' => $request->kode_guru,
             'name' => $request->name,
-            'email' => $request->email,
-            'username' => $request->username,
-            'role' => $request->input('role'),
-            'password' => bcrypt($request->password),
-            'active' => $request->input('active'),
+            'nip' => $request->nip,
+            'sk' => $request->sk,
+            'tanggal_lahir' => $formattedDate,
+            'role' => $request->role,
+            'walas' => $request->input('walas', '-'),
+            'education' => $request->input('education'),
         ]);
 
         return redirect()->route('guru')->with('success', 'User added successfully!');

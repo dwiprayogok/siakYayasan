@@ -40,7 +40,7 @@
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $guru->nip }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $guru->role }}</td>
                             <td class="p-4">
-                                <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $guru->id }}" data-modal-target="updateModal" data-modal-toggle="updateModal"  > 
+                                <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $guru->id }}" data-modal-target="updateGuruModal" data-modal-toggle="updateGuruModal"  > 
                                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-blue-500 hover:fill-blue-700"
                                     viewBox="0 0 348.882 348.882">
                                     <path
@@ -51,7 +51,7 @@
                                       data-original="#000000" />
                                   </svg>
                                 </button>
-                                <button class="mr-4 btnDelete" title="delete" id="btnDelete" data-id="{{ $guru->id }}" data-modal-target="deleteModal" data-modal-toggle="deleteModal">
+                                <button class="mr-4 btnDelete" title="delete" id="btnDelete" data-id="{{ $guru->id }}" data-modal-target="deleteGuruModal" data-modal-toggle="deleteGuruModal">
                                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-red-500 hover:fill-red-700" viewBox="0 0 24 24">
                                     <path
                                       d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
@@ -61,7 +61,7 @@
                                   </svg>
                                 </button>
                                 
-                                <button class="mr-2 detail" title="view" id="detail" data-id="{{ $guru->id }}" data-modal-target="detailModal" data-modal-toggle="detailModal">
+                                <button class="mr-2 detail" title="view" id="detail" data-id="{{ $guru->id }}" data-modal-target="detailGuruModal" data-modal-toggle="detailGuruModal">
                                     <svg class="w-6 h-6 text-gray-800 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                         <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
                                       </svg>

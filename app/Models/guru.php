@@ -13,6 +13,9 @@ class guru extends Model
         'name',
         'nip',
         'role',
+        'sk',
+        'tanggal_lahir',
         'education',
+        'walas',
     ];
 }

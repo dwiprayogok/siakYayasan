@@ -48,9 +48,9 @@ Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('
 
 Route::get('guru', [GuruController::class, 'index'])->name('guru')->middleware('auth');
 Route::post('/guru', [GuruController::class, 'store'])->name('guru.store');
-Route::get('/guru/{id}', [GuruController::class, 'show']);
-Route::post('/guru/{id}/update', [GuruController::class, 'update']);
-Route::delete('/guru/{id}', [GuruController::class, 'destroy']);
+Route::get('/gurus/{id}', [GuruController::class, 'show']);
+Route::post('/gurus/{id}/update', [GuruController::class, 'update']);
+Route::delete('/gurus/{id}', [GuruController::class, 'destroy']);
 
 
 Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
