@@ -59,9 +59,10 @@ Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name
 Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
 
 Route::get('siswa', [SiswaController::class, 'index'])->name('siswa')->middleware('auth');
-Route::get('siswa', [SiswaController::class, 'index'])->name('siswa')->middleware('auth');
-Route::get('siswa', [SiswaController::class, 'index'])->name('siswa')->middleware('auth');
-Route::get('siswa', [SiswaController::class, 'index'])->name('siswa')->middleware('auth');
+Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
+Route::get('/siswas/{id}', [SiswaController::class, 'show']);
+Route::post('/siswas/{id}/update', [SiswaController::class, 'update']);
+Route::delete('/siswas/{id}', [SiswaController::class, 'destroy']);
 
 Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
 Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');

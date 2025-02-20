@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class SiswaController extends Controller
 {
@@ -38,18 +39,34 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'id_student' => 'required',
             'nis' => 'required',
+            'name' => 'required',
             'gender' => 'required',
             'class' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'born_place' => 'required',
+            'birth_date' => 'required',
+            'name_of_parent' => 'required',
+
         ]);
+
+        $formattedDate = Carbon::createFromFormat('m/d/Y', $request->birth_date)->format('Y-m-d');
 
         // Create and store the user
         $user = siswa::create([
-            'name' => $request->name,
+            'id_student' => $request->id_student,
             'nis' => $request->email,
+            'name' => $request->name,
             'gender' => $request->username,
             'class' => $request->class,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'born_place' => $request->born_place,
+            'birth_date' => $request->$formattedDate,
+            'name_of_parent' => $request->name_of_parent,
+            
         ]);
 
         //return response()->json(['message' => 'User created successfully!', 'user' => $user]);
@@ -60,12 +77,12 @@ class SiswaController extends Controller
    
     public function show(string $id)
     {
-        $s = siswa::find($id);
-        if (!$s) {
+        $siswas = siswa::find($id);
+        if (!$siswas) {
             return response()->json(['error' => 'User not found'], 404);
         }
 
-        return response()->json($s);
+        return response()->json($siswas);
     }
 
    
@@ -80,10 +97,16 @@ class SiswaController extends Controller
     public function update(Request $request,string $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'id_student' => 'required',
             'nis' => 'required',
+            'name' => 'required',
             'gender' => 'required',
             'class' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'born_place' => 'required',
+            'birth_date' => 'required',
+            'name_of_parent' => 'required',
         ]);
 
         //check if validation fails
@@ -102,12 +125,16 @@ class SiswaController extends Controller
             return response()->json(['error' => 'User not found'], 404);
         }
         $user->update([
-        'id_student'        => $request->id,
-        'name'              => $request->name,
-        'nis'               => $request->nis,
-        'gender'            => $request->gender,
-        'class'             => $request->class,
-        'name_of_parent'    => $request->name_of_parent
+            'id_student' => $request->id_student,
+            'nis' => $request->email,
+            'name' => $request->name,
+            'gender' => $request->username,
+            'class' => $request->class,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'born_place' => $request->born_place,
+            'birth_date' => $request->birth_date,
+            'name_of_parent' => $request->name_of_parent,
         ]);
 
         return response()->json(['success' => 'User updated successfully!']);
@@ -115,8 +142,8 @@ class SiswaController extends Controller
 
     public function destroy(string $id)
     {
-        $user = siswa::find($id);
-        $user->delete();
+        $siswas = siswa::find($id);
+        $siswas->delete();
 
         return response()->json(['success' => 'User deleted successfully']);
         
