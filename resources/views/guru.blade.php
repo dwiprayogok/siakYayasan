@@ -24,11 +24,11 @@
                 <table class="w-full text-sm text-left text-black dark:text-black" id="user-table">
                     <thead class="text-xs text-black uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-4 py-3 dark:text-white">No</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Name</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Nip</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Posisi</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Pendidikan</th>
+                            <th scope="col" class="px-4 py-6   dark:text-white">Nip</th>
+                            <th scope="col" class="px-4 py-6   dark:text-white">Name</th>
+                            <th scope="col" class="px-4 py-6  dark:text-white">Posisi</th>
+                            <th scope="col" class="px-4 py-6  dark:text-white">SK</th>
+                            <th scope="col" class="px-4 py-6  dark:text-white">Pendidikan</th>
                             <th scope="col" class="px-4 py-6  dark:text-white">Actions</th>
                         </tr>
                     </thead>
@@ -36,10 +36,10 @@
                     <tbody>
                         @foreach ( $gurus as $guru )
                         <tr class="border-b dark:border-gray-700">
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $guru->id }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $guru->name }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $guru->nip }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $guru->name }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $guru->role }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $guru->sk }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $guru->education }}</td>
                             <td class="p-4">
                                 <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $guru->id }}" data-modal-target="updateGuruModal" data-modal-toggle="updateGuruModal"  > 
