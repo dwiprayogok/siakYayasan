@@ -116,21 +116,26 @@ class GuruController extends Controller
         if (!$gurus) {
             return response()->json(['error' => 'User not found'], 404);
         }
+
         $gurus->update([
             'kode_guru'     => $request->kode_guru,
             'name'          => $request->name,
             'nip'           => $request->nip,
             'role'          => $request->role,
-            'education'     => $request->input('ediucation'),
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'sk'            => $request->sk,
+            'role'          => $request->role,
+            'education'     => $request->education,
         ]);
+
 
         return response()->json(['success' => 'User updated successfully!']);
     }
 
     public function destroy(string $id)
     {
-        $g = guru::find($id);
-        $g->delete();
+        $gurus = guru::find($id);
+        $gurus->delete();
 
         return response()->json(['success' => 'User deleted successfully']);
         
