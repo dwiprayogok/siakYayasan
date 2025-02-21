@@ -5,13 +5,14 @@
 
 <section class=" bg-gray-100 dark:bg-gray-100 sm:p-20">
     <div class=" px-1 lg:px-12">
-        <h1 class="text-2xl py-4 border-b-4 mb-5">List User</h1>
+        <h1 class="text-2xl py-4 border-b-4 mb-5">List Data Siswa</h1>
         <div class="bg-white dark:bg-white relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                 <form method="GET" action="{{ url('/siswa') }}" class="mb-4">
                     <input type="text" name="search" class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-700 " value="{{ request('search') }}" placeholder="Search by name">
                     <button type="submit" class="mt-2 ml-10 bg-primary-700 text-white px-4 py-2 rounded">Search</button>
                 </form>
+
                 <button type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4
                  focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-700 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
                  data-modal-target="createSiswaModal" data-modal-toggle="createSiswaModal">
@@ -26,11 +27,12 @@
                 <table class="w-full text-sm text-left text-black dark:text-black" id="user-table">
                     <thead class="text-xs text-black uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-4 py-3 dark:text-white">ID Siswa</th>
+                            <th scope="col" class="px-4 py-3 hidden dark:text-white">Id Siswa</th>
                             <th scope="col" class="px-4 py-3 dark:text-white">NIS</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Nama</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Kelas</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Jenis Kelamin</th>
+                            <th scope="col" class="px-4 py-3  dark:text-white">No Telepon</th>
                             <th scope="col" class="px-4 py-6  dark:text-white">Actions</th>
                         </tr>
                     </thead>
@@ -38,13 +40,20 @@
                     <tbody>
                         @foreach ( $siswas as $siswa )
                         <tr class="border-b dark:border-gray-700">
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->id_student }}</td>
+                            <td class="px-4 py-3 font-medium hidden text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->id_student }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->nis }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->name }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->class }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->gender }}</td>
+                            
+                            @if ($siswa->gender === 'Male')
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">Laki - Laki</td>    
+                            @else
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">Perempuan</td>    
+                            @endif
+
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->phone }}</td>
                             <td class="p-4">
-                                <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $siswa->id_student }}" data-modal-target="updateSiswaModal" data-modal-toggle="updateSiswaModal"  > 
+                                <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $siswa->id }}" data-modal-target="updateSiswaModal" data-modal-toggle="updateSiswaModal"  > 
                                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-blue-500 hover:fill-blue-700"
                                     viewBox="0 0 348.882 348.882">
                                     <path

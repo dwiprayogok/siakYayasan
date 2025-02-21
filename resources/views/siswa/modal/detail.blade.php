@@ -22,52 +22,45 @@
             <form class="p-4 md:p-5">
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div >
-                        <label for="id_sudent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Siswa</label>
-                        <input type="text" name="id_sudent" id="id_sudent" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ID Siswa" required="">
+                        <label for="detailid_sudent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Siswa</label>
+                        <input type="text" name="detailid_sudent" id="detailid_sudent" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" disabled placeholder="ID Siswa" required="">
                     </div>
 
                     <div >
                         <label for="detailnis" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIS</label>
-                        <input type="text" name="detailnis" id="detailnis" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="nis" required="">
+                        <input type="text" name="detailnis" id="detailnis" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" disabled placeholder="nis" required="">
                       </div>
 
                     <div class="col-span-2">
                         <label for="detailname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" name="detailname" id="detailname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Name" required="">
+                        <input type="text" name="detailname" id="detailname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" disabled placeholder="Name" required="">
                     </div>
 
-                    <div class="col-span-2">
-                        <label for="detailgender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pendidikan Terakhir</label>
-                        <select id="detailgender"  name="detailgender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    <div >
+                        <label for="detailgender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
+                        <select id="detailgender" disabled name="detailgender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Pilih Jenis Kelamin</option>
-                            <option value="male">Laki - Laki</option>
-                            <option value="female">Perempuan</option>
+                            <option value="Male">Laki - Laki</option>
+                            <option value="Female">Perempuan</option>
                         </select>
                     </div>   
 
-                    <div class="col-span-2">
+                    <div >
                         <label for="detailclass" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
-                        <input type="text" name="detailclass" id="detailclass" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Kelas" required="">
+                        <input type="text" name="detailclass" id="detailclass" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" disabled placeholder="Kelas" required="">
                     </div>
 
 
                     <div class="col-span-2">
                             
-                    <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
-                    <textarea id="detailaddress" name="detailaddress" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tulis alamat mu disini..."></textarea>
+                    <label for="detailaddress" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
+                    <textarea id="detailaddress" name="detailaddress" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled placeholder="Tulis alamat mu disini..."></textarea>
 
                     </div>
 
-
-                    <div class="col-span-2">
-                        <label for="detailphone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Telepone</label>
-                        <input type="number" name="detailphone" id="detailphone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" maxlength="12"  placeholder="No Telephone" required="">
-                    </div>
-
-
-                    <div class="col-span-2">
+                    <div >
                         <label for="detailborn_place" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir </label>
-                        <input type="text" name="detailborn_place" id="detailborn_place" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Tempat Lahir" required="">
+                        <input type="text" name="detailborn_place" id="detailborn_place" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" disabled placeholder="Tempat Lahir" required="">
                     </div>
                    
                   <div >
@@ -78,14 +71,19 @@
                               <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                             </svg>
                         </div>
-                        <input id="detailbirth_date" name="detailbirth_date"  datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Pilih Tanggal">
+                        <input id="detailbirth_date" name="detailbirth_date"  datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" disabled placeholder="Pilih Tanggal">
                       </div>
                     </div>
 
+                    
+                    <div class="col-span-2">
+                        <label for="detailphone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Telepone</label>
+                        <input type="number" name="detailphone" id="detailphone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" disabled maxlength="12"  placeholder="No Telephone" required="">
+                    </div>
 
                     <div class="col-span-2">
                         <label for="detailname_of_parent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Orang Tua</label>
-                        <input type="text" name="detailname_of_parent" id="detailname_of_parent" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nama Orangtua" required="">
+                        <input type="text" name="detailname_of_parent" id="detailname_of_parent" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" disabled placeholder="Nama Orangtua" required="">
                     </div>
                     
                   
@@ -109,28 +107,19 @@
             cache: false,
             success:function(response){
                 console.log(response);
-                console.log(response.nip);
-                console.log(response.name);
+         
                 // //fill data to form
-                $('#detailnis').val(response.nip);
+                $('#detailid_sudent').val(response.id_student);
+                $('#detailnis').val(response.nis);
                 $('#detailname').val(response.name);
-                $('#detailgender').val(response.role);
+                $('#detailaddress').val(response.address);
+                $('#detailclass').val(response.class);
+                $('#detailgender').val(response.gender);
+                $('#detailphone').val(response.phone);
+                $('#detailborn_place').val(response.born_place);
+                $('#detailbirth_date').val(response.birth_date);
+                $('#detailname_of_parent').val(response.name_of_parent);
 
-                // if (response.role  == '') {
-                //     $('#detailRole').val('--');
-                // } else {
-                //     $('#detailRole').val(response.role);
-                // }
-                
-
-                // if (response.active == 1) {
-                //     $('#detailStatus').val('Aktif');
-                // } else if (response.active == 0) {
-                //     $('#detailStatus').val('Tidak Aktif');
-                // } else {
-                //     $('#detailStatus').val('-');
-                // }
-                
 
             }
         });

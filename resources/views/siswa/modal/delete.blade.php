@@ -10,7 +10,7 @@
                 <span class="sr-only">Close modal</span>
             </button>
             <div class="col-span-2">
-                <input type="hidden" name="UserID" id="UserID" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ID" required="">
+                <input type="hidden" name="id_student" id="id_student" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ID" required="">
             </div>
             <div class="p-4 md:p-5 text-center">
                 <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -30,21 +30,21 @@
 <script>
 
 $('body').on('click', '#btnDelete', function () {
-    let userid = $(this).data('id');
+    let userid = $(this).data('id_student');
         $.ajax({
-            url: `/gurus/${userid}`,
+            url: `/siswas/${userid}`,
             type: "GET",
             cache: false,
             success:function(response){
                 console.log(response);
-                $('#UserID').val(response.id);
+                $('#id_student').val(response.id_student);
             }
         });
 });
 
     $('body').on('click', '#confirmDelete', function () {
 
-    let userid = $('#UserID').val();
+    let userid = $('#id_student').val();
     console.log("userid confirm delete",userid);
 
         $.ajax({

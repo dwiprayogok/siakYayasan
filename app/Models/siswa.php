@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class siswa extends Model
+class Siswa extends Model
 {
     //
+    use HasFactory;
+
     protected $fillable = [
         'id_student',
         'nis',
@@ -16,6 +19,7 @@ class siswa extends Model
         'address',
         'born_place',
         'birth_date',
+        'phone',
         'name_of_parent',
     ];
 }
