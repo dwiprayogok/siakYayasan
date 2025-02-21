@@ -13,6 +13,17 @@
                     <button type="submit" class="mt-2 ml-10 bg-primary-700 text-white px-4 py-2 rounded">Search</button>
                 </form>
 
+                <div scope="col 2" class="px-4 py-3 " >
+                  
+                    <select id="class"  name="class" class="bg-black border border-black text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5
+                     dark:bg-primary-600 dark:border-primary-600 dark:placeholder-primary-400 dark:text-white dark:focus:ring-primary-600 dark:focus:border-primary-600">
+                        <option selected="">Pilih Kelas</option>
+                        <option value="VIII_1">VIII 1</option>
+                        <option value="VIII_2">VIII 2</option>
+                        <option value="VIII_3">VIII 3</option>
+                    </select>
+                </div> 
+
                 <button type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4
                  focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-700 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
                  data-modal-target="createSiswaModal" data-modal-toggle="createSiswaModal">
