@@ -13,10 +13,11 @@
                     <button type="submit" class="mt-2 ml-10 bg-primary-700 text-white px-4 py-2 rounded">Search</button>
                 </form>
 
-                <div scope="col 2" class="px-4 py-3 " >
+                <div class=" flex flex-col md:flex-row items-center col-span-2">
                   
-                    <select id="class"  name="class" class="bg-black border border-black text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5
-                     dark:bg-primary-600 dark:border-primary-600 dark:placeholder-primary-400 dark:text-white dark:focus:ring-primary-600 dark:focus:border-primary-600">
+                    <select id="class"  name="class" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                    focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400
+                     dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option selected="">Pilih Kelas</option>
                         <option value="VIII_1">VIII 1</option>
                         <option value="VIII_2">VIII 2</option>
