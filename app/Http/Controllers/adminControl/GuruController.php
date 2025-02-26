@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\adminControl;
 
 use App\Http\Controllers\Controller;
 use App\Models\guru;
@@ -30,7 +30,7 @@ class GuruController extends Controller
         $gurus = $query->orderBy('id', 'asc')->paginate(10);
 
         
-        return view('guru', compact('gurus'));
+        return view('/admin/views/guru', compact('gurus'));
     }
 
   

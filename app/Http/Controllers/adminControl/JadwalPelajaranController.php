@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\auth;
+namespace App\Http\Controllers\adminControl;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,10 +8,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 
-
-class UserController extends Controller
+class JadwalPelajaranController extends Controller
 {
-   
+    //
     public function index(Request $request)
     {
         //
@@ -24,9 +23,9 @@ class UserController extends Controller
                   ->orWhere('email', 'LIKE', "%$search%");
         }
 
-        $users = $query->paginate(10); // Paginate results
+        $users = $query->paginate(5); // Paginate results
 
-        return view('user', compact('users'));
+        return view('/admin/views/jadwalpelajaran', compact('users'));
     }
 
   
@@ -53,11 +52,10 @@ class UserController extends Controller
             'username' => $request->username,
             'role' => $request->input('role'),
             'password' => bcrypt($request->password),
-            'active' => $request->input('active'),
         ]);
 
         //return response()->json(['message' => 'User created successfully!', 'user' => $user]);
-        return redirect()->route('user')->with('success', 'User added successfully!');
+        return redirect()->route('jadwalpelajaran')->with('success', 'User added successfully!');
 
     }
 
@@ -77,7 +75,7 @@ class UserController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        return view('user.edit', compact('users'));
+        return view('jadwalpelajaran.edit', compact('users'));
     }
 
 
@@ -125,4 +123,5 @@ class UserController extends Controller
         return response()->json(['success' => 'User deleted successfully']);
         
     }
+    
 }

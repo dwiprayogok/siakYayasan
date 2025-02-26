@@ -1,16 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\auth;
+namespace App\Http\Controllers\adminControl;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-
-class JadwalPelajaranController extends Controller
+class ListNilaiController extends Controller
 {
-    //
+    //   public function index()
+    //   {
+    //       return view('nilai');
+    //   }
+
     public function index(Request $request)
     {
         //
@@ -25,7 +28,7 @@ class JadwalPelajaranController extends Controller
 
         $users = $query->paginate(5); // Paginate results
 
-        return view('jadwalpelajaran', compact('users'));
+        return view('/admin/views/nilai', compact('users'));
     }
 
   
@@ -55,7 +58,7 @@ class JadwalPelajaranController extends Controller
         ]);
 
         //return response()->json(['message' => 'User created successfully!', 'user' => $user]);
-        return redirect()->route('jadwalpelajaran')->with('success', 'User added successfully!');
+        return redirect()->route('nilai')->with('success', 'User added successfully!');
 
     }
 
@@ -75,7 +78,7 @@ class JadwalPelajaranController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        return view('jadwalpelajaran.edit', compact('users'));
+        return view('nilai.edit', compact('users'));
     }
 
 
@@ -123,5 +126,4 @@ class JadwalPelajaranController extends Controller
         return response()->json(['success' => 'User deleted successfully']);
         
     }
-    
 }

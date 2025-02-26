@@ -26,10 +26,11 @@
                 <table class="w-full text-sm text-left text-black dark:text-black" id="user-table">
                     <thead class="text-xs text-black uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-4 py-3 dark:text-white">Nama</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Username</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Email</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Role</th>
+                            <th scope="col" class="px-4 py-3 dark:text-white">No</th>
+                            <th scope="col" class="px-4 py-3  dark:text-white">Jam</th>
+                            <th scope="col" class="px-4 py-3  dark:text-white">Kelas</th>
+                            <th scope="col" class="px-4 py-3  dark:text-white">Nama Siswa</th>
+                            <th scope="col" class="px-4 py-3  dark:text-white">Guru</th>
                             <th scope="col" class="px-4 py-6  dark:text-white">Actions</th>
                         </tr>
                     </thead>
@@ -37,6 +38,7 @@
                     <tbody>
                         @foreach ( $users as $user )
                         <tr class="border-b dark:border-gray-700">
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->id }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->name }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->username }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->email }}</td>

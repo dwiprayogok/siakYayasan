@@ -1,19 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\auth;
+namespace App\Http\Controllers\adminControl;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
-class ListNilaiController extends Controller
-{
-    //   public function index()
-    //   {
-    //       return view('nilai');
-    //   }
 
+
+class UserController extends Controller
+{
+   
     public function index(Request $request)
     {
         //
@@ -26,9 +24,9 @@ class ListNilaiController extends Controller
                   ->orWhere('email', 'LIKE', "%$search%");
         }
 
-        $users = $query->paginate(5); // Paginate results
+        $users = $query->paginate(10); // Paginate results
 
-        return view('nilai', compact('users'));
+        return view('/admin/views/user', compact('users'));
     }
 
   
@@ -55,10 +53,11 @@ class ListNilaiController extends Controller
             'username' => $request->username,
             'role' => $request->input('role'),
             'password' => bcrypt($request->password),
+            'active' => $request->input('active'),
         ]);
 
         //return response()->json(['message' => 'User created successfully!', 'user' => $user]);
-        return redirect()->route('nilai')->with('success', 'User added successfully!');
+        return redirect()->route('user')->with('success', 'User added successfully!');
 
     }
 
@@ -78,7 +77,7 @@ class ListNilaiController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        return view('nilai.edit', compact('users'));
+        return view('user.edit', compact('users'));
     }
 
 
@@ -89,6 +88,7 @@ class ListNilaiController extends Controller
             'username' => 'required',
             'role' => 'required',
             'email' => 'required',
+            
         ]);
 
         //check if validation fails
@@ -112,7 +112,8 @@ class ListNilaiController extends Controller
             'username'      => $request->username,
             'email'         => $request->email,
             'role'          => $request->input('role'),
-            'password'      => bcrypt($request->password)
+            'password'      => bcrypt($request->password),
+            'active'        => $request->input('active')
         ]);
 
         return response()->json(['success' => 'User updated successfully!']);

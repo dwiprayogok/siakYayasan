@@ -17,8 +17,8 @@
                 <b>Opps!</b> {{session('error')}}
             </div>
             @endif
-              {{-- <form class="space-y-4 md:space-y-6" action="{{ route('actionlogin') }}" method="post"> --}}
-                <form class="space-y-4 md:space-y-6" action="#" method="post">
+              <form class="space-y-4 md:space-y-6" action="{{ route('actionlogin') }}" method="post">
+                {{-- <form class="space-y-4 md:space-y-6" action="#" method="post"> --}}
               @csrf
                   <div>
                       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>

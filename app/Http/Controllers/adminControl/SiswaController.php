@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\auth;
+namespace App\Http\Controllers\adminControl;
 
 use App\Http\Controllers\Controller;
 use App\Models\Siswa;
@@ -11,8 +11,6 @@ use Carbon\Carbon;
 class SiswaController extends Controller
 {
     
- 
-
     public function index(Request $request)
     {
         //
@@ -24,18 +22,11 @@ class SiswaController extends Controller
             $query->where('name', 'LIKE', "%$search%");
         }
 
-        $siswas = $query->orderBy('name', 'asc')->paginate(10);
+        $siswas = $query->orderBy('id', 'asc')->paginate(10);
 
-        return view('siswa', compact('siswas'));
+        return view('/admin/views/siswa', compact('siswas'));
     }
 
-  
-    public function create()
-    {
-        //
-    }
-
-  
     public function store(Request $request)
     {
         
