@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\adminControl;
 
 use App\Http\Controllers\Controller;
+use App\Models\guru;
 use App\Models\matapelajaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -22,17 +23,16 @@ class MataPelajaranController extends Controller
             $query->where('name_mapel', 'LIKE', "%$search%");
         }
 
-        $gurus = $query->orderBy('id', 'asc')->paginate(10);
+        $matapelajarans = $query->orderBy('id', 'asc')->paginate(10);
+        $gurus = Guru::all(); // Fetch all Gurus
+        return view('/admin/views/matapelajaran', compact('matapelajarans', 'gurus'));
 
-        return view('/admin/views/matapelajaran', compact('matapelajarans'));
     }
 
   
     public function create()
     {
-        //
     }
-
   
     public function store(Request $request)
     {
@@ -40,18 +40,16 @@ class MataPelajaranController extends Controller
             'id' => 'required',
             'kode_mapel' => 'required',
             'nama_mapel' => 'required',
+            'kode_guru' => 'required',
         ]);
 
-        // Create and store the user
         $matapelajarans = matapelajaran::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'username' => $request->username,
-            'role' => $request->input('role'),
-            'password' => bcrypt($request->password),
+            'id' => $request->name,
+            'kode_mapel' => $request->email,
+            'nama_mapel' => $request->username,
+            'kode_guru' =>  $request->input('kode_guru'),
         ]);
 
-        //return response()->json(['message' => 'User created successfully!', 'user' => $user]);
         return redirect()->route('matapelajaran')->with('success', 'User added successfully!');
 
     }
@@ -70,7 +68,7 @@ class MataPelajaranController extends Controller
    
     public function edit(string $id)
     {
-        //
+        
         $matapelajarans = matapelajaran::findOrFail($id);
         return view('matapelajaran.edit', compact('users'));
     }
@@ -104,7 +102,7 @@ class MataPelajaranController extends Controller
             'id'                => $request->id,
             'kode_mapel'        => $request->name,
             'nama_mapel'        => $request->username,
-            'kode_guru'         =>  $request->input('role')
+            'kode_guru'         =>  $request->input('kode_guru')
         ]);
 
         return response()->json(['success' => 'Mata Pelajaran updated successfully!']);

@@ -91,7 +91,7 @@ Route::get('/adminControl/jadwalpelajaran', [JadwalPelajaranController::class, '
 
 
 Route::get('/adminControl/matapelajaran', [MataPelajaranController::class, 'index'])->name('matapelajaran')->middleware('auth');
-
+Route::post('/adminControl/matapelajaran', [MataPelajaranController::class, 'store'])->name('matapelajarans.store');
 
 
 

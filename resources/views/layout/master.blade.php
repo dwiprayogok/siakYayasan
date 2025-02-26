@@ -50,7 +50,7 @@
                     <a href="\adminControl\siswa" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-200 md:hover:bg-transparent md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Siswa</a>
                     </li>
                     <li>
-                    <a href="\adminControl\mataPelajaran" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-200 md:hover:bg-transparent md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Mata Pelajaran</a>
+                    <a href="\adminControl\matapelajaran" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-200 md:hover:bg-transparent md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Mata Pelajaran</a>
                     </li>
                     <li>
                     <a href="\adminControl\jadwalpelajaran" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-200 md:hover:bg-transparent md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Jadwal Pelajaran</a>
@@ -77,7 +77,7 @@
       <div style="width: 100%;
         position: fixed;
         bottom: 0;
-        padding-top: 10px;" >
+        padding-top: 30px;" >
             @extends('layout.footer')
       </div>
 

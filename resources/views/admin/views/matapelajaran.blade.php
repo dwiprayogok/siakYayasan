@@ -1,15 +1,13 @@
 @extends('layout.master')
-
- 
 @section('konten')
 
 <section class=" bg-gray-100 dark:bg-gray-100 sm:p-20">
     <div class=" px-1 lg:px-12">
-        <h1 class="text-2xl py-4 border-b-4 mb-5">List User</h1>
+        <h1 class="text-2xl py-4 border-b-4 mb-5">List Mata Pelajaran</h1>
         <div class="bg-white dark:bg-white relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
-                <form method="GET" action="{{ url('/user') }}" class="mb-4">
-                    <input type="text" name="search" class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-700 " value="{{ request('search') }}" placeholder="Search by name or email">
+                <form method="GET" action="{{ url('/matapelajaran') }}" class="mb-4">
+                    <input type="text" name="search" class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-700 " value="{{ request('search') }}" placeholder="Search by name">
                     <button type="submit" class="mt-2 ml-10 bg-primary-700 text-white px-4 py-2 rounded">Search</button>
                 </form>
                 <button type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4
@@ -27,22 +25,20 @@
                     <thead class="text-xs text-black uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-4 py-3 dark:text-white">No</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Jam</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Kelas</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Nama Siswa</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Guru</th>
+                            <th scope="col" class="px-4 py-3  dark:text-white">Kode</th>
+                            <th scope="col" class="px-4 py-3  dark:text-white">Mata Pelajaran</th>
+                            <th scope="col" class="px-4 py-3  dark:text-white">Kode Guru</th>
                             <th scope="col" class="px-4 py-6  dark:text-white">Actions</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ( $users as $user )
+                        @foreach ( $matapelajarans as $user )
                         <tr class="border-b dark:border-gray-700">
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->id }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->name }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->username }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->email }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->role }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->kode_mapel }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->nama_mapel }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->kode_guru }}</td>
                             <td class="p-4">
                                 <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $user->id }}" data-modal-target="updateModal" data-modal-toggle="updateModal"  > 
                                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-blue-500 hover:fill-blue-700"
@@ -78,17 +74,17 @@
                 </table>
                 <br>
                 <div class="d-flex justify-content-center mb-3 mr-3 ml-3">
-                    {{ $users->links() }}
+                    {{ $matapelajarans->links() }}
                 </div>
                 
             </div>
         </div>
     </div>
 </section>
-@include('user.modal.create')
-@include('user.modal.delete')
-@include('user.modal.update')
-@include('user.modal.detail')
+@include('mapel.modal.create')
+@include('mapel.modal.delete')
+@include('mapel.modal.update')
+@include('mapel.modal.detail')
 
 
 
