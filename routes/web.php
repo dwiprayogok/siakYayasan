@@ -66,19 +66,19 @@ Route::middleware(['auth', 'role:siswa'])->group(function () {
 });
 
 
-Route::get('register', [RegisterController::class, 'register'])->name('register');
+Route::get('/auth/register', [RegisterController::class, 'register'])->name('register');
 Route::post('register/action', [RegisterController::class, 'actionregister'])->name('actionregister');
 
-Route::get('forgotpassword', [ForgotPasswordController::class, 'create'])
+Route::get('/auth/forgotpassword', [ForgotPasswordController::class, 'create'])
     ->name('password.request');
 
-Route::post('forgotpassword', [ForgotPasswordController::class, 'store'])
+Route::post('/auth/forgotpassword', [ForgotPasswordController::class, 'store'])
     ->name('password.email');
 
-Route::get('resetpassword/{token}', [ResetPasswordController::class, 'create'])
+Route::get('/auth/resetpassword/{token}', [ResetPasswordController::class, 'create'])
 ->name('password.reset');
 
-Route::post('resetpassword', [ResetPasswordController::class, 'store'])
+Route::post('/auth/resetpassword', [ResetPasswordController::class, 'store'])
     ->name('password.update');
 
 
@@ -93,24 +93,20 @@ Route::post('/gurus/{id}/update', [GuruController::class, 'update']);
 Route::delete('/gurus/{id}', [GuruController::class, 'destroy']);
 
 
-Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
-// Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
-// Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
-// Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
-
 Route::get('siswa', [SiswaController::class, 'index'])->name('siswa')->middleware('auth');
 Route::post('/siswa', [SiswaController::class, 'store'])->name('siswas.store');
 Route::get('/siswas/{id}', [SiswaController::class, 'show']);
 Route::post('/siswas/{id}/update', [SiswaController::class, 'update']);
 Route::delete('/siswas/{id}', [SiswaController::class, 'destroy']);
 
+
+Route::get('jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
+
+
+
+
 Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
-// Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
-// Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
-// Route::get('nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
 
-
-//Route::resource('/user', UserController::class);
 
 Route::get('/user', [UserController::class, 'index'])->name('user')->middleware('auth');
 Route::post('/user', [UserController::class, 'store'])->name('users.store');

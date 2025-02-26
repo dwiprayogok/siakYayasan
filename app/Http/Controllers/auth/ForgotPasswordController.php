@@ -11,7 +11,7 @@ class ForgotPasswordController extends Controller
     //
     public function create()
     {
-        return view('forgotpassword');
+        return view('auth.forgotpassword');
     }
 
     public function store(Request $request)
