@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
-class matapelajaran extends Model
+class jadwal extends Model
 {
     //
     use HasFactory;
@@ -18,5 +18,5 @@ class matapelajaran extends Model
         'nama_mapel',
         'kode_guru',
     ];
- 
+  
 }

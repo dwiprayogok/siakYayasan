@@ -9,7 +9,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Update User
+                    Update Mata Pelajaran
                 </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="updateModal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -19,45 +19,28 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" id="editUserForm">
+            <form class="p-4 md:p-5" id="editMapelForm">
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
-                        <input type="hidden" name="UserID" id="UserID" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ID" required="">
+                        <input type="hidden" name="id" id="id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ID" required="">
                     </div>
                     <div class="col-span-2">
-                        <label for="updateName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" name="updateName" id="updateName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Neame" required="">
+                        <label for="updatekode_mapel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Mata Pelajaran</label>
+                        <input type="text" name="updatekode_mapel" id="updatekode_mapel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Kode Mata Pelajaran" required="">
                     </div>
                     <div class="col-span-2">
-                      <label for="updateUsername" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-                      <input type="text" name="updateUsername" id="updateUsername" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Username" required="">
+                      <label for="updatenama_mapel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Mata Pelajaran</label>
+                      <input type="text" name="updatenama_mapel" id="updatenama_mapel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nama Mata Pelajaran" required="">
                   </div>
                   <div class="col-span-2">
-                      <label for="updateEmail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                      <input type="email" name="updateEmail" id="updateEmail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Email" required="">
-                    </div>
-                    <div class="col-span-2">
-                      <label for="updatePassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                      <input type="password" name="updatePassword" id="updatePassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" >
-                    </div>
-                  <div class="col-span-2">
-                      <label for="updateRole" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">role</label>
-                      <select id="updateRole" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                          <option selected="">Pilih role</option>
-                          <option value="admin">Admin</option>
-                          <option value="siswa">Siswa</option>
-                          <option value="guru">Guru</option>
+                      <label for="updatekode_guru" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Guru</label>
+                      <select id="updatekode_guru"  name="updatekode_guru" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                          <option value="">-- Pilih Guru --</option>
+                          @foreach ($gurus as $guru)
+                              <option value="{{ $guru->kode_guru }}">{{ $guru->name }}</option>
+                          @endforeach
                       </select>
                   </div>
-
-                  <div class="col-span-2">
-                    <label for="updateActive" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
-                    <select id="updateActive"  name="updateActive" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        <option selected="">Pilih status</option>
-                        <option value=0>Tidak aktif</option>
-                        <option value=1>Aktif</option>
-                    </select>
-                </div>
                     
                 </div>
                 <div class="flex items-center space-x-4">
@@ -82,41 +65,41 @@
 
         //fetch update post with ajax
         $.ajax({
-            url: `/users/${userid}`,
+            url: `/matapelajarans/${userid}`,
             type: "GET",
             cache: false,
             success:function(response){
                 console.log(response);
                 // //fill data to form
-                $('#UserID').val(response.id);
-                $('#updateName').val(response.name);
-                $('#updateUsername').val(response.username);
-                $('#updateEmail').val(response.email);
-                $('#updateRole').val(response.role);
-                $('#updateActive').val(response.active);
-
+                $('#id').val(response.id);
+                $('#updatekode_mapel').val(response.kode_mapel);
+                $('#updatenama_mapel').val(response.nama_mapel);
+                $('#updatekode_guru').val(response.kode_guru);
             }
         });
     });
 
 
     // Update user data
-    $('#editUserForm').submit(function(e) {
+    $('#editMapelForm').submit(function(e) {
         e.preventDefault();
-        let userid = $('#UserID').val();
+        let userid = $('#id').val();
+
+        console.log("userid",userid);
         
         var formData = {
             _token: $('input[name=_token]').val(),
-            userid: $('#UserID').val(),
-            name: $('#updateName').val(),
-            username: $('#updateUsername').val(),
-            email: $('#updateEmail').val(),
-            role: $('#updateRole').val(),
-            password: $('#updatePassword').val(),
-            active: $('#updateActive').val(),
+            id: $('#id').val(),
+            kode_mapel: $('#updatekode_mapel').val(),
+            nama_mapel: $('#updatenama_mapel').val(),
+            kode_guru: $('#updatekode_guru').val(),
+
         };
 
-        $.post('/users/' + userid + '/update', formData, function(response) {
+        console.log("formData",formData);
+
+
+        $.post('/matapelajarans/' + userid + '/update', formData, function(response) {
             alert(response.success);
             location.reload(); // Refresh page to see changes
         }).fail(function(xhr) {

@@ -24,7 +24,7 @@ class MataPelajaranController extends Controller
         }
 
         $matapelajarans = $query->orderBy('id', 'asc')->paginate(10);
-        $gurus = Guru::all(); // Fetch all Gurus
+        $gurus = guru::all(); // Fetch all Gurus
         return view('/admin/views/matapelajaran', compact('matapelajarans', 'gurus'));
 
     }
@@ -36,17 +36,21 @@ class MataPelajaranController extends Controller
   
     public function store(Request $request)
     {
-        $request->validate([
-            'id' => 'required',
+    
+        $validator = Validator::make($request->all(), [
             'kode_mapel' => 'required',
             'nama_mapel' => 'required',
             'kode_guru' => 'required',
+           
         ]);
 
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
         $matapelajarans = matapelajaran::create([
-            'id' => $request->name,
-            'kode_mapel' => $request->email,
-            'nama_mapel' => $request->username,
+            'kode_mapel' => $request->kode_mapel,
+            'nama_mapel' => $request->nama_mapel,
             'kode_guru' =>  $request->input('kode_guru'),
         ]);
 
@@ -77,10 +81,9 @@ class MataPelajaranController extends Controller
     public function update(Request $request,string $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'username' => 'required',
-            'role' => 'required',
-            'email' => 'required',
+            'kode_mapel' => 'required',
+            'nama_mapel' => 'required',
+            'kode_guru' => 'required',
         ]);
 
         //check if validation fails
@@ -100,8 +103,8 @@ class MataPelajaranController extends Controller
         }
         $matapelajarans->update([
             'id'                => $request->id,
-            'kode_mapel'        => $request->name,
-            'nama_mapel'        => $request->username,
+            'kode_mapel'        => $request->kode_mapel,
+            'nama_mapel'        => $request->nama_mapel,
             'kode_guru'         =>  $request->input('kode_guru')
         ]);
 
