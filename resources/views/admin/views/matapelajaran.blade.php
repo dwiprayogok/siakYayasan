@@ -7,7 +7,7 @@
         <div class="bg-white dark:bg-white relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                 <form method="GET" action="{{ url('/matapelajaran') }}" class="mb-4">
-                    <input type="text" name="search" class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-700 " value="{{ request('search') }}" placeholder="Search by name">
+                    <input type="text" name="search" class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-700 " value="{{ request('search') }}" placeholder="Search by Mata Pelajaran">
                     <button type="submit" class="mt-2 ml-10 bg-primary-700 text-white px-4 py-2 rounded">Search</button>
                 </form>
                 <button type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4
@@ -27,7 +27,7 @@
                             <th scope="col" class="px-4 py-3 dark:text-white">No</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Kode</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Mata Pelajaran</th>
-                            <th scope="col" class="px-4 py-3 hidden  dark:text-white">Kode Guru</th>
+                            <th scope="col" class="px-4 py-3   dark:text-white">Kode Guru</th>
                             <th scope="col" class="px-4 py-6  dark:text-white">Actions</th>
                         </tr>
                     </thead>
@@ -38,9 +38,7 @@
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $mapel->id }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $mapel->kode_mapel }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $mapel->nama_mapel }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 hidden whitespace-nowrap dark:text-black">{{ $mapel->kode_guru }}</td>
-                           
-
+                            <td class="px-4 py-3 font-medium text-gray-900  whitespace-nowrap dark:text-black">{{ $mapel->kode_guru }}</td>
 
                             <td class="p-4">
                                 <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $mapel->id }}" data-modal-target="updateModal" data-modal-toggle="updateModal"  > 

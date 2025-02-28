@@ -21,8 +21,8 @@ class JadwalPelajaranController extends Controller
         // Search by name or email
         if ($request->has('search')) {
             $search = $request->input('search');
-            $query->where('name', 'LIKE', "%$search%")
-                  ->orWhere('email', 'LIKE', "%$search%");
+            $query->where('kelas', 'LIKE', "%$search%")
+                  ->orWhere('kode_mapel', 'LIKE', "%$search%");
         }
 
         $jadwalpelajarans = $query->orderBy('id', 'asc')->paginate(10);
@@ -102,7 +102,7 @@ class JadwalPelajaranController extends Controller
             'end_time' => 'required',
             'kelas' => 'required',
             'kode_guru' => 'required',
-            'kode_mapel' => 'required',
+            'kode_mapel' => 'required'
         ]);
 
         //check if validation fails

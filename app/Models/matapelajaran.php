@@ -18,5 +18,10 @@ class matapelajaran extends Model
         'nama_mapel',
         'kode_guru',
     ];
+
+    // public function guru()
+    // {
+    //     return $this->belongsTo(guru::class, 'kode_guru', 'kode_guru');
+    // }
  
 }

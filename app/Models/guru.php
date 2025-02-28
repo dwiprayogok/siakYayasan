@@ -18,4 +18,9 @@ class guru extends Model
         'education',
         'walas',
     ];
+
+    // public function matapelajarans()
+    // {
+    //     return $this->hasMany(matapelajaran::class, 'kode_guru', 'kode_guru');
+    // }
 }

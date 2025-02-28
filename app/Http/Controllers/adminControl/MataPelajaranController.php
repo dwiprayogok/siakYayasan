@@ -25,10 +25,13 @@ class MataPelajaranController extends Controller
 
         $matapelajarans = $query->orderBy('id', 'asc')->paginate(10);
         $gurus = guru::all(); // Fetch all Gurus
+        //$matapelajarans = matapelajaran::with('guru')->get(); // Load Guru relationship
+
         return view('/admin/views/matapelajaran', compact('matapelajarans', 'gurus'));
 
     }
 
+    
   
     public function create()
     {
@@ -39,9 +42,7 @@ class MataPelajaranController extends Controller
     
         $validator = Validator::make($request->all(), [
             'kode_mapel' => 'required',
-            'nama_mapel' => 'required',s
-            'kode_guru' => 'required',
-           
+            'nama_mapel' => 'required'           
         ]);
 
         if ($validator->fails()) {
