@@ -39,7 +39,7 @@ class MataPelajaranController extends Controller
     
         $validator = Validator::make($request->all(), [
             'kode_mapel' => 'required',
-            'nama_mapel' => 'required',
+            'nama_mapel' => 'required',s
             'kode_guru' => 'required',
            
         ]);

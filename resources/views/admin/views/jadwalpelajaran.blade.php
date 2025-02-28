@@ -5,10 +5,10 @@
 
 <section class=" bg-gray-100 dark:bg-gray-100 sm:p-20">
     <div class=" px-1 lg:px-12">
-        <h1 class="text-2xl py-4 border-b-4 mb-5">List User</h1>
+        <h1 class="text-2xl py-4 border-b-4 mb-5">List Jadwal Pelajaran</h1>
         <div class="bg-white dark:bg-white relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
-                <form method="GET" action="{{ url('/user') }}" class="mb-4">
+                <form method="GET" action="{{ url('/jadwalpelajaran') }}" class="mb-4">
                     <input type="text" name="search" class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-700 " value="{{ request('search') }}" placeholder="Search by name or email">
                     <button type="submit" class="mt-2 ml-10 bg-primary-700 text-white px-4 py-2 rounded">Search</button>
                 </form>
@@ -27,24 +27,26 @@
                     <thead class="text-xs text-black uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-4 py-3 dark:text-white">No</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Jam</th>
+                            <th scope="col" class="px-4 py-3  dark:text-white">Jam Mulai</th>
+                            <th scope="col" class="px-4 py-3  dark:text-white">Jam Selesai</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Kelas</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Nama Siswa</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Guru</th>
+                            <th scope="col" class="px-4 py-3  dark:text-white">Mata Pelajaran</th>
                             <th scope="col" class="px-4 py-6  dark:text-white">Actions</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ( $users as $user )
+                        @foreach ( $jadwalpelajarans as $japel )
                         <tr class="border-b dark:border-gray-700">
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->id }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->name }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->username }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->email }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $user->role }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->id }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->start_time }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->end_time }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->kelas }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->kode_guru }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->kode_mapel }}</td>
                             <td class="p-4">
-                                <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $user->id }}" data-modal-target="updateModal" data-modal-toggle="updateModal"  > 
+                                <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $japel->id }}" data-modal-target="updateModal" data-modal-toggle="updateModal"  > 
                                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-blue-500 hover:fill-blue-700"
                                     viewBox="0 0 348.882 348.882">
                                     <path
@@ -55,7 +57,7 @@
                                       data-original="#000000" />
                                   </svg>
                                 </button>
-                                <button class="mr-4 btnDelete" title="delete" id="btnDelete" data-id="{{ $user->id }}" data-modal-target="deleteModal" data-modal-toggle="deleteModal">
+                                <button class="mr-4 btnDelete" title="delete" id="btnDelete" data-id="{{ $japel->id }}" data-modal-target="deleteModal" data-modal-toggle="deleteModal">
                                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-red-500 hover:fill-red-700" viewBox="0 0 24 24">
                                     <path
                                       d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
@@ -65,7 +67,7 @@
                                   </svg>
                                 </button>
                                 
-                                <button class="mr-2 detail" title="view" id="detail" data-id="{{ $user->id }}" data-modal-target="detailModal" data-modal-toggle="detailModal">
+                                <button class="mr-2 detail" title="view" id="detail" data-id="{{ $japel->id }}" data-modal-target="detailModal" data-modal-toggle="detailModal">
                                     <svg class="w-6 h-6 text-gray-800 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                         <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
                                       </svg>
@@ -78,17 +80,17 @@
                 </table>
                 <br>
                 <div class="d-flex justify-content-center mb-3 mr-3 ml-3">
-                    {{ $users->links() }}
+                    {{ $jadwalpelajarans->links() }}
                 </div>
                 
             </div>
         </div>
     </div>
 </section>
-@include('user.modal.create')
-@include('user.modal.delete')
-@include('user.modal.update')
-@include('user.modal.detail')
+@include('jadwal.modal.create')
+@include('jadwal.modal.delete')
+@include('jadwal.modal.update')
+@include('jadwal.modal.detail')
 
 
 
