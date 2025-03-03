@@ -12,6 +12,7 @@ use App\Http\Controllers\adminControl\SiswaController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\auth\ResetPasswordController;
 use App\Http\Controllers\adminControl\UserController;
+use App\Http\Controllers\User\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Auth;
@@ -70,6 +71,10 @@ Route::post('/auth/resetpassword', [ResetPasswordController::class, 'store'])
 
 
 Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/User/Profile', [ProfileController::class, 'index'])->name('profile');
+});
 
 
 

@@ -2,13 +2,6 @@
 
  
 @section('konten')
-
-@if(session('success'))
-    <div class="text-green-500">
-        {{ session('success') }}
-    </div>
-@endif
-
 <section class=" bg-gray-100 dark:bg-gray-100 sm:p-20">
     <div class=" px-1 lg:px-12">
         <h1 class="text-2xl py-4 border-b-4 mb-5">List Jadwal Pelajaran</h1>
