@@ -30,11 +30,11 @@
     <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-5">
       <div class="bg-white rounded-xl border px-7 py-8">
         <p class="text-black text-base text-center font-semibold mb-1">Total Guru</p>
-        <h3 class="text-green-600 text-center text-3xl font-extrabold">30</h3>
+        <h3 class="text-green-600 text-center text-3xl font-extrabold">{{ $guru }}</h3>
       </div>
       <div class="bg-white rounded-xl border px-7 py-8">
         <p class="text-black text-base text-center font-semibold mb-1">Total Siswa</p>
-        <h3 class="text-green-600 text-3xl text-center font-extrabold">180</h3>
+        <h3 class="text-green-600 text-3xl text-center font-extrabold">{{ $siswa }}</h3>
       </div>
       <div class="bg-white rounded-xl border px-7 py-8">
         <p class="text-black text-base text-center font-semibold mb-1">Total Kelas</p>
@@ -42,7 +42,7 @@
       </div>
       <div class="bg-white rounded-xl border px-7 py-8">
         <p class="text-black text-base text-center font-semibold mb-1">Total Mata Pelajaran</p>
-        <h3 class="text-green-600 text-3xl  text-center font-extrabold">40</h3>
+        <h3 class="text-green-600 text-3xl  text-center font-extrabold">{{ $matapelajaran }}</h3>
       </div>
     </div>
   </div>

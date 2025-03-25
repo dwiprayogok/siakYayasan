@@ -39,6 +39,8 @@
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $mapel->kode_mapel }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $mapel->nama_mapel }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900  whitespace-nowrap dark:text-black">{{ $mapel->kode_guru }}</td>
+                            {{-- <td class="px-4 py-3 font-medium text-gray-900  whitespace-nowrap dark:text-black">{{ $mapel->guru ? $mapel->guru->name : 'Not Found' }}</td> --}}
+
 
                             <td class="p-4">
                                 <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $mapel->id }}" data-modal-target="updateModal" data-modal-toggle="updateModal"  > 

@@ -23,5 +23,12 @@ class matapelajaran extends Model
     // {
     //     return $this->belongsTo(guru::class, 'kode_guru', 'kode_guru');
     // }
- 
+
+    // Define relationship with teacher
+    // public function guru()
+    // {
+    //     return $this->belongsTo(guru::class, 'kode_guru', 'kode_guru');
+    // }
+
+    
 }

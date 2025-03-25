@@ -22,5 +22,10 @@ class guru extends Model
     // public function matapelajarans()
     // {
     //     return $this->hasMany(matapelajaran::class, 'kode_guru', 'kode_guru');
+
+
+    // public function matapelajarans()
+    // {
+    //     return $this->hasMany(matapelajaran::class, 'kode_guru', 'kode_guru');
     // }
 }

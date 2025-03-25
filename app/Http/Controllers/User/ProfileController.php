@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController  extends Controller
 {
     public function index() {
-        $userprofiles = Auth::user()->profile; // Get the authenticated user's profile
-        return view('/user/profile/profile', compact('userprofiles'));
+        $user = Auth::user()->profile; // Get the authenticated user's profile
+        //return view('/user/profile/profile', compact('userprofiles'));
+        return view('/user/profile/profile', compact('user'));
     }
 }

@@ -9,9 +9,13 @@ use App\Http\Controllers\adminControl\JadwalPelajaranController;
 use App\Http\Controllers\adminControl\ListNilaiController;
 use App\Http\Controllers\adminControl\MataPelajaranController;
 use App\Http\Controllers\adminControl\SiswaController;
+use App\Http\Controllers\adminControl\DashboardController;
+use App\Http\Controllers\siswa\SiswaDashboardController;
+use App\Http\Controllers\guru\GuruDashboardController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\auth\ResetPasswordController;
 use App\Http\Controllers\adminControl\UserController;
+use App\Http\Controllers\siswa\GuruDashboardController as SiswaGuruDashboardController;
 use App\Http\Controllers\User\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -30,24 +34,44 @@ Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('acti
 
 
 // Admin Routes
+
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('/admin/dashboard/dashboardAdmin');
-    })->name('admin.dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])
+        ->name('admin.dashboard');
 });
+
+// Route::middleware(['auth', 'role:admin'])->group(function () {
+//     Route::get('/admin/dashboard', function () {
+//         return view('/admin/dashboard/dashboardAdmin');
+//     })->name('admin.dashboard');
+// });
 
 // guru Routes
 Route::middleware(['auth', 'role:guru'])->group(function () {
-    Route::get('/guru/dashboard', function () {
-        return view('/guru/dashboard/dashboard');
-    })->name('guru.dashboard');
+    Route::get('/guru/dashboard', [GuruDashboardController::class, 'index'])
+        ->name('guru.dashboard');
 });
+
+
+// guru Rout
+// Route::middleware(['auth', 'role:guru'])->group(function () {
+//     Route::get('/guru/dashboard', function () {
+//         return view('/guru/dashboard/dashboard');
+//     })->name('guru.dashboard');
+// });
+
+
+// siswa Routes
+// Route::middleware(['auth', 'role:siswa'])->group(function () {
+//     Route::get('/siswa/dashboard', function () {
+//         return view('/siswa/dashboard/dashboard');
+//     })->name('siswa.dashboard');
+// });
 
 // siswa Routes
 Route::middleware(['auth', 'role:siswa'])->group(function () {
-    Route::get('/siswa/dashboard', function () {
-        return view('/siswa/dashboard/dashboard');
-    })->name('siswa.dashboard');
+    Route::get('/siswa/dashboard', [SiswaDashboardController::class, 'index'])
+        ->name('siswa.dashboard');
 });
 
 
@@ -98,6 +122,7 @@ Route::get('/jadwalpelajarans/{id}', [JadwalPelajaranController::class, 'show'])
 Route::post('/jadwalpelajarans/{id}/update', [JadwalPelajaranController::class, 'update']);
 Route::delete('/jadwalpelajarans/{id}', [JadwalPelajaranController::class, 'destroy']);
 
+
     
 
 Route::get('/adminControl/matapelajaran', [MataPelajaranController::class, 'index'])->name('matapelajaran')->middleware('auth');
@@ -105,6 +130,8 @@ Route::post('/adminControl/matapelajaran', [MataPelajaranController::class, 'sto
 Route::get('/matapelajarans/{id}', [MataPelajaranController::class, 'show']);
 Route::post('/matapelajarans/{id}/update', [MataPelajaranController::class, 'update']);
 Route::delete('/matapelajarans/{id}', [MataPelajaranController::class, 'destroy']);
+//Route::get('/adminControl/matapelajaran', [MataPelajaranController::class, 'showSubjects']);
+
 
 
 

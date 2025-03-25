@@ -120,5 +120,13 @@ class MataPelajaranController extends Controller
         return response()->json(['success' => 'Mata Pelajaran deleted successfully']);
         
     }
+
+    // public function showSubjects()
+    // {
+    //     // Fetch subjects with teacher details
+    //     $matapelajarans = matapelajaran::with('guru')->get();
+
+    //     return view('/admin/views/matapelajaran', compact('matapelajarans'));
+    // }
     
 }
