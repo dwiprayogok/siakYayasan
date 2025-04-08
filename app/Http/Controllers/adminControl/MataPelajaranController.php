@@ -18,17 +18,22 @@ class MataPelajaranController extends Controller
         $query = matapelajaran::query();
 
         // Search by name or email
-        if ($request->has('search')) {
+        // if ($request->has('search')) {
+        //     $search = $request->input('search');
+        //     $query->where('name_mapel', 'LIKE', "%$search%");
+        // }
+
+        if ($request->filled('search')) {
             $search = $request->input('search');
-            $query->where('name_mapel', 'LIKE', "%$search%");
+            $query->where(function ($q) use ($search) {
+                $q->where('name_mapel', 'LIKE', "%{$search}%");
+            });
         }
-
-
         
-
-        $matapelajarans = $query->orderBy('id', 'asc')->paginate(10);
         $gurus = guru::all(); // Fetch all Gurus
-        //$matapelajarans = matapelajaran::with('guru')->get(); // Load Guru relationship
+        $matapelajarans = matapelajaran::with('guru')->get(); // Load Guru relationship
+        $matapelajarans = $query->orderBy('id', 'asc')->paginate(10);
+
 
         return view('/admin/views/matapelajaran', compact('matapelajarans', 'gurus'));
 
@@ -38,7 +43,9 @@ class MataPelajaranController extends Controller
   
     public function create()
     {
-    }
+        $gurus = guru::all(); // Fetch all teachers from database
+
+        return view('/admin/views/matapelajaran', compact('gurus'));    }
   
     public function store(Request $request)
     {
@@ -124,12 +131,12 @@ class MataPelajaranController extends Controller
         
     }
 
-    // public function showSubjects()
-    // {
-    //     // Fetch subjects with teacher details
-    //     $matapelajarans = matapelajaran::with('guru')->get();
+    public function showSubjects()
+    {
+        // Fetch subjects with teacher details
+        $matapelajarans = matapelajaran::with('guru')->paginate(10);
 
-    //     return view('/admin/views/matapelajaran', compact('matapelajarans'));
-    // }
+        return view('/admin/views/matapelajaran', compact('matapelajarans'));
+    }
     
 }

@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class guru extends Model
 {
     //
-
+    protected $table = 'gurus';
     protected $fillable = [
-        'kode_guru',
+        'kode',
         'name',
         'nip',
         'role',
@@ -24,8 +24,8 @@ class guru extends Model
     //     return $this->hasMany(matapelajaran::class, 'kode_guru', 'kode_guru');
 
 
-    // public function matapelajarans()
-    // {
-    //     return $this->hasMany(matapelajaran::class, 'kode_guru', 'kode_guru');
-    // }
+    public function matapelajaran()
+    {
+        return $this->hasMany(matapelajaran::class, 'kode_guru', 'kode');
+    }
 }

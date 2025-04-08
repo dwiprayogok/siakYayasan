@@ -11,7 +11,7 @@ class matapelajaran extends Model
 {
     //
     use HasFactory;
-
+    protected $table = 'matapelajarans';
     protected $fillable = [
         'id',
         'kode_mapel',
@@ -19,16 +19,12 @@ class matapelajaran extends Model
         'kode_guru',
     ];
 
-    // public function guru()
-    // {
-    //     return $this->belongsTo(guru::class, 'kode_guru', 'kode_guru');
-    // }
 
     // Define relationship with teacher
-    // public function guru()
-    // {
-    //     return $this->belongsTo(guru::class, 'kode_guru', 'kode_guru');
-    // }
+    public function guru()
+    {
+        return $this->belongsTo(guru::class, 'kode_guru', 'kode');
+    }
 
     
 }

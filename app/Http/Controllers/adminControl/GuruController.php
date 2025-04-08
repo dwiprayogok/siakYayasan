@@ -44,7 +44,7 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode_guru' => 'required',
+            'kode' => 'required',
             'name' => 'required',
             'nip' => 'required',
             'sk' => 'required',
@@ -59,7 +59,7 @@ class GuruController extends Controller
 
         // Create and store the user
         $gurus = guru::create([
-            'kode_guru' => $request->kode_guru,
+            'kode' => $request->kode,
             'name' => $request->name,
             'nip' => $request->nip,
             'sk' => $request->sk,
@@ -96,7 +96,7 @@ class GuruController extends Controller
     public function update(Request $request,string $id)
     {
         $validator = Validator::make($request->all(), [
-            'kode_guru' => 'required',
+            'kode' => 'required',
             'name' => 'required',
             'nip' => 'required',
             'role' => 'required',
@@ -119,7 +119,7 @@ class GuruController extends Controller
         }
 
         $gurus->update([
-            'kode_guru'     => $request->kode_guru,
+            'kode'     => $request->kode,
             'name'          => $request->name,
             'nip'           => $request->nip,
             'role'          => $request->role,

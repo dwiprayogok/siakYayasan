@@ -105,7 +105,7 @@ function formatDate(inputDate) {
                 console.log(response);
                 // //fill data to form
                 $('#UserID').val(response.id);
-                $('#updatekode_guru').val(response.kode_guru);
+                $('#updatekode_guru').val(response.kode);
                 $('#updatename').val(response.name);
                 $('#updatenip').val(response.nip);
                 $('#updatetanggal_lahir').val(response.tanggal_lahir);
