@@ -19,11 +19,12 @@ class GuruController extends Controller
 
         $query = guru::query();
 
-        // Search by name or email
-        if ($request->has('search')) {
+        if ($request->filled('search')) {
             $search = $request->input('search');
-            $query->where('name', 'LIKE', "%$search%")
-                  ->orWhere('nip', 'LIKE', "%$search%");
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                  ->orWhere('nip', 'LIKE', "%{$search}%");
+            });
         }
 
         //$gurus = $query->paginate(10); // Paginate results

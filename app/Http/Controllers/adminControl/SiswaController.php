@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\adminControl;
 
 use App\Http\Controllers\Controller;
+use App\Models\kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -16,15 +17,23 @@ class SiswaController extends Controller
         //
         $query = Siswa::query();
 
-        // Search by name or email
-        if ($request->has('search')) {
+        // If search is filled, filter by name or NIS
+        if ($request->filled('search')) {
             $search = $request->input('search');
-            $query->where('name', 'LIKE', "%$search%");
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                  ->orWhere('nis', 'LIKE', "%{$search}%");
+            });
         }
-
+        elseif ($request->filled('kelas')) {
+            $kelas = $request->input('kelas');
+            $query->where('kelas_id', $kelas); // kelas_id holds the value like "VIII1"
+        }
+        
+        $kelass = Kelas::all();
         $siswas = $query->orderBy('id', 'asc')->paginate(10);
-
-        return view('/admin/views/siswa', compact('siswas'));
+        
+        return view('/admin/views/siswa', compact('siswas', 'kelass'));
     }
 
     public function store(Request $request)
@@ -36,9 +45,8 @@ class SiswaController extends Controller
             'nis' => 'required',
             'name' => 'required',
             'gender' => 'required',
-            'class' => 'required',
+            'class_id' => 'required',
             'address' => 'required',
-            'phone' => 'required',
             'born_place' => 'required',
             'birth_date' => 'required|date_format:m/d/Y',
             'name_of_parent' => 'required',
@@ -56,7 +64,7 @@ class SiswaController extends Controller
             'nis' => $request->nis,
             'name' => $request->name,
             'gender' => $request->input('gender'),
-            'class' => $request->class,
+            'kelas_id' => $request->input('class_id'),
             'address' => $request->address,
             'phone' => $request->phone,
             'born_place' => $request->born_place,
@@ -99,7 +107,6 @@ class SiswaController extends Controller
             'gender' => 'required',
             'class' => 'required',
             'address' => 'required',
-            'phone' => 'required',
             'born_place' => 'required',
             'birth_date' => 'required',
             'name_of_parent' => 'required',
@@ -124,7 +131,7 @@ class SiswaController extends Controller
             'nis' => $request->nis,
             'name' => $request->name,
             'gender' => $request->gender,
-            'class' => $request->class,
+            'kelas_id' => $request->class,
             'address' => $request->address,
             'phone' => $request->phone,
             'born_place' => $request->born_place,
@@ -135,9 +142,9 @@ class SiswaController extends Controller
         return response()->json(['success' => 'User updated successfully!']);
     }
 
-    public function destroy(string $id_student)
+    public function destroy(string $id)
     {
-        $siswas = Siswa::find($id_student);
+        $siswas = Siswa::find($id);
         $siswas->delete();
 
         return response()->json(['success' => 'User deleted successfully']);

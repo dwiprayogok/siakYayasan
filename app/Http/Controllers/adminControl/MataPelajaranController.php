@@ -23,6 +23,9 @@ class MataPelajaranController extends Controller
             $query->where('name_mapel', 'LIKE', "%$search%");
         }
 
+
+        
+
         $matapelajarans = $query->orderBy('id', 'asc')->paginate(10);
         $gurus = guru::all(); // Fetch all Gurus
         //$matapelajarans = matapelajaran::with('guru')->get(); // Load Guru relationship

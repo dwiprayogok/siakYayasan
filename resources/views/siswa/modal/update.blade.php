@@ -47,7 +47,15 @@
 
                     <div >
                         <label for="updateclass" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
-                        <input type="text" name="updateclass" id="updateclass" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="Kelas" required="">
+                        {{-- <input type="text" name="updateclass" id="updateclass" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="Kelas" required=""> --}}
+                        <select id="updateclass"  name="updateclass" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option selected="">Pilih Kelas</option>
+                            @foreach ($kelass as $kelas)
+                            <option value="{{ $kelas->kode_kelas }}" {{ request('kelas') == $kelas->nama ? 'selected' : '' }}>
+                                {{ $kelas->nama }}
+                            </option>
+                        @endforeach
+                        </select>
                     </div>
 
 
@@ -90,7 +98,7 @@
                 </div>
                 <div class="flex items-center space-x-4">
                     <button type="submit" id="update" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                        Update user
+                        Update Siswa
                     </button>      
                     <button type="button" class="inline-flex items-center hover:text-white border border-white  focus:ring-4 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-black dark:focus:ring-whiite" data-modal-toggle="updateSiswaModal">
                         Tutup
@@ -127,7 +135,7 @@ function formatDate(inputDate) {
                 $('#updatenis').val(response.nis);
                 $('#updatename').val(response.name);
                 $('#updategender').val(response.gender);
-                $('#updateclass').val(response.class);
+                $('#updateclass').val(response.kelas_id);
                 $('#updateaddress').val(response.address);
                 $('#updateborn_place').val(response.born_place);
                 $('#updatebirth_date').val(response.birth_date);

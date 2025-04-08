@@ -18,11 +18,12 @@ class JadwalPelajaranController extends Controller
         //
         $query = jadwalpelajaran::query();
 
-        // Search by name or email
-        if ($request->has('search')) {
+        if ($request->filled('search')) {
             $search = $request->input('search');
-            $query->where('kelas', 'LIKE', "%$search%")
-                  ->orWhere('kode_mapel', 'LIKE', "%$search%");
+            $query->where(function ($q) use ($search) {
+                $q->where('kelas', 'LIKE', "%{$search}%")
+                  ->orWhere('kode_mapel', 'LIKE', "%{$search}%");
+            });
         }
 
         $jadwalpelajarans = $query->orderBy('id', 'asc')->paginate(10);

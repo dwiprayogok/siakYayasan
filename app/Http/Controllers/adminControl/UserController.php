@@ -18,13 +18,17 @@ class UserController extends Controller
         $query = User::query();
 
         // Search by name or email
-        if ($request->has('search')) {
+        if ($request->filled('search')) {
             $search = $request->input('search');
-            $query->where('name', 'LIKE', "%$search%")
-                  ->orWhere('email', 'LIKE', "%$search%");
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                  ->orWhere('email', 'LIKE', "%{$search}%");
+            });
         }
 
-        $users = $query->paginate(10); // Paginate results
+        //$users = $query->paginate(10); // Paginate results
+        $users = $query->orderBy('id', 'asc')->paginate(7);
+
 
         return view('/admin/views/user', compact('users'));
     }

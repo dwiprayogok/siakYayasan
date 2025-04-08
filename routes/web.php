@@ -104,9 +104,9 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/adminControl/guru', [GuruController::class, 'index'])->name('guru')->middleware('auth');
 Route::post('/adminControl/guru', [GuruController::class, 'store'])->name('guru.store');
-Route::get('/adminControl/gurus/{id}', [GuruController::class, 'show']);
-Route::post('/adminControl/gurus/{id}/update', [GuruController::class, 'update']);
-Route::delete('/adminControl/gurus/{id}', [GuruController::class, 'destroy']);
+Route::get('/gurus/{id}', [GuruController::class, 'show']);
+Route::post('/gurus/{id}/update', [GuruController::class, 'update']);
+Route::delete('/gurus/{id}', [GuruController::class, 'destroy']);
 
 
 Route::get('/adminControl/siswa', [SiswaController::class, 'index'])->name('siswa')->middleware('auth');

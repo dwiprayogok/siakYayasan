@@ -30,14 +30,16 @@
 <script>
 
 $('body').on('click', '#btnDelete', function () {
-    let userid = $(this).data('id_student');
+    //let userid = $(this).data('id_student');
+    let userid = $(this).data('id');
+    console.log("userid",userid);
         $.ajax({
             url: `/siswas/${userid}`,
             type: "GET",
             cache: false,
             success:function(response){
                 console.log(response);
-                $('#id_student').val(response.id_student);
+                $('#id_student').val(response.id);
             }
         });
 });

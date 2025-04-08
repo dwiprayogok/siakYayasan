@@ -15,11 +15,17 @@ class Siswa extends Model
         'nis',
         'name',
         'gender',
-        'class',
+        'kelas_id',
         'address',
         'born_place',
         'birth_date',
         'phone',
         'name_of_parent',
     ];
+
+    public function kelas(){
+    //return $this->belongsTo(kelas::class);
+    return $this->belongsTo(Kelas::class, 'kelas_id');
+
+}
 }

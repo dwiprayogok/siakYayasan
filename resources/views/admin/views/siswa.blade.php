@@ -9,22 +9,24 @@
         <div class="bg-white dark:bg-white relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                 <form method="GET" action="{{ url('/adminControl/siswa') }}" class="mb-4">
-                    <input type="text" name="search" class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-700 " value="{{ request('search') }}" placeholder="Search by name">
+                    <input type="text" name="search" class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-500 " value="{{ request('search') }}" placeholder="Search by name">
+
+
+
+                    <select name="kelas"  class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-500">
+                        <option value="">-- Semua Kelas --</option>
+                        @foreach ($kelass as $kelas)
+                            <option value="{{ $kelas->kode_kelas }}" {{ request('kelas') == $kelas->kode_kelas ? 'selected' : '' }}>
+                                {{ $kelas->nama }}
+                            </option>
+                        @endforeach
+                    </select>
+
+
+                    
                     <button type="submit" class="mt-2 ml-10 bg-primary-700 text-white px-4 py-2 rounded">Search</button>
                 </form>
 
-                <div class=" flex flex-col md:flex-row items-center col-span-2">
-                  
-                    <select id="class"  name="class" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-                    focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400
-                     dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        <option selected="">Pilih Kelas</option>
-                        <option value="all">ALL</option>
-                        <option value="VIII_1">VIII 1</option>
-                        <option value="VIII_2">VIII 2</option>
-                        <option value="VIII_3">VIII 3</option>
-                    </select>
-                </div> 
 
                 <button type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4
                  focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-700 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
@@ -56,7 +58,7 @@
                             <td class="px-4 py-3 font-medium hidden text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->id_student }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->nis }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->name }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->class }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kelas_id }}</td>
                             
                             @if ($siswa->gender === 'Male')
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">Laki - Laki</td>    
