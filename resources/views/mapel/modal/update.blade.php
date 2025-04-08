@@ -38,8 +38,10 @@
                           <option value="">-- Pilih Guru --</option>
                           <option value="all">ALL</option>
                           {{-- @foreach ($gurus as $guru)
-                              <option value="{{ $guru->kode_guru }}">{{ $guru->name }}</option>
-                          @endforeach --}}
+                            <option value="{{ $guru->kode }}" {{ request('kode') == $guru->name ? 'selected' : '' }}>
+                                {{ $guru->name }}
+                            </option>
+                            @endforeach --}}
                       </select>
                   </div>
                     

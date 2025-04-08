@@ -20,22 +20,23 @@ class MataPelajaranController extends Controller
         // Search by name or email
         // if ($request->has('search')) {
         //     $search = $request->input('search');
-        //     $query->where('name_mapel', 'LIKE', "%$search%");
+        //     $query->where('kode_mapel', 'LIKE', "%$search%");
         // }
 
         if ($request->filled('search')) {
             $search = $request->input('search');
             $query->where(function ($q) use ($search) {
-                $q->where('name_mapel', 'LIKE', "%{$search}%");
+                $q->where('kode_mapel', 'LIKE', "%{$search}%")
+                  ->orWhere('nama_mapel', 'LIKE', "%{$search}%");
             });
         }
+    
         
-        $gurus = guru::all(); // Fetch all Gurus
-        $matapelajarans = matapelajaran::with('guru')->get(); // Load Guru relationship
+        //$matapelajarans = matapelajaran::with('guru')->paginate(10); // Load Guru relationship
         $matapelajarans = $query->orderBy('id', 'asc')->paginate(10);
+        $gurus = guru::all(); // Fetch all teachers from database
 
-
-        return view('/admin/views/matapelajaran', compact('matapelajarans', 'gurus'));
+        return view('/admin/views/matapelajaran', compact('matapelajarans','gurus'));
 
     }
 
@@ -43,9 +44,11 @@ class MataPelajaranController extends Controller
   
     public function create()
     {
-        $gurus = guru::all(); // Fetch all teachers from database
+        // $gurus = guru::all(); // Fetch all teachers from database
+        // $matapelajarans = matapelajaran::with('guru')->paginate(10); // Load Guru relationship
 
-        return view('/admin/views/matapelajaran', compact('gurus'));    }
+        // return view('/admin/views/matapelajaran', compact('matapelajarans','gurus'));    
+    }
   
     public function store(Request $request)
     {

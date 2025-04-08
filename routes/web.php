@@ -131,7 +131,6 @@ Route::get('/matapelajarans/{id}', [MataPelajaranController::class, 'show']);
 Route::post('/matapelajarans/{id}/update', [MataPelajaranController::class, 'update']);
 Route::delete('/matapelajarans/{id}', [MataPelajaranController::class, 'destroy']);
 Route::get('/adminControl/matapelajaran', [MataPelajaranController::class, 'showSubjects']);
-Route::get('/adminControl/matapelajaran/create', [MatapelajaranController::class, 'create']);
 
 
 
