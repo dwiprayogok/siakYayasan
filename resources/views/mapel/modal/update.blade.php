@@ -48,7 +48,7 @@
                 </div>
                 <div class="flex items-center space-x-4">
                     <button type="submit" id="update" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                        Update user
+                        Update Mata Pelajaran
                     </button>      
                     <button type="button" class="inline-flex items-center hover:text-white border border-white  focus:ring-4 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-black dark:focus:ring-whiite" data-modal-toggle="updateModal">
                         Tutup
@@ -75,8 +75,8 @@
                 console.log(response);
                 // //fill data to form
                 $('#id').val(response.id);
-                $('#updatekode_mapel').val(response.kode_mapel);
-                $('#updatenama_mapel').val(response.nama_mapel);
+                $('#updatekode_mapel').val(response.kode);
+                $('#updatenama_mapel').val(response.nama);
                 $('#updatekode_guru').val(response.kode_guru);
             }
         });

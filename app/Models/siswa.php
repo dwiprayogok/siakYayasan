@@ -25,7 +25,7 @@ class Siswa extends Model
 
     public function kelas(){
     //return $this->belongsTo(kelas::class);
-    return $this->belongsTo(Kelas::class, 'kelas_id');
+    return $this->belongsTo(Kelas::class, 'kelas_id'); //This model has many Siswa (students), and the foreign key in the siswas table is kelas_id."
 
 }
 }

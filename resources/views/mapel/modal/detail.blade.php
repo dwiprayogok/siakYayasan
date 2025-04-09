@@ -23,15 +23,15 @@
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
                         <label for="detailkode_mapel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Mata Pelajaran</label>
-                        <input type="text" name="detailkode_mapel" id="detailkode_mapel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Kode Mata Pelajaran" required="">
+                        <input type="text" disabled name="detailkode_mapel" id="detailkode_mapel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Kode Mata Pelajaran" required="">
                     </div>
                     <div class="col-span-2">
                       <label for="detailnama_mapel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Mata Pelajaran</label>
-                      <input type="text" name="detailnama_mapel" id="detailnama_mapel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nama Mata Pelajaran" required="">
+                      <input type="text" disabled name="detailnama_mapel" id="detailnama_mapel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nama Mata Pelajaran" required="">
                   </div>
                   <div class="col-span-2">
                       <label for="detailkode_guru" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Guru</label>
-                      <select id="detailkode_guru"  name="detailkode_guru" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                      <select id="detailkode_guru" disabled  name="detailkode_guru" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                           <option value="">-- Pilih Guru --</option>
                           <option value="all">ALL</option>
                           {{-- @foreach ($gurus as $guru)
@@ -62,8 +62,8 @@
             success:function(response){
                 console.log(response);
                 // //fill data to form
-                $('#detailkode_mapel').val(response.kode_mapel);
-                $('#detailnama_mapel').val(response.nama_mapel);
+                $('#detailkode_mapel').val(response.kode);
+                $('#detailnama_mapel').val(response.nama);
                 $('#detailkode_guru').val(response.kode_guru);
             }
         });

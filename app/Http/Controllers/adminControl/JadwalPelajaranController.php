@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\jadwalpelajaran;
 use Illuminate\Http\Request;
 use App\Models\guru;
+use App\Models\kelas;
 use App\Models\matapelajaran;
 use Illuminate\Support\Facades\Validator;
 
@@ -22,15 +23,21 @@ class JadwalPelajaranController extends Controller
             $search = $request->input('search');
             $query->where(function ($q) use ($search) {
                 $q->where('kelas', 'LIKE', "%{$search}%")
+                  ->orWhere('hari', 'LIKE', "%{$search}%")
                   ->orWhere('kode_mapel', 'LIKE', "%{$search}%");
             });
         }
 
-        $jadwalpelajarans = $query->orderBy('id', 'asc')->paginate(10);
+        $jadwalpelajarans = $query
+        ->orderBy('start_time', 'asc')
+        ->orderBy('kelas', 'asc')
+        ->paginate(11);
+        //$jadwalPelajarans = JadwalPelajaran::with(['guru', 'matapelajaran'])->paginate(10);
         $gurus = guru::all(); // Fetch all Gurus
+        $kelass = Kelas::all();
         $matapelajarans = matapelajaran::all(); // Fetch all Gurus
 
-        return view('/admin/views/jadwalpelajaran', compact('jadwalpelajarans', 'gurus','matapelajarans'));
+        return view('/admin/views/jadwalpelajaran', compact('jadwalpelajarans', 'gurus','matapelajarans','kelass'));
     }
 
   

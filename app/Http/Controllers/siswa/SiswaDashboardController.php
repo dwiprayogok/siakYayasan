@@ -18,9 +18,8 @@ class SiswaDashboardController extends Controller
         $guru = guru::count();
         $siswa = Siswa::count();
         $matapelajaran = matapelajaran::count();
+        $kelass = kelas::count();
     
-        return view('siswa.dashboard.dashboard', compact('guru', 'siswa','matapelajaran'));
-
-        //return view('siswa.dashboard.dashboard');
+        return view('siswa.dashboard.dashboard', compact('guru', 'siswa','matapelajaran','kelass'));
     }
 }

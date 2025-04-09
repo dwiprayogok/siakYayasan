@@ -19,13 +19,13 @@ class guru extends Model
         'walas',
     ];
 
-    // public function matapelajarans()
-    // {
-    //     return $this->hasMany(matapelajaran::class, 'kode_guru', 'kode_guru');
-
-
     public function matapelajaran()
     {
-        return $this->hasMany(matapelajaran::class, 'kode_guru', 'kode');
+        return $this->hasMany(matapelajaran::class, 'kode');
+    }
+
+    public function jadwalPelajaran()
+    {
+        return $this->hasMany(JadwalPelajaran::class,'kode');
     }
 }

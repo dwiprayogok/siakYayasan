@@ -27,6 +27,7 @@
                         <tr>
                             <th scope="col" class="px-4 py-3  dark:text-white">Jam Mulai</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Jam Selesai</th>
+                            <th scope="col" class="px-4 py-3  dark:text-white">Hari</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Kelas</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Guru</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Mata Pelajaran</th>
@@ -39,9 +40,12 @@
                         <tr class="border-b dark:border-gray-700">
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->start_time }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->end_time }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->hari }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->kelas }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->kode_guru }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->kode_mapel }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900  whitespace-nowrap dark:text-black">{{ $japel->guru ? $japel->guru->name : $japel->kode_guru }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900  whitespace-nowrap dark:text-black">{{ $japel->matapelajaran ? $japel->matapelajaran->nama : $japel->kode_mapel  }}</td>
+                            {{-- <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->kode_guru }}</td> --}}
+                            {{-- <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->kode_mapel }}</td> --}}
                             <td class="p-4">
                                 <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $japel->id }}" data-modal-target="updateModal" data-modal-toggle="updateModal"  > 
                                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-blue-500 hover:fill-blue-700"

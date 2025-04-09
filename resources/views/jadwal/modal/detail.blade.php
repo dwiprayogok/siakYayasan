@@ -26,6 +26,7 @@
                         <label for="detailhari" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hari</label>
                         <select id="detailhari"  name="detailhari" disabled  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Pilih Hari</option>
+                            <option value="All">ALL Day</option>
                             <option value="Senin">Senin</option>
                             <option value="Selasa">Selasa</option>
                             <option value="Rabu">Rabu</option>
@@ -39,10 +40,11 @@
                         <label for="detailkelas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
                         <select id="detailkelas"  name="detailkelas" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Pilih kelas</option>
-                            <option value="all">ALL</option>
-                            <option value="VIII1">VIII 1</option>
-                            <option value="VIII2">VIII 2</option>
-                            <option value="VIII3">VIII 3</option>
+                            @foreach ($kelass as $kelas)
+                                <option value="{{ $kelas->kode_kelas }}" {{ request('kelas') == $kelas->kode_kelas ? 'selected' : '' }}>
+                                    {{ $kelas->nama }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -87,7 +89,7 @@
                         <select id="detailkode_mapel"  name="detailkode_mapel" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option value="">-- Pilih Mata Pelajaran --</option>
                             @foreach ($matapelajarans as $mapel)
-                                <option value="{{ $mapel->kode_mapel }}">{{ $mapel->nama_mapel }}</option>
+                                <option value="{{ $mapel->kode}}">{{ $mapel->nama }}</option>
                             @endforeach
                         </select>
                     </div>

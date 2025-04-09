@@ -1,4 +1,6 @@
 @extends('layout.master')
+
+
 @section('konten')
 
 <section class=" bg-gray-100 dark:bg-gray-100 sm:p-20">
@@ -8,12 +10,18 @@
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                 {{-- <form method="GET" action="{{ url('/adminControl/matapelajaran') }}" class="mb-4">
                     <input type="text" name="search" class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-700 " value="{{ request('search') }}" placeholder="Search by Mata Pelajaran"> --}}
-                    <form method="GET" action="{{ url('/adminControl/matapelajaran') }}" class="mb-4">
+                    {{-- <form method="GET" action="{{ url('/adminControl/matapelajaran') }}" class="mb-4">
                         <input type="text" name="search" class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-500 " value="{{ request('search') }}" placeholder="Search by Mata Pelajaran">
     
                     
                     <button type="submit" class="mt-2 ml-10 bg-primary-700 text-white px-4 py-2 rounded">Search</button>
-                </form>
+                    </form> --}}
+
+                    <form method="GET" action="{{ url('/adminControl/matapelajaran') }}" class="mb-4">
+                        <input type="text" name="search" class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-500 " value="{{ request('search') }}" placeholder="Search by name">
+    
+                        <button type="submit" class="mt-2 ml-10 bg-primary-700 text-white px-4 py-2 rounded">Search</button>
+                    </form>
                 <button type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4
                  focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-700 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
                  data-modal-target="createModal" data-modal-toggle="createModal">
@@ -31,7 +39,7 @@
                             <th scope="col" class="px-4 py-3 dark:text-white">No</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Kode</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Mata Pelajaran</th>
-                            <th scope="col" class="px-4 py-3   dark:text-white">Kode Guru</th>
+                            <th scope="col" class="px-4 py-3   dark:text-white">Nama Guru</th>
                             <th scope="col" class="px-4 py-6  dark:text-white">Actions</th>
                         </tr>
                     </thead>
@@ -40,12 +48,9 @@
                         @foreach ( $matapelajarans as $mapel )
                         <tr class="border-b dark:border-gray-700">
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $mapel->id }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $mapel->kode_mapel }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $mapel->nama_mapel }}</td>
-                            {{-- <td class="px-4 py-3 font-medium text-gray-900  whitespace-nowrap dark:text-black">{{ $mapel->kode_guru }}</td> --}}
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $mapel->kode }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $mapel->nama }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900  whitespace-nowrap dark:text-black">{{ $mapel->guru ? $mapel->guru->name : 'Not Found' }}</td>
-
-
                             <td class="p-4">
                                 <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $mapel->id }}" data-modal-target="updateModal" data-modal-toggle="updateModal"  > 
                                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-blue-500 hover:fill-blue-700"
@@ -81,7 +86,9 @@
                 </table>
                 <br>
                 <div class="d-flex justify-content-center mb-3 mr-3 ml-3">
-                    {{ $matapelajarans->withQueryString()->links() }}
+                    {{-- {{ $matapelajarans->withQueryString()->links() }} --}}
+                    {{ $matapelajarans->links() }}
+
 
                 </div>
                 

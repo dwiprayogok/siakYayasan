@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
-class matapelajaran extends Model
+class Matapelajaran extends Model
 {
     //
     use HasFactory;
-    protected $table = 'matapelajarans';
+
     protected $fillable = [
         'id',
-        'kode_mapel',
-        'nama_mapel',
+        'kode',
+        'nama',
         'kode_guru',
     ];
 
@@ -26,5 +26,9 @@ class matapelajaran extends Model
         return $this->belongsTo(guru::class, 'kode_guru', 'kode');
     }
 
+    public function jadwalPelajaran()
+    {
+        return $this->hasMany(JadwalPelajaran::class,'kode_guru', 'kode');
+    }
     
 }

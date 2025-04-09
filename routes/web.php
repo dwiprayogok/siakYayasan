@@ -70,8 +70,7 @@ Route::middleware(['auth', 'role:guru'])->group(function () {
 
 // siswa Routes
 Route::middleware(['auth', 'role:siswa'])->group(function () {
-    Route::get('/siswa/dashboard', [SiswaDashboardController::class, 'index'])
-        ->name('siswa.dashboard');
+    Route::get('/siswa/dashboard', [SiswaDashboardController::class, 'index'])->name('siswa.dashboard');
 });
 
 

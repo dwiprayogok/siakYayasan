@@ -18,9 +18,17 @@ class jadwalpelajaran extends Model
         'end_time', 
         'kode_guru', 
         'kelas',
-        'nama_guru', 
         'kode_mapel', 
-        'nama_mapel', 
     ];
+
+    public function guru()
+    {
+        return $this->belongsTo(guru::class,'kode');
+    }
+
+    public function matapelajaran()
+    {
+        return $this->belongsTo(Matapelajaran::class,'kode');
+    }
   
 }
