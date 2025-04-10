@@ -28,7 +28,7 @@ class MataPelajaranController extends Controller
         $matapelajarans = $query->orderBy('id', 'asc')->paginate(10);
         $gurus = guru::all(); // Fetch all teachers from database
 
-        return view('/admin/views/matapelajaran', compact('matapelajarans'));
+        return view('/admin/views/matapelajaran', compact('matapelajaran'));
 
     }
 

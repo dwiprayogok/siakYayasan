@@ -11,15 +11,13 @@ use App\Http\Controllers\adminControl\MataPelajaranController;
 use App\Http\Controllers\adminControl\SiswaController;
 use App\Http\Controllers\adminControl\DashboardController;
 use App\Http\Controllers\siswa\SiswaDashboardController;
+use App\Http\Controllers\siswa\JadwalPelajaranSiswaController;
+use App\Http\Controllers\siswa\ProfileSiswaController;
 use App\Http\Controllers\guru\GuruDashboardController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\auth\ResetPasswordController;
 use App\Http\Controllers\adminControl\UserController;
-use App\Http\Controllers\siswa\GuruDashboardController as SiswaGuruDashboardController;
 use App\Http\Controllers\User\ProfileController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Facades\Auth;
 
 
 // Show login form
@@ -34,17 +32,11 @@ Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('acti
 
 
 // Admin Routes
-
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])
         ->name('admin.dashboard');
 });
 
-// Route::middleware(['auth', 'role:admin'])->group(function () {
-//     Route::get('/admin/dashboard', function () {
-//         return view('/admin/dashboard/dashboardAdmin');
-//     })->name('admin.dashboard');
-// });
 
 // guru Routes
 Route::middleware(['auth', 'role:guru'])->group(function () {
@@ -53,24 +45,14 @@ Route::middleware(['auth', 'role:guru'])->group(function () {
 });
 
 
-// guru Rout
-// Route::middleware(['auth', 'role:guru'])->group(function () {
-//     Route::get('/guru/dashboard', function () {
-//         return view('/guru/dashboard/dashboard');
-//     })->name('guru.dashboard');
-// });
-
-
-// siswa Routes
-// Route::middleware(['auth', 'role:siswa'])->group(function () {
-//     Route::get('/siswa/dashboard', function () {
-//         return view('/siswa/dashboard/dashboard');
-//     })->name('siswa.dashboard');
-// });
-
 // siswa Routes
 Route::middleware(['auth', 'role:siswa'])->group(function () {
     Route::get('/siswa/dashboard', [SiswaDashboardController::class, 'index'])->name('siswa.dashboard');
+    Route::get('/siswa/jadwalpelajaransiswa', [JadwalPelajaranSiswaController::class, 'index'])->middleware('auth');
+    Route::get('/siswa/profilesiswa', [ProfileSiswaController::class, 'index']);
+
+
+
 });
 
 

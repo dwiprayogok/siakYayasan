@@ -18,8 +18,10 @@ class DashboardController extends Controller
         $guru = guru::count();
         $siswa = Siswa::count();
         $matapelajaran = matapelajaran::count();
+        $kelass = kelas::count();
+
     
-        return view('admin.dashboard.dashboardAdmin', compact('guru', 'siswa','matapelajaran'));
+        return view('admin.dashboard.dashboardAdmin', compact('guru', 'siswa','matapelajaran','kelass'));
 
     }
 }

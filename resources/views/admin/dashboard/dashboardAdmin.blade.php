@@ -38,7 +38,7 @@
       </div>
       <div class="bg-white rounded-xl border px-7 py-8">
         <p class="text-black text-base text-center font-semibold mb-1">Total Kelas</p>
-        <h3 class="text-green-600 text-3xl text-center font-extrabold">30</h3>
+        <h3 class="text-green-600 text-3xl text-center font-extrabold">{{ $kelass }}</h3>
       </div>
       <div class="bg-white rounded-xl border px-7 py-8">
         <p class="text-black text-base text-center font-semibold mb-1">Total Mata Pelajaran</p>

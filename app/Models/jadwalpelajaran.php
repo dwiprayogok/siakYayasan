@@ -31,4 +31,8 @@ class jadwalpelajaran extends Model
         return $this->belongsTo(Matapelajaran::class,'kode');
     }
   
+    public function siswa()
+{
+    return $this->belongsTo(Siswa::class, 'kelas', 'kelas_id');
+}
 }
