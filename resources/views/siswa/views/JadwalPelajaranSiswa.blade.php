@@ -19,7 +19,6 @@
                             <th scope="col" class="px-4 py-3 dark:text-white">Hari</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Jam Mulai</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Jam Selesai</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Nama Siswa</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Mata Pelajaran</th>
                             <th scope="col" class="px-4 py-6  dark:text-white">Kelas</th>
                             <th scope="col" class="px-4 py-6  dark:text-white">Nama Guru</th>
@@ -32,7 +31,6 @@
                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $item->hari }}</td>
                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $item->start_time }}</td>
                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $item->end_time }}</td>
-                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $item->nama_siswa }}</td>
                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $item->matapelajaran }}</td>
                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $item->kelas }}</td>
                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $item->Nama_Guru }}</td>

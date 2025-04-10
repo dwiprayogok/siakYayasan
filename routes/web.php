@@ -14,6 +14,7 @@ use App\Http\Controllers\siswa\SiswaDashboardController;
 use App\Http\Controllers\siswa\JadwalPelajaranSiswaController;
 use App\Http\Controllers\siswa\ProfileSiswaController;
 use App\Http\Controllers\guru\GuruDashboardController;
+use App\Http\Controllers\guru\ProfileGuruController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\auth\ResetPasswordController;
 use App\Http\Controllers\adminControl\UserController;
@@ -40,8 +41,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 // guru Routes
 Route::middleware(['auth', 'role:guru'])->group(function () {
-    Route::get('/guru/dashboard', [GuruDashboardController::class, 'index'])
-        ->name('guru.dashboard');
+    Route::get('/guru/dashboard', [GuruDashboardController::class, 'index'])->name('guru.dashboard');
+    Route::get('/guru/profileguru', [ProfileGuruController::class, 'index']);
+
 });
 
 

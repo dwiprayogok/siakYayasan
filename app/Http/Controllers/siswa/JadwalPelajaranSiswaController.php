@@ -25,7 +25,6 @@ class JadwalPelajaranSiswaController extends Controller
             'jadwalpelajarans.hari',
             'jadwalpelajarans.start_time',
             'jadwalpelajarans.end_time',
-            'siswas.name as nama_siswa',
             'matapelajarans.nama as matapelajaran',
             'jadwalpelajarans.kelas',
             'gurus.name as Nama_Guru'
