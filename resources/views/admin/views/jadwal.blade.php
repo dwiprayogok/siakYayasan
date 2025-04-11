@@ -1,13 +1,11 @@
 @extends('layout.master')
-
- 
 @section('konten')
 <section class=" bg-gray-100 dark:bg-gray-100 sm:p-20">
     <div class=" px-1 lg:px-12">
         <h1 class="text-2xl py-4 border-b-4 mb-5">List Jadwal Pelajaran</h1>
         <div class="bg-white dark:bg-white relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
-                <form method="GET" action="{{ url('/adminControl/jadwalpelajaran') }}" class="mb-4">
+                <form method="GET" action="{{ url('/adminControl/jadwal') }}" class="mb-4">
                     <input type="text" name="search" class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-700 " value="{{ request('search') }}" placeholder="Search by kelas or mata pelajaran">
                     <button type="submit" class="mt-2 ml-10 bg-primary-700 text-white px-4 py-2 rounded">Search</button>
                 </form>

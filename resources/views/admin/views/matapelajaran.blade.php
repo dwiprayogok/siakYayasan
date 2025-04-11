@@ -79,7 +79,8 @@
                 </table>
                 <br>
                 <div class="d-flex justify-content-center mb-3 mr-3 ml-3">
-                    {{ $matapelajarans->links() }}
+                    {{ $matapelajarans->withQueryString()->links() }}
+
                 </div>
                 
             </div>

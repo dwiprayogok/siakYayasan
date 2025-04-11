@@ -15,7 +15,9 @@ class MataPelajaranController extends Controller
     public function index(Request $request)
     {
         //
-        $query = Matapelajaran::query();
+        //$query = Matapelajaran::query();
+        $query = Matapelajaran::with('guru'); // move this here
+
 
         if ($request->filled('search')) {
             $search = $request->input('search');
@@ -28,7 +30,7 @@ class MataPelajaranController extends Controller
         $matapelajarans = $query->orderBy('id', 'asc')->paginate(10);
         $gurus = guru::all(); // Fetch all teachers from database
 
-        return view('/admin/views/matapelajaran', compact('matapelajaran'));
+        return view('/admin/views/matapelajaran', compact('matapelajarans','gurus'));
 
     }
 
@@ -37,8 +39,8 @@ class MataPelajaranController extends Controller
     {
     
         $validator = Validator::make($request->all(), [
-            'kode' => 'required',
-            'nama' => 'required'           
+            'kode_mapel' => 'required',
+            'nama_mapel' => 'required'           
         ]);
 
         if ($validator->fails()) {
@@ -66,20 +68,12 @@ class MataPelajaranController extends Controller
         return response()->json($matapelajarans);
     }
 
-   
-    public function edit(string $id)
-    {
-        
-        $matapelajarans = Matapelajaran::findOrFail($id);
-        return view('matapelajaran.edit', compact('users'));
-    }
-
 
     public function update(Request $request,string $id)
     {
         $validator = Validator::make($request->all(), [
-            'kode' => 'required',
-            'nama' => 'required',
+            'kode_mapel' => 'required',
+            'nama_mapel' => 'required',
             'kode_guru' => 'required',
         ]);
 
@@ -115,13 +109,6 @@ class MataPelajaranController extends Controller
 
         return response()->json(['success' => 'Mata Pelajaran deleted successfully']);
         
-    }
-
-    public function showSubjects()
-    {
-        $matapelajarans = Matapelajaran::with('guru')->paginate(10);
-
-        return view('/admin/views/matapelajaran', compact('matapelajarans'));
     }
     
 }

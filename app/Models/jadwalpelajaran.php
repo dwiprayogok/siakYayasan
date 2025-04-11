@@ -23,16 +23,18 @@ class jadwalpelajaran extends Model
 
     public function guru()
     {
-        return $this->belongsTo(guru::class,'kode');
+        return $this->belongsTo(Guru::class, 'kode_guru', 'kode');
+
     }
 
     public function matapelajaran()
     {
-        return $this->belongsTo(Matapelajaran::class,'kode');
+        return $this->belongsTo(Matapelajaran::class, 'kode_mapel', 'kode');
+
     }
   
     public function siswa()
-{
-    return $this->belongsTo(Siswa::class, 'kelas', 'kelas_id');
-}
+    {
+        return $this->belongsTo(Siswa::class, 'kelas', 'kelas_id');
+    }
 }

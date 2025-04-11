@@ -29,6 +29,8 @@ class Matapelajaran extends Model
     public function jadwalPelajaran()
     {
         return $this->hasMany(JadwalPelajaran::class,'kode_guru', 'kode');
+        //return $this->hasMany(JadwalPelajaran::class, 'kode_mapel', 'kode');
+
     }
     
 }

@@ -32,21 +32,17 @@ class JadwalPelajaranController extends Controller
         ->orderBy('start_time', 'asc')
         ->orderBy('kelas', 'asc')
         ->paginate(11);
+
         //$jadwalPelajarans = JadwalPelajaran::with(['guru', 'matapelajaran'])->paginate(10);
+
         $gurus = guru::all(); // Fetch all Gurus
         $kelass = Kelas::all();
         $matapelajarans = matapelajaran::all(); // Fetch all Gurus
 
-        return view('/admin/views/jadwalpelajaran', compact('jadwalpelajarans', 'gurus','matapelajarans','kelass'));
+        return view('/admin/views/jadwal', compact('jadwalpelajarans', 'gurus','matapelajarans','kelass'));
+
     }
 
-  
-    public function create()
-    {
-        //
-    }
-
-  
     public function store(Request $request)
     {
 
@@ -78,7 +74,7 @@ class JadwalPelajaranController extends Controller
         ]);
 
         //return response()->json(['message' => 'User created successfully!', 'user' => $user]);
-        return redirect()->route('jadwalpelajaran')->with('success', 'Jadwal Pelajaran added successfully!');
+        return redirect()->route('jadwal')->with('success', 'Jadwal Pelajaran added successfully!');
 
     }
 
@@ -94,13 +90,6 @@ class JadwalPelajaranController extends Controller
     }
 
    
-    public function edit(string $id)
-    {
-        //
-        $jadwalpelajarans = jadwalpelajaran::findOrFail($id);
-        return view('jadwalpelajaran.edit', compact('users'));
-    }
-
 
     public function update(Request $request,string $id)
     {

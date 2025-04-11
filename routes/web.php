@@ -99,8 +99,8 @@ Route::post('/siswas/{id}/update', [SiswaController::class, 'update']);
 Route::delete('/siswas/{id}', [SiswaController::class, 'destroy']);
 
 
-Route::get('/adminControl/jadwalpelajaran', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
-Route::post('/adminControl/jadwalpelajaran', [JadwalPelajaranController::class, 'store'])->name('jadwalpelajarans.store');
+Route::get('/adminControl/jadwal', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
+Route::post('/adminControl/jadwal', [JadwalPelajaranController::class, 'store'])->name('jadwalpelajarans.store');
 Route::get('/jadwalpelajarans/{id}', [JadwalPelajaranController::class, 'show']);
 Route::post('/jadwalpelajarans/{id}/update', [JadwalPelajaranController::class, 'update']);
 Route::delete('/jadwalpelajarans/{id}', [JadwalPelajaranController::class, 'destroy']);
@@ -113,7 +113,6 @@ Route::post('/adminControl/matapelajaran', [MataPelajaranController::class, 'sto
 Route::get('/matapelajarans/{id}', [MataPelajaranController::class, 'show']);
 Route::post('/matapelajarans/{id}/update', [MataPelajaranController::class, 'update']);
 Route::delete('/matapelajarans/{id}', [MataPelajaranController::class, 'destroy']);
-Route::get('/adminControl/matapelajaran', [MataPelajaranController::class, 'showSubjects']);
 
 
 
