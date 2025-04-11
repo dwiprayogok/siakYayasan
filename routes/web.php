@@ -1,23 +1,29 @@
 <?php
 
-use App\Http\Controllers\auth\ForgotPasswordController;
-use App\Http\Controllers\adminControl\GuruController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\auth\ForgotPasswordController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\HomeController;
+use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\auth\ResetPasswordController;
+
+use App\Http\Controllers\adminControl\GuruController;
 use App\Http\Controllers\adminControl\JadwalPelajaranController;
-use App\Http\Controllers\adminControl\ListNilaiController;
+use App\Http\Controllers\adminControl\NilaiController;
 use App\Http\Controllers\adminControl\MataPelajaranController;
 use App\Http\Controllers\adminControl\SiswaController;
 use App\Http\Controllers\adminControl\DashboardController;
+use App\Http\Controllers\adminControl\UserController;
+
 use App\Http\Controllers\siswa\SiswaDashboardController;
 use App\Http\Controllers\siswa\JadwalPelajaranSiswaController;
 use App\Http\Controllers\siswa\ProfileSiswaController;
+
 use App\Http\Controllers\guru\GuruDashboardController;
 use App\Http\Controllers\guru\ProfileGuruController;
-use App\Http\Controllers\auth\RegisterController;
-use App\Http\Controllers\auth\ResetPasswordController;
-use App\Http\Controllers\adminControl\UserController;
+use App\Http\Controllers\guru\NilaiSiswaController;
+
 use App\Http\Controllers\User\ProfileController;
 
 
@@ -43,6 +49,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:guru'])->group(function () {
     Route::get('/guru/dashboard', [GuruDashboardController::class, 'index'])->name('guru.dashboard');
     Route::get('/guru/profileguru', [ProfileGuruController::class, 'index']);
+    Route::get('/guru/inputnilai', [NilaiSiswaController::class, 'index']);
 
 });
 
@@ -116,7 +123,8 @@ Route::delete('/matapelajarans/{id}', [MataPelajaranController::class, 'destroy'
 
 
 
-Route::get('/adminControl/nilai', [ListNilaiController::class, 'index'])->name('nilai')->middleware('auth');
+Route::get('/adminControl/nilai', [NilaiController::class, 'index'])->name('nilai')->middleware('auth');
+
 
 
 Route::get('/adminControl/user', [UserController::class, 'index'])->name('user')->middleware('auth');

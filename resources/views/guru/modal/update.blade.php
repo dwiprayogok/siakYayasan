@@ -25,8 +25,8 @@
                         <input type="hidden" name="UserID" id="UserID" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ID" required="">
                     </div>
                     <div >
-                        <label for="updatekode_guru" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Guru</label>
-                        <input type="text" name="updatekode_guru" id="updatekode_guru" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Kode Guru" required="">
+                        <label for="updatekode" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Guru</label>
+                        <input type="text" name="updatekode" id="updatekode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Kode Guru" required="">
                     </div>
 
                     <div>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="flex items-center space-x-4">
                     <button type="submit" id="update" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                        Update user
+                        Update Data Guru
                     </button>      
                     <button type="button" class="inline-flex items-center hover:text-white border border-white  focus:ring-4 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-black dark:focus:ring-whiite" data-modal-toggle="updateGuruModal">
                         Tutup
@@ -105,7 +105,7 @@ function formatDate(inputDate) {
                 console.log(response);
                 // //fill data to form
                 $('#UserID').val(response.id);
-                $('#updatekode_guru').val(response.kode);
+                $('#updatekode').val(response.kode);
                 $('#updatename').val(response.name);
                 $('#updatenip').val(response.nip);
                 $('#updatetanggal_lahir').val(response.tanggal_lahir);
@@ -135,13 +135,11 @@ function formatDate(inputDate) {
 
         }
         
-       
-    
 
         var formData = {
             _token: $('input[name=_token]').val(),
             userid: $('#UserID').val(),
-            kode_guru: $('#updatekode_guru').val(),
+            kode: $('#updatekode').val(),
             name: $('#updatename').val(),
             nip: $('#updatenip').val(),
             tanggal_lahir: formattedDate,

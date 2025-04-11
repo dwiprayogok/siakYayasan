@@ -34,11 +34,6 @@ class GuruController extends Controller
         return view('/admin/views/guru', compact('gurus'));
     }
 
-  
-    public function create()
-    {
-        //
-    }
 
   
     public function store(Request $request)
@@ -65,7 +60,6 @@ class GuruController extends Controller
             'sk' => $request->sk,
             'tanggal_lahir' => $formattedDate,
             'role' => $request->role,
-            'walas' => $request->input('walas', '-'),
             'education' => $request->input('education'),
         ]);
 
@@ -82,16 +76,6 @@ class GuruController extends Controller
 
         return response()->json($gurus);
     }
-
-   
-    public function edit(string $id)
-    {
-        //
-        $gurus = guru::findOrFail($id);
-        return view('guru.edit', compact('gurus'));
-     
-    }
-
 
     public function update(Request $request,string $id)
     {
@@ -119,7 +103,7 @@ class GuruController extends Controller
         }
 
         $gurus->update([
-            'kode'     => $request->kode,
+            'kode'          => $request->kode,
             'name'          => $request->name,
             'nip'           => $request->nip,
             'role'          => $request->role,
