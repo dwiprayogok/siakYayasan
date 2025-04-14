@@ -26,7 +26,11 @@ class JadwalPelajaranController extends Controller
                   ->orWhere('hari', 'LIKE', "%{$search}%")
                   ->orWhere('kode_mapel', 'LIKE', "%{$search}%");
             });
+        }elseif ($request->filled('kelas')) {
+            $kelas = $request->input('kelas');
+            $query->where('kelas', $kelas); // kelas_id holds the value like "VIII1"
         }
+        
 
         $jadwalpelajarans = $query
         ->orderBy('start_time', 'asc')

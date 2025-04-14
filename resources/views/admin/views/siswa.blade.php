@@ -14,7 +14,7 @@
 
 
                     <select name="kelas"  class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-500">
-                        <option value="">-- Semua Kelas --</option>
+                        <option value="">-- Pilih Kelas --</option>
                         @foreach ($kelass as $kelas)
                             <option value="{{ $kelas->kode_kelas }}" {{ request('kelas') == $kelas->kode_kelas ? 'selected' : '' }}>
                                 {{ $kelas->nama }}
