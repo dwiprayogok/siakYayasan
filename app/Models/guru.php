@@ -14,9 +14,10 @@ class guru extends Model
         'nip',
         'role',
         'sk',
+        'tempat_lahir',
         'tanggal_lahir',
+        'phone',
         'education',
-        'walas',
     ];
 
     public function matapelajaran()

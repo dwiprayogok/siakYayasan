@@ -33,7 +33,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            dd($user);
+            //dd($user);
 
             // Redirect based on role
             if ($user->role === 'admin') {

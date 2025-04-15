@@ -34,10 +34,16 @@
                         <input type="text" name="updatename" id="updatename" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Name" required="">
                     </div>
 
-                    <div >
+                    <div  class="col-span-2" >
                       <label for="updatenip" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIP</label>
                       <input type="text" name="updatenip" id="updatenip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="nip" required="">
                     </div>
+
+                    <div >
+                        <label for="updatetempat_lahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir</label>
+                        <input type="text" name="updatetempat_lahir" id="updatetempat_lahir" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="tempat lahir" required="">
+                      </div>
+
                   <div >
                       <label for="updatetanggal_lahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir</label>
                       <div class="relative max-w-sm">
@@ -49,6 +55,10 @@
                         <input id="updatetanggal_lahir" name="updatetanggal_lahir"  datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Pilih Tanggal">
                       </div>
                     </div>
+                    <div class="col-span-2">
+                        <label for="updatephone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Telepon</label>
+                        <input type="text" name="updatephone" id="updatephone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="No Telepon" required="">
+                      </div>
                     <div class="col-span-2">
                         <label for="updatesk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SK</label>
                         <input type="text" name="updatesk" id="updatesk" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="SK" required="">
@@ -108,7 +118,9 @@ function formatDate(inputDate) {
                 $('#updatekode').val(response.kode);
                 $('#updatename').val(response.name);
                 $('#updatenip').val(response.nip);
+                $('#updatetempat_lahir').val(response.tempat_lahir);
                 $('#updatetanggal_lahir').val(response.tanggal_lahir);
+                $('#updatephone').val(response.phone);
                 $('#updatesk').val(response.sk);
                 $('#updaterole').val(response.role);
                 $('#updateeducation').val(response.education);
@@ -124,15 +136,12 @@ function formatDate(inputDate) {
         let formattedDate = '';
         let userid = $('#UserID').val();
         let rawDate = $('#updatetanggal_lahir').val(); 
-        console.log("rawDate",rawDate);
         
         if (rawDate.includes('/')) {
             formattedDate = formatDate(rawDate); // Convert format
-            console.log("formattedDate",formattedDate);
             
         } else {
             formattedDate = $('#updatetanggal_lahir').val(); // Convert format
-
         }
         
 
@@ -142,7 +151,9 @@ function formatDate(inputDate) {
             kode: $('#updatekode').val(),
             name: $('#updatename').val(),
             nip: $('#updatenip').val(),
+            tempat_lahir: $('#updatetempat_lahir').val(),
             tanggal_lahir: formattedDate,
+            phone: $('#updatephone').val(),
             sk: $('#updatesk').val(),
             role: $('#updaterole').val(),
             education: $('#updateeducation').val(),

@@ -12,11 +12,10 @@ use Carbon\Carbon;
 
 class GuruController extends Controller
 {
-    //
+
     public function index(Request $request)
     {
-        //
-
+    
         $query = guru::query();
 
         if ($request->filled('search')) {
@@ -44,6 +43,7 @@ class GuruController extends Controller
             'nip' => 'required',
             'sk' => 'required',
             'tanggal_lahir' => 'required',
+            'tempat_lahir' => 'required',
             'role' => 'required',
             'education' => 'required',
             
@@ -58,7 +58,9 @@ class GuruController extends Controller
             'name' => $request->name,
             'nip' => $request->nip,
             'sk' => $request->sk,
+            'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $formattedDate,
+            'phone' => $request->phone,
             'role' => $request->role,
             'education' => $request->input('education'),
         ]);
@@ -107,11 +109,15 @@ class GuruController extends Controller
             'name'          => $request->name,
             'nip'           => $request->nip,
             'role'          => $request->role,
+            'tempat_lahir'  => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'sk'            => $request->sk,
+            'phone'         => $request->phone,
             'role'          => $request->role,
             'education'     => $request->education,
         ]);
+
+        //dd($gurus);
 
 
         return response()->json(['success' => 'User updated successfully!']);

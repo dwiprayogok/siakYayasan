@@ -31,30 +31,27 @@
           <input type="text" disabled placeholder="Your First Name" value=" {{ old('name', $data->name ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
       <div>
-          <label class="block text-sm font-medium text-gray-700">user Name</label>
+          <label class="block text-sm font-medium text-gray-700">User Name</label>
           <input type="text" disabled placeholder="Your First Name" value=" {{ old('username', $data->username ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
-      {{-- <div>
-          <label class="block text-sm font-medium text-gray-700">Gender</label>
-          <input type="text" disabled placeholder="Your First Name" value=" {{ old('gender', $data->gender ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
-      </div> --}}
+      
       <div>
           <label class="block text-sm font-medium text-gray-700">Tempat & Tanggal Lahir Lahir</label>
           <input type="text" disabled placeholder="Your First Name" 
-          value="{{ old('born_place_and_date', ($data->born_place ?? '') . ', ' . ($data->birth_date ?? '')) }}"
+          value="{{ old('born_place_and_date', ($data->tempat_lahir ?? '') . ', ' . ($data->tanggal_lahir ?? '')) }}"
           class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
       
 
       <div>
-        <label class="block text-sm font-medium text-gray-700">Kelas</label>
-        <input type="text" disabled placeholder="Your First Name" value=" {{ old('kelas_id', $data->kelas_id ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
+        <label class="block text-sm font-medium text-gray-700">Posisi</label>
+        <input type="text" disabled placeholder="Your First Name" value=" {{ old('role', $data->role ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
     </div>
 
 
     <div>
-      <label class="block text-sm font-medium text-gray-700">No Induk Siswa</label>
-      <input type="text" disabled placeholder="Your First Name" value=" {{ old('nis', $data->nis ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
+      <label class="block text-sm font-medium text-gray-700">No SK</label>
+      <input type="text" disabled placeholder="Your First Name" value=" {{ old('sk', $data->sk ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
   </div>
 
 
@@ -63,8 +60,8 @@
           <input type="text" disabled placeholder="Your First Name" value=" {{ old('phone', $data->phone ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
       <div>
-          <label class="block text-sm font-medium text-gray-700">Nama Orang Tua</label>
-          <input type="text" disabled placeholder="Your First Name" value=" {{ old('name_of_parent', $data->name_of_parent ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
+          <label class="block text-sm font-medium text-gray-700">Pendidikan Terakhir</label>
+          <input type="text" disabled placeholder="Your First Name" value=" {{ old('education', $data->education ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
 
       <div class="sm:col-span-2">
