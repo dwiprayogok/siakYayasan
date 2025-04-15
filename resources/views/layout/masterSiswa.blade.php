@@ -10,9 +10,14 @@
 <body  class="flex flex-col min-h-screen">
 
 
-      <main class="flex-1">
-            <nav class="bg-gray-400 border-gray-200 dark:bg-gray-900">
-                  <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+    <header 
+    x-data="{ scrolled: false }" 
+    @scroll.window="scrolled = window.scrollY > 10"
+    :class="{'py-2 shadow-lg': scrolled, 'py-4': !scrolled}"
+    class="sticky top-0 z-50 bg-white w-full  transition-all duration-300"
+    >
+                <nav class="bg-gray-400 border-gray-200 dark:bg-gray-900">
+                    <div class="flex flex-wrap items-center justify-between mx-auto p-4">
                         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                         <img  src="\iconYapa.png" alt="logo" style="margin: 0; border: 0; padding: 0; display: block; width:100px !important; height:100px !important" class="h-8" alt="YAPA Logo" />
                         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SMP YAPA 1</span>
@@ -50,12 +55,17 @@
                         <a href="\siswa\profilesiswa" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-200 md:hover:bg-transparent md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Profile</a>
                         </li>
                         <li>
-                         <a href="\siswa\jadwalpelajaransiswa" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-200 md:hover:bg-transparent md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Jadwal Pelajaran</a>
+                        <a href="\siswa\jadwalpelajaransiswa" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-200 md:hover:bg-transparent md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Jadwal Pelajaran</a>
                         </li>
                         </ul>
                         </div>
-                  </div>
-            </nav>  
+                    </div>
+                </nav>  
+    </header>
+
+
+
+      <main class="flex-1">
           @yield('konten')
       </main>
       

@@ -8,7 +8,14 @@
     <title>Siak</title>
 </head>
 <body class="flex flex-col min-h-screen">
-      <main class="flex-1">
+
+      <header 
+      x-data="{ scrolled: false }" 
+      @scroll.window="scrolled = window.scrollY > 10"
+      :class="{'py-2 shadow-lg': scrolled, 'py-4': !scrolled}"
+      class="sticky top-0 z-50 bg-white w-full  transition-all duration-300"
+      >
+
             <nav class="bg-gray-400 border-gray-200 dark:bg-gray-900">
                   <div class="flex flex-wrap items-center justify-between mx-auto p-4">
                         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -66,6 +73,9 @@
                         </div>
                   </div>
             </nav>  
+
+      </header>
+      <main class="flex-1">
           @yield('konten')
       </main>
 
