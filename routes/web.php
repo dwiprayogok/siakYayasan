@@ -59,7 +59,7 @@ Route::middleware(['auth', 'role:siswa'])->group(function () {
     Route::get('/siswa/dashboard', [SiswaDashboardController::class, 'index'])->name('siswa.dashboard');
     Route::get('/siswa/jadwalpelajaransiswa', [JadwalPelajaranSiswaController::class, 'index'])->middleware('auth');
     Route::get('/siswa/profilesiswa', [ProfileSiswaController::class, 'index'])->middleware('auth');
-
+    Route::post('/siswas/{id}/update', [ProfileSiswaController::class, 'update']);
 
 
 });

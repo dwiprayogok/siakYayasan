@@ -19,7 +19,19 @@
               <p class="text-xl text-gray-600">{{ old('email', $data->email ?? '') }}</p>
           </div>
           <div class="ml-auto">
-              <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md">Edit</button>
+              <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md" 
+              title="update" id="btnUpdate" 
+              
+              data-id="{{ $data->id }}"
+              data-name="{{ $data->name }}"
+              data-username="{{ $data->username }}"
+              data-email="{{ $data->email }}"
+              data-nis="{{ $data->nis }}"
+              data-phone="{{ $data->phone }}"
+              data-address="{{ $data->address }}"
+              data-name_of_parent="{{ $data->name_of_parent }}"
+        
+              data-modal-target="updateprofileModal" data-modal-toggle="updateprofileModal">Edit</button>
           </div>
       </div>
   </div>
@@ -27,15 +39,15 @@
   <!-- Form Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
       <div>
-          <label class="block text-sm font-medium text-gray-700">Full Name</label>
+          <label class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
           <input type="text" disabled placeholder="Your First Name" value=" {{ old('name', $data->name ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
       <div>
-          <label class="block text-sm font-medium text-gray-700">user Name</label>
+          <label class="block text-sm font-medium text-gray-700">Username</label>
           <input type="text" disabled placeholder="Your First Name" value=" {{ old('username', $data->username ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
       <div>
-          <label class="block text-sm font-medium text-gray-700">Gender</label>
+          <label class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
           <input type="text" disabled placeholder="Your First Name" value=" {{ old('gender', $data->gender ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
       <div>
@@ -75,6 +87,7 @@
     </div>
   </div>
 </div>
+@include('siswa.modal.profile.updateprofile')
 
 @endsection
 
