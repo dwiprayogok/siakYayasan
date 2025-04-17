@@ -13,10 +13,12 @@
                 </a>
         </div>
             @if(session('message'))
-            <div class="alert alert-success">
+            <div class="alert alert-success text-white">
                 {{session('message')}}
             </div>
             @endif
+            <br>
+
             <form action="{{route('actionregister')}}" method="post">
             @csrf
             <div class="space-y-6">
@@ -49,9 +51,24 @@
                 <select id="role"  name="role" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg
                        focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                         dark:text-white dark:focus:ring-white dark:focus:border-green-700">
+                <option value="">-- Select Role --</option>
                 <option value="siswa">Siswa</option>
                 <option value="guru">Guru</option>
                 </select>
+                </div>
+
+                <div>
+                    <label  id="labelNISN" style="display: none;"  class="text-white text-sm mb-2 block">NISN</label>
+                    <input  id="nis" name="nis" type="text" style="display: none;  margin-top: 10px;" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg
+                           focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                            dark:text-white dark:focus:ring-white dark:focus:border-green-700" placeholder="No Induk Siswa" />
+                </div>
+
+                <div>
+                    <label  id="labelNIP" style="display: none;"  class="text-white text-sm mb-2 block">NIP</label>
+                    <input  id="nip" name="nip" type="text" style="display: none;  margin-top: 10px;" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg
+                           focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                            dark:text-white dark:focus:ring-white dark:focus:border-green-700" placeholder="NIP" />
                 </div>
 
             <div class="!mt-8">
@@ -62,6 +79,39 @@
             </form>
       </div>
     </div>
+
+    
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const select = document.getElementById('role');
+        const labelNIP = document.getElementById('labelNIP');
+        const labelNISN = document.getElementById('labelNISN');
+        const nisnInput = document.getElementById('nis');
+        const nipInput = document.getElementById('nip');
+
+        select.addEventListener('change', function () {
+            const role = this.value;
+
+            // Hide both first
+            nisnInput.style.display = 'none';
+            nipInput.style.display = 'none';
+            labelNISN.style.display = 'none';
+            labelNIP.style.display = 'none';
+
+            if (role === 'siswa') {
+                nisnInput.style.display = 'block';
+                labelNISN.style.display = 'block';
+            } else if (role === 'guru') {
+                nipInput.style.display = 'block';
+                labelNIP.style.display = 'block';
+            }
+        });
+    });
+
+
+ 
+</script>
+
 
 </body>
 </html>

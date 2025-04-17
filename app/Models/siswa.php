@@ -14,13 +14,14 @@ class Siswa extends Model
         'id_student',
         'nis',
         'name',
+        'email',
         'gender',
         'kelas_id',
-        'address',
         'born_place',
         'birth_date',
         'phone',
         'name_of_parent',
+        'address',
     ];
 
     public function kelas(){

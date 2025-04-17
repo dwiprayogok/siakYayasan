@@ -23,11 +23,12 @@
                 @csrf
 
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
-                    <div >
-                        <label for="updateid_student" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID</label>
-                        <input type="text"  disabled name="updateid_student" id="updateid_student" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="ID Siswa" required="">
-                    </div>
 
+                    <div  class="col-span-2">
+                        <label for="updateid_sudent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Siswa</label>
+                        <input type="text"  disabled name="updateid_sudent" id="updateid_sudent" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="ID Siswa" required="">
+                    </div>
+                   
                     <div >
                         <label for="updatenis" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Induk Siswa</label>
                         <input type="text" name="updatenis" id="updatenis" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="nis" required="">
@@ -38,17 +39,50 @@
                         <input type="text" name="updatename" id="updatename" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="Name" required="">
                     </div>
 
-                    <div>
-                        <label for="updateusername" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-                        <input type="text" name="updateusername" id="updateusername" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="UserName" required="">
-                    </div>
-
-                   
+  
                     <div class="col-span-2">
                         <label for="updateemail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                         <input type="email" name="updateemail" id="updateemail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="UserName" required="">
                     </div>
+
+                    <div >
+                        <label for="updategender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
+                        <select id="updategender" name="updategender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option selected="">Pilih Jenis Kelamin</option>
+                            <option value="Male">Laki - Laki</option>
+                            <option value="Female">Perempuan</option>
+                        </select>
+                    </div>   
+
+                    <div >
+                        <label for="updateclass" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
+                        <select id="updateclass"  name="kelas_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option selected="">Pilih Kelas</option>
+                            @foreach ($kelass as $kelas)
+                            <option value="{{ $kelas->kode_kelas }}" {{ request('kelas') == $kelas->nama ? 'selected' : '' }}>
+                                {{ $kelas->kode_kelas }}
+                            </option>
+                        @endforeach
+                        </select>
+                    </div>
+
                 
+                    <div >
+                        <label for="updateborn_place" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir </label>
+                        <input type="text" name="updateborn_place" id="updateborn_place" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="Tempat Lahir" required="">
+                    </div>
+                   
+                  <div >
+                      <label for="updatebirth_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir</label>
+                      <div class="relative max-w-sm">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                           <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                            </svg>
+                        </div>
+                        <input id="updatebirth_date" name="updatebirth_date"  datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="Pilih Tanggal">
+                      </div>
+                    </div>
 
                     <div>
                         <label for="updatephone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Telepon</label>
@@ -88,164 +122,107 @@
 
 <script>
 
-// function formatDate(inputDate) {
-//     let parts = inputDate.split('/'); // Split by "/"
-//     if (parts.length !== 3) return null; 
-//     return `${parts[2]}-${parts[0]}-${parts[1]}`; // Rearrange M/D/Y to Y/M/D
-// }
+function formatDate(inputDate) {
+    let parts = inputDate.split('/'); // Split by "/"
+    if (parts.length !== 3) return null; 
+    return `${parts[2]}-${parts[0]}-${parts[1]}`; // Rearrange M/D/Y to Y/M/D
+}
     $('body').on('click', '#btnUpdate', function () {
 
         let userid = $(this).data('id');
-        let name = $(this).data('name');
-        let username = $(this).data('username');
-        let email = $(this).data('email');
         let nis = $(this).data('nis');
+        let name = $(this).data('name');
+        let kelas = $(this).data('kelas_id');
+        let born_place = $(this).data('born_place');
+        let birth_date = $(this).data('birth_date');
+        let email = $(this).data('email');
         let phone = $(this).data('phone');
+        let gender = $(this).data('gender');
         let address = $(this).data('address');
         let name_of_parent = $(this).data('name_of_parent');
 
 
-        $('#updateid_student').val(userid);
-        $('#updatename').val(name);
+        $('#updateid_sudent').val(userid);
         $('#updatenis').val(nis);
-        $('#updateusername').val(username);
+        $('#updatename').val(name);
         $('#updateemail').val(email);
+        $('#updategender').val(gender);
+        $('#updateclass').val(kelas);
+        $('#updateborn_place').val(born_place);
+        $('#updatebirth_date').val(birth_date);
         $('#updatephone').val(phone);
-        $('#updateaddress').val(address);
         $('#updatename_of_parent').val(name_of_parent);
+        $('#updateaddress').val(address);
 
     });
 
 
-    //Update user data
-//     $('#editprofileSiswaForm').submit(function(e) {
-//     e.preventDefault();
-        
-//     let userid = $('#updateid_sudent').val();
-//     let nis = $('#updatenis').val();
-//     console.log("userid", userid);
-//     console.log("nis", nis);
-
-    
-//     var formData = {
-//         // User table fields
-//         _token: $('input[name=_token]').val(),
-//         name: $('#updatename').val(),
-//         email: $('#updateemail').val(), // if you have email field
-//         username: $('#updateusername').val(), // if you have username field
-        
-//         // siswa table fields
-//         id: $('#updateid_sudent').val(),
-//         nis: $('#updatenis').val(),
-//         address: $('#updateaddress').val(),
-//         phone: $('#updatephone').val(),
-//         name_of_parent: $('#updatename_of_parent').val(),
-//     };
-
-//     console.log("formData", formData);
-
-//     $.ajax({
-//         //url: '/siswas/' + userid + '/update',
-//         url: '/siswas/' + userid + '' + nis + '/update',
-//         type: 'POST',
-//         data: formData,
-//         headers: {
-//         'X-CSRF-TOKEN': $('input[name="_token"]').val()
-//         },
-//         success: function(response) {
-//             alert(response.success);
-//             location.reload();
-//         },
-//         error: function(xhr) {
-//             alert('Error: ' + (xhr.responseJSON?.message || 'Unknown error occurred'));
-//         }
-//     });
-// });
-
-
-// $('#editprofileSiswaForm').submit(function(e) {
-//     e.preventDefault();
-    
-//     // Get CSRF token from meta tag (recommended approach)
-//     let token = $('meta[name="csrf-token"]').attr('content');
-    
-//     let userid = $('#updateid_sudent').val();
-//     let formData = {
-//         // Student data
-//         id: userid,
-//         nis: $('#updatenis').val(),
-//         address: $('#updateaddress').val(),
-//         phone: $('#updatephone').val(),
-//         name_of_parent: $('#updatename_of_parent').val(),
-        
-//         // User data
-//         name: $('#updatename').val(),
-//         email: $('#updateemail').val(),
-//         username: $('#updateusername').val()
-//     };
-
-//     console.log("Submitting data:", formData);
-
-//     $.ajax({
-//         url: '/siswas/' + userid + '/update',
-//         type: 'POST',
-//         data: formData,
-//         headers: {
-//             'X-CSRF-TOKEN': token,
-//             'X-Requested-With': 'XMLHttpRequest'
-//         },
-//         success: function(response) {
-//             console.log("Success:", response);
-//             alert(response.success);
-//             location.reload();
-//         },
-//         error: function(xhr) {
-//             console.error("Error:", xhr);
-//             if (xhr.status === 419) {
-//                 alert('Session expired. Please refresh the page and try again.');
-//                 location.reload();
-//             } else {
-//                 alert('Error: ' + (xhr.responseJSON?.message || 'Unknown error occurred'));
-//             }
-//         }
-//     });
-// });
-
+   
 
 $('#editprofileSiswaForm').submit(function(e) {
-    e.preventDefault();
+        e.preventDefault();
+        let formattedDate = '';
+        let userid = $('#updateid_sudent').val();
+        let rawDate = $('#updatebirth_date').val(); 
 
-    let token = $('meta[name="csrf-token"]').attr('content');
-    let userid = $('#updateid_student').val(); 
-
-    let formData = {
-        id: userid,
-        nis: $('#updatenis').val(),
-        address: $('#updateaddress').val(),
-        phone: $('#updatephone').val(),
-        name_of_parent: $('#updatename_of_parent').val(),
-
-        _method: 'POST' // If using RESTful route
-    };
-
-    $.ajax({
-        url: '/siswas/' + userid + '/update',
-        type: 'POST',
-        data: formData,
-        headers: {
-            'X-CSRF-TOKEN': token,
-            'X-Requested-With': 'XMLHttpRequest'
-        },
-        success: function(response) {
-            console.log("Success:", response);
-            alert(response.success || 'Data updated successfully.');
-            location.reload();
-        },
-        error: function(xhr) {
-            console.error("Error:", xhr);
-            alert('Error: ' + (xhr.responseJSON?.message || 'Something went wrong.'));
+        console.log("rawDate",rawDate);
+        
+        if (rawDate.includes('/')) 
+        {
+            formattedDate = formatDate(rawDate); // Convert format            
+        } else
+        {
+            formattedDate = $('#updatebirth_date').val(); // Convert format
         }
-    });
+
+        console.log("formattedDate",formattedDate);
+        console.log("updateclass", $('#updateclass').val());
+
+    
+        var formData = {
+            _token: $('input[name=_token]').val(),
+            nis: $('#updatenis').val(),
+            name: $('#updatename').val(),
+            email: $('#updateemail').val(),
+            gender: $('#updategender').val(),
+            kelas_id: $('#updateclass').val(),
+            born_place: $('#updateborn_place').val(),
+            birth_date: formattedDate,
+            phone: $('#updatephone').val(),
+            name_of_parent: $('#updatename_of_parent').val(),
+            address: $('#updateaddress').val(),
+        };
+
+        console.log("formData",formData);
+
+
+        $.post('/siswas/' + userid + '/update', formData, function(response) {
+            console.log("formData",formData);
+            alert(response.success);
+            location.reload(); // Refresh page to see changes
+        }).fail(function(xhr) {
+            //alert('Error: ' + xhr.responseJSON.message);
+            console.log("XHR ERROR", xhr);
+
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    alert('Error: ' + xhr.responseJSON.message);
+                } else if (xhr.responseJSON) {
+                    // Tampilkan semua error validasi
+                    let allErrors = xhr.responseJSON;
+                    let messages = [];
+
+                    for (const key in allErrors) {
+                        if (allErrors.hasOwnProperty(key)) {
+                            messages.push(allErrors[key][0]); // Ambil pesan error pertama
+                        }
+                    }
+
+                    alert("Validation Error:\n" + messages.join("\n"));
+                } else {
+                    alert("Terjadi kesalahan yang tidak diketahui.");
+                }
+                            
+        });
 });
 
 

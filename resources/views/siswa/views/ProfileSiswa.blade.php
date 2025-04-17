@@ -4,8 +4,8 @@
 <div class="max-w mx-auto p-6 bg-white rounded-lg shadow-md">
   <!-- Header -->
   <div class="mb-6">
-    <h2 class="text-2xl font-bold text-gray-800">Welcome, {{ old('name', $data->name ?? '') }}</h2>
-    <p class="text-gray-500">{{ now()->format('D, d M Y') }}</p>
+    {{-- <h2 class="text-2xl font-bold text-gray-800">Welcome, {{ old('name', $data->name ?? '') }}</h2> --}}
+    <p class="text-2xl font-bold text-gray-800"> {{ now()->locale('id')->translatedFormat('l, d F Y') }}</p>
   </div>
 
   <!-- Profile Card -->
@@ -16,20 +16,24 @@
 
           <div>
               <h3 class="text-2xl font-bold text-gray-900">{{ old('name', $data->name ?? '') }}</h3>
-              <p class="text-xl text-gray-600">{{ old('email', $data->email ?? '') }}</p>
+              <p class="text-xl text-gray-600">{{ old('kelas_id', $data->kelas_id ?? '') }}</p>
           </div>
           <div class="ml-auto">
               <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md" 
               title="update" id="btnUpdate" 
               
               data-id="{{ $data->id }}"
-              data-name="{{ $data->name }}"
-              data-username="{{ $data->username }}"
-              data-email="{{ $data->email }}"
               data-nis="{{ $data->nis }}"
+              data-name="{{ $data->name }}"
+              data-email="{{ $data->email }}"
+              data-gender="{{ $data->gender }}"
+              data-kelas_id = "{{ $data->kelas_id }}"
+              data-birth_date="{{ $data->birth_date }}"
+              data-born_place="{{ $data->born_place }}"
               data-phone="{{ $data->phone }}"
-              data-address="{{ $data->address }}"
               data-name_of_parent="{{ $data->name_of_parent }}"
+              data-address="{{ $data->address }}"
+
         
               data-modal-target="updateprofileModal" data-modal-toggle="updateprofileModal">Edit</button>
           </div>
@@ -43,8 +47,8 @@
           <input type="text" disabled placeholder="Your First Name" value=" {{ old('name', $data->name ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
       <div>
-          <label class="block text-sm font-medium text-gray-700">Username</label>
-          <input type="text" disabled placeholder="Your First Name" value=" {{ old('username', $data->username ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
+          <label class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="text" disabled placeholder="Your First Name" value=" {{ old('email', $data->email ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
       <div>
           <label class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
