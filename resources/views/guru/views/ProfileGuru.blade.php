@@ -4,8 +4,7 @@
 <div class="max-w mx-auto p-6 bg-white rounded-lg shadow-md">
   <!-- Header -->
   <div class="mb-6">
-    <h2 class="text-2xl font-bold text-gray-800">Welcome, {{ old('name', $data->name ?? '') }}</h2>
-    <p class="text-gray-500">{{ now()->format('D, d M Y') }}</p>
+    <p class="text-2xl font-bold text-gray-800"> {{ now()->locale('id')->translatedFormat('l, d F Y') }}</p>
   </div>
 
   <!-- Profile Card -->
@@ -16,10 +15,28 @@
 
           <div>
               <h3 class="text-2xl font-bold text-gray-900">{{ old('name', $data->name ?? '') }}</h3>
-              <p class="text-xl text-gray-600">{{ old('email', $data->email ?? '') }}</p>
+              <p class="text-xl text-gray-600">NIP {{ old('email', $data->nip ?? '') }}</p>
           </div>
           <div class="ml-auto">
-              <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md">Edit</button>
+              <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md"
+              title="update" id="btnUpdate" 
+                
+              data-id="{{ $data->id }}"
+              data-nis="{{ $data->nip }}"
+              data-name="{{ $data->name }}"
+              data-email="{{ $data->email }}"
+              data-gender="{{ $data->gender }}"
+              data-sk = "{{ $data->sk }}"
+              data-tanggal_lahir="{{ $data->tanggal_lahir }}"
+              data-tempat_lahir="{{ $data->tempat_lahir }}"
+              data-phone="{{ $data->phone }}"
+              data-role="{{ $data->role }}"
+              data-education="{{ $data->education }}"
+              data-address="{{ $data->address }}"
+
+        
+              data-modal-target="updateprofileGuruModal" data-modal-toggle="updateprofileGuruModal"
+              >Edit</button>
           </div>
       </div>
   </div>
@@ -27,12 +44,12 @@
   <!-- Form Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
       <div>
-          <label class="block text-sm font-medium text-gray-700">Full Name</label>
+          <label class="block text-sm font-medium text-gray-700">Nama Lengkap Name</label>
           <input type="text" disabled placeholder="Your First Name" value=" {{ old('name', $data->name ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
       <div>
-          <label class="block text-sm font-medium text-gray-700">User Name</label>
-          <input type="text" disabled placeholder="Your First Name" value=" {{ old('username', $data->username ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
+          <label class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="text" disabled placeholder="Your First Name" value=" {{ old('email', $data->email ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
       
       <div>
@@ -41,6 +58,12 @@
           value="{{ old('born_place_and_date', ($data->tempat_lahir ?? '') . ', ' . ($data->tanggal_lahir ?? '')) }}"
           class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
+
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
+        <input type="text" disabled placeholder="Your First Name" value=" {{ old('gender', $data->gender ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
+    </div>
       
 
       <div>
@@ -72,5 +95,7 @@
     </div>
   </div>
 </div>
+@include('guru.modal.profile.updateprofileGuru')
+
 
 @endsection

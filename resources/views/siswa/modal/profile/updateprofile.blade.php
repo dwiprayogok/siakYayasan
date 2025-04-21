@@ -17,7 +17,7 @@
                     </svg>
                     <span class="sr-only">Close modal</span>
                 </button>
-            </div>
+            </div> 
             <!-- Modal body -->
             <form class="p-4 md:p-5" id="editprofileSiswaForm">
                 @csrf

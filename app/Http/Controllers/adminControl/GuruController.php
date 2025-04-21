@@ -117,7 +117,6 @@ class GuruController extends Controller
             'education'     => $request->education,
         ]);
 
-        //dd($gurus);
 
 
         return response()->json(['success' => 'User updated successfully!']);

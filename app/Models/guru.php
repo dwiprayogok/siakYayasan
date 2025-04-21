@@ -14,9 +14,11 @@ class guru extends Model
         'nip',
         'role',
         'sk',
+        'gender',
         'tempat_lahir',
         'tanggal_lahir',
         'phone',
+        'address',
         'education',
     ];
 

@@ -16,7 +16,7 @@
 
           <div>
               <h3 class="text-2xl font-bold text-gray-900">{{ old('name', $data->name ?? '') }}</h3>
-              <p class="text-xl text-gray-600">{{ old('kelas_id', $data->kelas_id ?? '') }}</p>
+              <p class="text-xl text-gray-600">Kelas {{ old('kelas_id', $data->kelas_id ?? '') }}</p>
           </div>
           <div class="ml-auto">
               <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md" 
