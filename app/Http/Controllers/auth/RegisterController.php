@@ -44,6 +44,7 @@ class RegisterController extends Controller
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->role = $request->input('role');
+            $user->active = '1';
             $user->save();
     
             // 🎓 Conditionally insert into siswas or gurus table

@@ -9,6 +9,7 @@ use App\Models\guru;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Models\User;
 class ProfileGuruController extends Controller
 {
     public function index()
@@ -55,12 +56,7 @@ class ProfileGuruController extends Controller
             return response()->json(['error' => 'User not found'], 404);
         }
 
-        //dd($request->only(['gender', 'address']));
 
-        Log::info('Gender and address from request:', [
-            'gender' => $request->gender,
-            'address' => $request->address
-        ]);
 
         $gurus->update([
             'kode' => $request->kode,
@@ -68,6 +64,7 @@ class ProfileGuruController extends Controller
             'nip' => $request->nip,
             'role' => $request->role,
             'sk' => $request->sk,
+            'email' => $request->email,
             'gender' => $request->gender, // fallback to existing value if null
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
@@ -76,12 +73,24 @@ class ProfileGuruController extends Controller
             'education' => $request->education,
         ]);
     
-        $gurus->refresh(); // re-fetch updated data from DB
 
-        Log::info('After update:', [
-            'gender' => $gurus->gender,
-            'address' => $gurus->address,
-        ]);
+
+        $user = User::find($id); // or auth()->user();
+
+            if (!$user) {
+                return response()->json(['error' => 'User not found'], 404);
+            }
+            
+            $request->validate([
+                'name'  => 'required|string|max:255',
+                'email' => 'required|email|unique:users,email,' . $user->id,
+            ]);
+            
+            $user->update([
+                'name'  => $request->name,
+                'email' => $request->email,
+            ]);
+        
         return response()->json(['success' => 'User updated successfully!']);
     }
 }

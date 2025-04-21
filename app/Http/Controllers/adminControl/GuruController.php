@@ -4,6 +4,8 @@ namespace App\Http\Controllers\adminControl;
 
 use App\Http\Controllers\Controller;
 use App\Models\guru;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
@@ -65,6 +67,26 @@ class GuruController extends Controller
             'education' => $request->input('education'),
         ]);
 
+
+        $fullName = $request->name;
+        $parts = explode(' ', $fullName);
+
+        $firstName = $parts[0]; // "Alan"
+        $lastInitial = isset($parts[1]) ? substr($parts[1], 0, 1) : ''; // "M"
+
+        $result = $firstName . $lastInitial; // "AlanM"
+
+        $user = User::create([
+        'id'       => $gurus->id,
+        'name'     => $request->name,
+        'email'    => 'guru@mail.com',
+        'username' => $result,
+        'password' => Hash::make('1'),
+        'role'     => 'guru',
+        'active'   => '1',
+    ]);
+    
+
         return redirect()->route('guru')->with('success', 'User added successfully!');
     }
 
@@ -109,6 +131,9 @@ class GuruController extends Controller
             'name'          => $request->name,
             'nip'           => $request->nip,
             'role'          => $request->role,
+            'email'         => $request->email,
+            'gender'        => $request->gender, // fallback to existing value if null
+            'address'       => $request->address, // fallback to existing value if null
             'tempat_lahir'  => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'sk'            => $request->sk,

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\kelas;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
 
@@ -87,6 +88,22 @@ class ProfileSiswaController extends Controller
 
     ]);
 
+    $user = User::find($id); // or auth()->user();
+
+    if (!$user) {
+        return response()->json(['error' => 'User not found'], 404);
+    }
+    
+    $request->validate([
+        'name'  => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $user->id,
+    ]);
+    
+    $user->update([
+        'name'  => $request->name,
+        'email' => $request->email,
+    ]);
+    
 
     return response()->json(['success' => 'Profile updated successfully.']);
 }

@@ -42,7 +42,7 @@
   
                     <div class="col-span-2">
                         <label for="updateemail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                        <input type="email" name="updateemail" id="updateemail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="UserName" required="">
+                        <input type="email" name="updateemail" id="updateemail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="Email" required="">
                     </div>
 
                     <div >
@@ -177,6 +177,7 @@ $('#editprofileSiswaForm').submit(function(e) {
 
         console.log("formattedDate",formattedDate);
         console.log("updateclass", $('#updateclass').val());
+        console.log("updateemail", $('#updateemail').val());
 
     
         var formData = {
@@ -196,7 +197,7 @@ $('#editprofileSiswaForm').submit(function(e) {
         console.log("formData",formData);
 
 
-        $.post('/siswas/' + userid + '/update', formData, function(response) {
+        $.post('/siswas/' + userid + '/updateProfilSiswa', formData, function(response) {
             console.log("formData",formData);
             alert(response.success);
             location.reload(); // Refresh page to see changes

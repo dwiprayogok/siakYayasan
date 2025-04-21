@@ -49,6 +49,13 @@
                       <input type="text" name="updatenip" id="updatenip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="nip" required="">
                     </div>
 
+                    
+                    <div class="col-span-2">
+                        <label for="updateemail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIP</label>
+                        <input type="email" name="updateemail" id="updateemail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="nip" required="">
+                      </div>
+  
+
                     <div >
                         <label for="updatetempat_lahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir</label>
                         <input type="text" name="updatetempat_lahir" id="updatetempat_lahir" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="tempat lahir" required="">
@@ -143,6 +150,7 @@ function formatDate(inputDate) {
                 $('#updatetanggal_lahir').val(response.tanggal_lahir);
                 $('#updatephone').val(response.phone);
                 $('#updatesk').val(response.sk);
+                $('#updateemail').val(response.email);
                 $('#updateaddress').val(response.address);
                 $('#updaterole').val(response.role);
                 $('#updateeducation').val(response.education);
@@ -174,8 +182,7 @@ function formatDate(inputDate) {
         });
 
 
-        console.log("Gender: ", $('#updategender').val());
-        console.log("Address: ", $('#updateaddress').val());
+        console.log("updateemail: ", $('#updateemail').val());
 
 
         var formData = {
@@ -189,6 +196,7 @@ function formatDate(inputDate) {
             tanggal_lahir: formattedDate,
             phone: $('#updatephone').val(),
             sk: $('#updatesk').val(),
+            email: $('#updateemail').val(),
             role: $('#updaterole').val(),
             education: $('#updateeducation').val(),
             address: $('#updateaddress').val(),

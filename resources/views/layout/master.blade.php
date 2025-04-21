@@ -29,13 +29,13 @@
                         </button>
                         <!-- Dropdown menu -->
                         <div class="z-50 hidden my-4 text-base list-none bg-gray-200 divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
-                        <div class="px-4 py-3">
-                        <span class="block text-base text-black dark:text-black"><a>{{Auth::user()->name}}</a></span>
-                        <span class="block text-base  text-black truncate dark:text-black"><a>{{Auth::user()->email}}</a></span>
+                         <div class="px-4 py-3">
+                        <span class="block text-sm text-gray-400 dark:text-white"><a>{{Auth::user()->name}}</a></span>
+                        <span class="block text-sm  text-gray-400 truncate dark:text-gray-400"><a>{{Auth::user()->email}}</a></span>
                         </div>
                         <ul class="py-2" aria-labelledby="user-menu-button">
                         <li>
-                        <a href="{{route('actionlogout')}}" class="block px-4 py-2 text-base text-black hover:bg-green-200 dark:hover:bg-green-600 dark:text-black dark:hover:text-black">Sign out</a>
+                        <a href="{{route('actionlogout')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
                         </li>
                         </ul>
                         </div>

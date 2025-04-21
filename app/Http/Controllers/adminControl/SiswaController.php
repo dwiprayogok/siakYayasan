@@ -4,9 +4,11 @@ namespace App\Http\Controllers\adminControl;
 
 use App\Http\Controllers\Controller;
 use App\Models\kelas;
+use App\Models\User;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 
 class SiswaController extends Controller
@@ -58,6 +60,7 @@ class SiswaController extends Controller
 
         $formattedDate = Carbon::createFromFormat('m/d/Y', $request->birth_date)->format('Y-m-d');
 
+       
         // Create and store the user
         $siswas = Siswa::create([
             'id_student' => $request->id_student,
@@ -72,6 +75,25 @@ class SiswaController extends Controller
             'name_of_parent' => $request->name_of_parent,
             
         ]);
+
+            $fullName = $request->name;
+            $parts = explode(' ', $fullName);
+
+            $firstName = $parts[0]; // "Alan"
+            $lastInitial = isset($parts[1]) ? substr($parts[1], 0, 1) : ''; // "M"
+
+            $result = $firstName . $lastInitial; // "AlanM"
+
+        $user = User::create([
+            'id'       => $siswas->id,
+            'name'     => $request->name,
+            'email'    => 'siswa@mail.com',
+            'username' => $result,
+            'password' => Hash::make('1'),
+            'role'     => 'siswa',
+            'active'   => '1',
+        ]);
+        
 
         //return response()->json(['message' => 'User created successfully!', 'siswa' => $siswa]);
         return redirect()->route('siswa')->with('success', 'Data Siswa added successfully!');
