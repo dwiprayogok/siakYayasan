@@ -58,6 +58,9 @@
                         <li>
                         <a href="\siswa\jadwalpelajaransiswa" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-200 md:hover:bg-transparent md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Jadwal Pelajaran</a>
                         </li>
+                        <li>
+                        <a href="\siswa\listteman" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-200 md:hover:bg-transparent md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">List Teman</a>
+                        </li>
                         </ul>
                         </div>
                     </div>
