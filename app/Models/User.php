@@ -59,6 +59,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Siswa::class, 'id');
     }
+
+
+    public function guru()
+    {
+        return $this->hasOne(Guru::class, 'id');
+    }
     
     
 }

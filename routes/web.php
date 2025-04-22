@@ -24,6 +24,7 @@ use App\Http\Controllers\siswa\ListTemanController;
 use App\Http\Controllers\guru\GuruDashboardController;
 use App\Http\Controllers\guru\ProfileGuruController;
 use App\Http\Controllers\guru\NilaiSiswaController;
+use App\Http\Controllers\guru\JadwalAjarController;
 
 use App\Http\Controllers\User\ProfileController;
 
@@ -51,6 +52,7 @@ Route::middleware(['auth', 'role:guru'])->group(function () {
     Route::get('/guru/dashboard', [GuruDashboardController::class, 'index'])->name('guru.dashboard');
     Route::get('/guru/profileguru', [ProfileGuruController::class, 'index']);
     Route::get('/guru/inputnilai', [NilaiSiswaController::class, 'index']);
+    Route::get('/guru/jadwalajar', [JadwalAjarController::class, 'index']);
     Route::post('/gurus/{id}/updateData', [ProfileGuruController::class, 'updateData']);
 
 

@@ -6,7 +6,22 @@
 
 
     <div class=" px-1 lg:px-12">
-        <h1 class = "text-2xl">Selamat Datang <b>{{Auth::user()->name}}</b> </h1>
+      
+        <div class="bg-gradient-to-r from-blue-100 to-yellow-100 p-6 rounded-xl mb-6">
+            <div class="flex items-center  mx-auto  space-x-4">
+                <img class="w-20 h-20 rounded-full border-4 border-white shadow-md" src="/profile.png" alt="user photo">
+      
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900">{{Auth::user()->guru->name}}</h3>
+                    <p class="text-xl text-gray-600">Posisi : {{ Auth::user()->guru->role ?? 'No class found' }}</p>
+                </div>
+               
+            </div>
+        </div>
+
+
+
+
 
         <h1 class="text-2xl py-4 border-b-4 mb-5"></h1>
         <div class="bg-white dark:bg-white relative shadow-md sm:rounded-lg overflow-hidden">

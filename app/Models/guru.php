@@ -34,4 +34,9 @@ class guru extends Model
         return $this->hasMany(JadwalPelajaran::class, 'kode_guru', 'kode');
 
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
