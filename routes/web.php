@@ -51,7 +51,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:guru'])->group(function () {
     Route::get('/guru/dashboard', [GuruDashboardController::class, 'index'])->name('guru.dashboard');
     Route::get('/guru/profileguru', [ProfileGuruController::class, 'index']);
-    Route::get('/guru/inputnilai', [NilaiSiswaController::class, 'index']);
+    Route::get('/guru/inputnilai', [NilaiSiswaController::class, 'index'])->name('guru.inputNilai');;
     Route::get('/guru/jadwalajar', [JadwalAjarController::class, 'index']);
     Route::post('/gurus/{id}/updateData', [ProfileGuruController::class, 'updateData']);
 
