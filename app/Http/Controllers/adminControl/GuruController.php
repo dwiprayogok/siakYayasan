@@ -40,7 +40,6 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode' => 'required',
             'name' => 'required',
             'nip' => 'required',
             'sk' => 'required',
@@ -53,21 +52,6 @@ class GuruController extends Controller
 
         $formattedDate = Carbon::createFromFormat('m/d/Y', $request->tanggal_lahir)->format('Y-m-d');
 
-
-        // Create and store the user
-        $gurus = guru::create([
-            'kode' => $request->kode,
-            'name' => $request->name,
-            'nip' => $request->nip,
-            'sk' => $request->sk,
-            'tempat_lahir' => $request->tempat_lahir,
-            'tanggal_lahir' => $formattedDate,
-            'phone' => $request->phone,
-            'role' => $request->role,
-            'education' => $request->input('education'),
-        ]);
-
-
         $fullName = $request->name;
         $parts = explode(' ', $fullName);
 
@@ -76,10 +60,26 @@ class GuruController extends Controller
 
         $result = $firstName . $lastInitial; // "AlanM"
 
+
+        // Create and store the user
+        $gurus = guru::create([
+            'kode' => $request->nip,
+            'name' => $request->name,
+            'nip' => $request->nip,
+            'sk' => $request->sk,
+            'email' => $result.'@mail.com',
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $formattedDate,
+            'phone' => $request->phone,
+            'role' => $request->role,
+            'education' => $request->input('education'),
+        ]);
+
+
         $user = User::create([
         'id'       => $gurus->id,
         'name'     => $request->name,
-        'email'    => 'guru@mail.com',
+        'email'    => $result.'@mail.com',
         'username' => $result,
         'password' => Hash::make('1'),
         'role'     => 'guru',

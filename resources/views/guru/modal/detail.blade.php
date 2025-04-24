@@ -43,6 +43,15 @@
                          dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-800
                           dark:focus:border-primary-800" placeholder="Role" required="" readonly>
                       </div> 
+
+                      
+                    <div class="col-span-2">
+                        <label for="detailEmail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                        <input type="email" name="email" id="detailEmail" class="bg-gray-50 border border-gray-300
+                        text-gray-900 text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5
+                         dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-800
+                          dark:focus:border-primary-800" placeholder="Email" required="" readonly>
+                      </div> 
                      
                 </div>
             
@@ -66,25 +75,14 @@
                 console.log(response);
                 console.log(response.nip);
                 console.log(response.name);
+                console.log(response.email);
                 // //fill data to form
                 $('#detailNip').val(response.nip);
                 $('#detailName').val(response.name);
                 $('#detailPosisi').val(response.role);
+                $('#detailEmail').val(response.email);
 
-                // if (response.role  == '') {
-                //     $('#detailRole').val('--');
-                // } else {
-                //     $('#detailRole').val(response.role);
-                // }
-                
-
-                // if (response.active == 1) {
-                //     $('#detailStatus').val('Aktif');
-                // } else if (response.active == 0) {
-                //     $('#detailStatus').val('Tidak Aktif');
-                // } else {
-                //     $('#detailStatus').val('-');
-                // }
+              
                 
 
             }

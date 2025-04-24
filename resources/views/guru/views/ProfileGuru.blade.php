@@ -47,6 +47,7 @@
           <label class="block text-sm font-medium text-gray-700">Nama Lengkap Name</label>
           <input type="text" disabled placeholder="Your First Name" value=" {{ old('name', $data->name ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
       </div>
+
       <div>
           <label class="block text-sm font-medium text-gray-700">Email</label>
           <input type="text" disabled placeholder="Your First Name" value=" {{ old('email', $data->email ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
@@ -63,36 +64,37 @@
       <div>
         <label class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
         <input type="text" disabled placeholder="Your First Name" value=" {{ old('gender', $data->gender ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
-    </div>
+     </div>
       
 
       <div>
         <label class="block text-sm font-medium text-gray-700">Posisi</label>
         <input type="text" disabled placeholder="Your First Name" value=" {{ old('role', $data->role ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
-    </div>
+     </div>
 
 
-    <div>
-      <label class="block text-sm font-medium text-gray-700">No SK</label>
-      <input type="text" disabled placeholder="Your First Name" value=" {{ old('sk', $data->sk ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
-  </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700">No SK</label>
+            <input type="text" disabled placeholder="Your First Name" value=" {{ old('sk', $data->sk ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
+        </div>
 
 
-      <div>
-          <label class="block text-sm font-medium text-gray-700">No Telepon</label>
-          <input type="text" disabled placeholder="Your First Name" value=" {{ old('phone', $data->phone ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
-      </div>
-      <div>
-          <label class="block text-sm font-medium text-gray-700">Pendidikan Terakhir</label>
-          <input type="text" disabled placeholder="Your First Name" value=" {{ old('education', $data->education ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
-      </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700">No Telepon</label>
+            <input type="text" disabled placeholder="Your First Name" value=" {{ old('phone', $data->phone ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Pendidikan Terakhir</label>
+            <input type="text" disabled placeholder="Your First Name" value=" {{ old('education', $data->education ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
+        </div>
 
-      <div class="sm:col-span-2">
-        <label for="address" class="block mb-2 text-sm font-medium text-black dark:text-black">Alamat</label>
-        <textarea id="address" disabled rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 
-        focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-         placeholder="Your description here" >{{ old('address', $data->address ?? '') }}</textarea>
-    </div>
+        <div class="sm:col-span-2">
+            <label for="address" class="block mb-2 text-sm font-medium text-black dark:text-black">Alamat</label>
+            <textarea id="address" disabled rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 
+            focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="Your description here" >{{ old('address', $data->address ?? '') }}</textarea>
+        </div>
+     
   </div>
 </div>
 @include('guru.modal.profile.updateprofileGuru')

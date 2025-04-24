@@ -37,11 +37,23 @@ class NilaiSiswaController extends Controller
 
         $kelass = Kelas::all();
         $matapelajarans = matapelajaran::all(); // Fetch all Gurus
-        $siswas = Kelas::all();
         $siswas = $query->orderBy('id', 'asc')->paginate(10);
         //return view('guru.views.nilaisiswa');
         return view('/guru/views/nilaisiswa', compact('siswas', 'kelass','matapelajarans'));
 
 
+    }
+
+
+    public function showModalView(Request $request)
+    {
+        $kelass = Kelas::all();
+        $siswas = collect();
+
+        if ($request->filled('kelas_id')) {
+            $siswas = Siswa::where('kelas_id', $request->kelas_id)->get();
+        }
+
+        return view('guru.modal.nilai.create', compact('kelass', 'siswas'));
     }
 }

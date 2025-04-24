@@ -2,23 +2,31 @@
 @extends('layout.masterGuru')
 @section('konten')
 
-<section class=" bg-gray-100 dark:bg-gray-100 sm:p-20">
 
 
-    <div class=" px-1 lg:px-12">
-      
-        <div class="bg-gradient-to-r from-blue-100 to-yellow-100 p-6 rounded-xl mb-6">
-            <div class="flex items-center  mx-auto  space-x-4">
-                <img class="w-20 h-20 rounded-full border-4 border-white shadow-md" src="/profile.png" alt="user photo">
-                <div>
-                    <h3 class="text-2xl font-bold text-gray-900">{{Auth::user()->guru->name}}</h3>
-                    <p class="text-xl text-gray-600">Posisi : {{ Auth::user()->guru->role ?? 'No class found' }}</p>
-                </div>
-               
+<div class="max-w mx-auto p-6 bg-white rounded-lg shadow-md">
+    <!-- Header -->
+    <div class="mb-6">
+      <p class="text-2xl font-bold text-gray-800"> {{ now()->locale('id')->translatedFormat('l, d F Y') }}</p>
+    </div>
+  
+    <!-- Profile Card -->
+    <div class="bg-gradient-to-r from-blue-100 to-yellow-100 p-6 rounded-xl mb-6">
+        <div class="flex items-center  mx-auto  space-x-4">
+            {{-- <img src="https://via.placeholder.com/100" alt="Profile" class="w-20 h-20 rounded-full border-4 border-white shadow-md"> --}}
+            <img class="w-20 h-20 rounded-full border-4 border-white shadow-md" src="/profile.png" alt="user photo">
+  
+            <div>
+                <h3 class="text-2xl font-bold text-gray-900">{{Auth::user()->guru->name}}</h3>
+                <p class="text-xl text-gray-600">Posisi : {{ Auth::user()->guru->role ?? 'No class found' }}</p>
             </div>
-        </div>
-
      
+        </div>
+    </div>
+
+     <!-- List Data -->
+    <div>
+         
         <div class="bg-white dark:bg-white relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                 <form method="GET" action="{{ url('/guru/inputnilai') }}" class="mb-4">
@@ -62,10 +70,10 @@
                     <tbody>
                         @foreach ( $siswas as $siswa )
                         <tr class="border-b dark:border-gray-700">
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->nis }}</td>
+                            <td class="px-4 py-3 font-medium  text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->nis }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->name }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kode_mapel }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->nis }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kelas_id }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kelas_id }}</td>
                             <td class="p-4">
                                 <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $siswa->id }}" data-modal-target="updateSiswaModal" data-modal-toggle="updateSiswaModal"  > 
@@ -108,8 +116,16 @@
                 
             </div>
         </div>
+
+
     </div>
-</section>
+  
+  </div>
+
+
+
+
+
 @include('guru.modal.nilai.create')
 @include('guru.modal.delete')
 @include('guru.modal.update')
