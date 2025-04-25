@@ -78,7 +78,7 @@ class JadwalPelajaranController extends Controller
         ]);
 
         //return response()->json(['message' => 'User created successfully!', 'user' => $user]);
-        return redirect()->route('jadwal')->with('success', 'Jadwal Pelajaran added successfully!');
+        return redirect()->route('jadwalpelajaran')->with('success', 'Jadwal Pelajaran added successfully!');
 
     }
 
