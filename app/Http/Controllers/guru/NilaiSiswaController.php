@@ -6,8 +6,10 @@ namespace App\Http\Controllers\guru;
 use App\Http\Controllers\Controller;
 use App\Models\kelas;
 use App\Models\Siswa;
+use App\Models\guru;
 use App\Models\matapelajaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 
@@ -20,6 +22,8 @@ class NilaiSiswaController extends Controller
     {
 
         $query = Siswa::query();
+
+        $nip =Auth::user()->guru->nip ; // Get the logged-in user
 
         // If search is filled, filter by name or NIS
         if ($request->filled('search')) {
@@ -36,24 +40,25 @@ class NilaiSiswaController extends Controller
         
 
         $kelass = Kelas::all();
-        $matapelajarans = matapelajaran::all(); // Fetch all Gurus
-        $siswas = $query->orderBy('id', 'asc')->paginate(10);
-        //return view('guru.views.nilaisiswa');
-        return view('/guru/views/nilaisiswa', compact('siswas', 'kelass','matapelajarans'));
-
-
-    }
-
-
-    public function showModalView(Request $request)
-    {
-        $kelass = Kelas::all();
         $siswas = collect();
-
         if ($request->filled('kelas_id')) {
             $siswas = Siswa::where('kelas_id', $request->kelas_id)->get();
         }
 
-        return view('guru.modal.nilai.create', compact('kelass', 'siswas'));
+        // $gurus = Guru::where('nip', $request->nip)->orWhere('kode', $request->kode)->first();
+
+        // $matapelajarans = $gurus ? $gurus->matapelajarans : collect();
+        //$matapelajarans = matapelajaran::all(); // Fetch all Gurus
+        $siswas = $query->orderBy('id', 'asc')->paginate(10);
+
+
+        return view('/guru/views/nilaisiswa', compact('siswas', 'kelass'));
+
+
     }
+
+
+
+
+
 }

@@ -16,13 +16,11 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="{{ route('guru.inputNilai') }}" method="POST" >
+            <form class="p-4 md:p-5" action="{{ route('guru.inputnilai') }}" method="POST" >
               {{ csrf_field() }}
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
-
-
                     
-                  <div class="col-span-2">
+                  {{-- <div class="col-span-2">
                     <form class="max-w-md mx-auto">   
                       <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                       <div class="relative">
@@ -36,11 +34,8 @@
                       </div>
                     </form>
 
-                  </div>
-
-
-
-                  
+                  </div> --}}
+ 
                   <div class="col-span-2">
                     <label for="kelas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
                       <select name="kelas"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -53,35 +48,36 @@
                       </select>
                   </div>
                  
-
-                                      
-                   
                   <div class="col-span-2">
-                    <label for="kode_mapel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mata Pelajaran</label>
-                    <select id="kode_mapel"  name="kode_mapel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        <option value="">-- Pilih Siswa --</option>
-                        @foreach ($siswas as $siswa)
-                            <option value="{{ $siswa->nis }}">{{ $siswa->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                      <div class="col-span-2">
                         <label for="kode_mapel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mata Pelajaran</label>
                         <select id="kode_mapel"  name="kode_mapel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option value="">-- Pilih Mata Pelajaran --</option>
-                            @foreach ($matapelajarans as $mapel)
-                                <option value="{{ $mapel->kode }}">{{ $mapel->nama }}</option>
+                            <option value="">-- Pilih Siswa --</option>
+                            @foreach ($siswas as $siswa)
+                                <option value="{{ $siswa->nis }}">{{ $siswa->name }}</option>
                             @endforeach
                         </select>
+                  </div>
+
+                   <div class="col-span-2">
+                    <label for="kode_mapel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mata Pelajaran</label>
+                    {{-- <select id="kode_mapel"  name="kode_mapel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <option value="">-- Pilih Mata Pelajaran --</option>
+                        @foreach ($matapelajarans as $mapel)
+                            <option value="{{ $mapel->kode }}">{{ $mapel->nama }}</option>
+                        @endforeach
+                    </select> --}}
                     </div>
 
 
               </div>
+              <div class="p-4 md:p-5">
                 <button type="submit" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                     <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                    Tambah Guru Baru
+                    Tambah Nilai Siswa
                 </button>
+              </div>
+               
+                
             </form>
         </div>
     </div>

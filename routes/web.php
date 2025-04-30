@@ -51,7 +51,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:guru'])->group(function () {
     Route::get('/guru/dashboard', [GuruDashboardController::class, 'index'])->name('guru.dashboard');
     Route::get('/guru/profileguru', [ProfileGuruController::class, 'index']);
-    Route::get('/guru/inputnilai', [NilaiSiswaController::class, 'index'])->name('guru.inputNilai');;
+    Route::get('/guru/inputnilai', [NilaiSiswaController::class, 'index'])->name('guru.inputnilai');;
     Route::get('/guru/jadwalajar', [JadwalAjarController::class, 'index']);
     Route::post('/gurus/{id}/updateData', [ProfileGuruController::class, 'updateData']);
 
@@ -103,6 +103,8 @@ Route::post('/adminControl/guru', [GuruController::class, 'store'])->name('guru.
 Route::get('/gurus/{id}', [GuruController::class, 'show']);
 Route::post('/gurus/{id}/update', [GuruController::class, 'update']);
 Route::delete('/gurus/{id}', [GuruController::class, 'destroy']);
+Route::get('/gurus.print', [GuruController::class, 'printPdf'])->name('gurus.print');
+Route::get('/gurus.exportexcel', [GuruController::class, 'exportExcel'])->name('gurus.export');
 
 
 Route::get('/adminControl/siswa', [SiswaController::class, 'index'])->name('siswa')->middleware('auth');
@@ -110,6 +112,8 @@ Route::post('/adminControl/siswa', [SiswaController::class, 'store'])->name('sis
 Route::get('/siswas/{id}', [SiswaController::class, 'show']);
 Route::post('/siswas/{id}/update', [SiswaController::class, 'update']);
 Route::delete('/siswas/{id}', [SiswaController::class, 'destroy']);
+Route::get('/siswas.print', [SiswaController::class, 'printPdf'])->name('siswas.print');
+Route::get('/siswas.exportexcel', [SiswaController::class, 'exportExcel'])->name('siswas.export');
 
 
 Route::get('/adminControl/jadwal', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
@@ -126,6 +130,10 @@ Route::post('/adminControl/matapelajaran', [MataPelajaranController::class, 'sto
 Route::get('/matapelajarans/{id}', [MataPelajaranController::class, 'show']);
 Route::post('/matapelajarans/{id}/update', [MataPelajaranController::class, 'update']);
 Route::delete('/matapelajarans/{id}', [MataPelajaranController::class, 'destroy']);
+Route::get('/matapelajarans.print', [MataPelajaranController::class, 'printPdf'])->name('matapelajarans.print');
+Route::get('/matapelajarans.exportexcel', [MataPelajaranController::class, 'exportExcel'])->name('matapelajarans.export');
+
+
 
 
 

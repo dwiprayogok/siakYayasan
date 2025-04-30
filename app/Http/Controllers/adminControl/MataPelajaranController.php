@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\guru;
 use App\Models\Matapelajaran;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Validator;
-
+use App\Exports\MatapelajaranExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MataPelajaranController extends Controller
 {
@@ -110,5 +112,21 @@ class MataPelajaranController extends Controller
         return response()->json(['success' => 'Mata Pelajaran deleted successfully']);
         
     }
+
+
+        public function printPdf()
+        {
+            $matapelajarans = Matapelajaran::with('guru')->get();
+
+            $pdf = Pdf::loadView('/admin/views/downloadPDF/matapelajaranPDF', compact('matapelajarans'))
+                    ->setPaper('A4', 'portrait');
+
+            return $pdf->download('daftar-matapelajarans.pdf');
+        }
+
+        public function exportExcel()
+        {
+            return Excel::download(new MatapelajaranExport, 'daftar-matapelajaran.xlsx');
+        }
     
 }

@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use App\Exports\SiswaExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class SiswaController extends Controller
 {
@@ -171,5 +175,22 @@ class SiswaController extends Controller
 
         return response()->json(['success' => 'User deleted successfully']);
         
+    }
+
+
+    public function printPdf()
+    {
+        //$siswas = Siswa::with('kelas')->get();
+        $siswas = Siswa::all();
+
+        $pdf = Pdf::loadView('/admin/views/downloadPDF/siswaPDF', compact('siswas'))
+                ->setPaper('A4', 'portrait');
+
+        return $pdf->download('daftar-Siswa.pdf');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new SiswaExport, 'daftar-siswa.xlsx');
     }
 }
