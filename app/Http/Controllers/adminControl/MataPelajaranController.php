@@ -8,8 +8,7 @@ use App\Models\Matapelajaran;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Validator;
-use App\Exports\MatapelajaranExport;
-use Maatwebsite\Excel\Facades\Excel;
+
 
 class MataPelajaranController extends Controller
 {
@@ -124,9 +123,6 @@ class MataPelajaranController extends Controller
             return $pdf->download('daftar-matapelajarans.pdf');
         }
 
-        public function exportExcel()
-        {
-            return Excel::download(new MatapelajaranExport, 'daftar-matapelajaran.xlsx');
-        }
+      
     
 }

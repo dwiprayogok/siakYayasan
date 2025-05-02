@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Daftar Siswa</title>
+    <title>Daftar Mata Pelajaran</title>
     <style>
         body {
             font-family: sans-serif;

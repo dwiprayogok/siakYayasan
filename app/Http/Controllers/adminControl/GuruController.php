@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\adminControl;
 
-use App\Exports\GuruExport;
 use App\Http\Controllers\Controller;
 use App\Models\guru;
 use App\Models\User;
@@ -10,8 +9,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
-use App\Exports\SiswaExport;
-use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 
@@ -170,8 +167,5 @@ class GuruController extends Controller
         return $pdf->download('daftar-Guru.pdf');
     }
 
-    public function exportExcel()
-    {
-        return Excel::download(new GuruExport, 'daftar-Guru.xlsx');
-    }
+    
 }

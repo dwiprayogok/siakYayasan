@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 
@@ -131,4 +132,17 @@ class UserController extends Controller
         return response()->json(['success' => 'User deleted successfully']);
         
     }
+
+
+    
+    public function printPdf()
+    {
+        $users = User::all();
+
+        $pdf = Pdf::loadView('/admin/views/downloadPDF/userPDF', compact('users'))
+                ->setPaper('A4', 'portrait');
+
+        return $pdf->download('daftar-users.pdf');
+    }
+
 }

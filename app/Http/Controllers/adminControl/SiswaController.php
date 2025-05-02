@@ -10,8 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
-use App\Exports\SiswaExport;
-use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 
@@ -189,8 +187,5 @@ class SiswaController extends Controller
         return $pdf->download('daftar-Siswa.pdf');
     }
 
-    public function exportExcel()
-    {
-        return Excel::download(new SiswaExport, 'daftar-siswa.xlsx');
-    }
+  
 }

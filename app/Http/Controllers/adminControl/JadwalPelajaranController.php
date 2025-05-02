@@ -9,6 +9,7 @@ use App\Models\guru;
 use App\Models\kelas;
 use App\Models\matapelajaran;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class JadwalPelajaranController extends Controller
@@ -142,6 +143,19 @@ class JadwalPelajaranController extends Controller
 
         return response()->json(['success' => 'User deleted successfully']);
         
+    }
+
+    
+    public function printPdf()
+    {
+
+        $jadwalpelajarans = jadwalpelajaran::with(['guru', 'matapelajaran'])->get();
+
+
+        $pdf = Pdf::loadView('/admin/views/downloadPDF/jadwalpelajaranPDF', compact('jadwalpelajarans'))
+                ->setPaper('A4', 'portrait');
+
+        return $pdf->download('daftar-jadwalpelajaran.pdf');
     }
     
 }
