@@ -59,10 +59,10 @@
                         <tr>
                             <th scope="col" class="px-4 py-3  dark:text-white">Nis</th>
                             <th scope="col" class="px-4 py-3  dark:text-white">Nama Siswa</th>
-                            <th scope="col" class="px-4 py-3  dark:text-white">Mata Pelajaran</th>
-                            <th scope="col" class="px-4 py-6  dark:text-white">Kelas</th>
+                            {{-- <th scope="col" class="px-4 py-3  dark:text-white">Mata Pelajaran</th> --}}
+                            {{-- <th scope="col" class="px-4 py-6  dark:text-white">Kelas</th>
                             <th scope="col" class="px-4 py-6  dark:text-white">Nilai</th>
-                            <th scope="col" class="px-4 py-6  dark:text-white">Action</th>
+                            <th scope="col" class="px-4 py-6  dark:text-white">Action</th> --}}
                         </tr>
                     </thead>
 
@@ -72,10 +72,20 @@
                         <tr class="border-b dark:border-gray-700">
                             <td class="px-4 py-3 font-medium  text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->nis }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->name }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kode_mapel }}</td>
+                            {{-- <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+
+                                @foreach($siswa->kelas->jadwalpelajaran as $jadwal)
+                                {{ $jadwal->matapelajaran->nama_mapel ?? '-' }} 
+                                ({{ $jadwal->guru->nama ?? '-' }})<br>
+                                 @endforeach
+
+
+                            </td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kelas_id }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kelas_id }}</td>
-                            <td class="p-4">
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kelas_id }}</td> --}}
+                            {{-- <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kelas->nama }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kelas_id }}</td> --}}
+                            {{-- <td class="p-4">
                                 <button class="mr-4 update" title="update" id="btnUpdate" data-id="{{ $siswa->id }}" data-modal-target="updateSiswaModal" data-modal-toggle="updateSiswaModal"  > 
                                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-blue-500 hover:fill-blue-700"
                                     viewBox="0 0 348.882 348.882">
@@ -102,7 +112,7 @@
                                         <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
                                       </svg>
                                   </button>
-                              </td>
+                              </td> --}}
                         </tr>
                         @endforeach
                     </tbody>
@@ -128,7 +138,7 @@
 
 @include('guru.modal.nilai.create')
 @include('guru.modal.delete')
-@include('guru.modal.update')
+@include('guru.modal.nilai.update')
 @include('guru.modal.detail')
 
 

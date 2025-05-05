@@ -25,7 +25,8 @@ class guru extends Model
 
     public function matapelajaran()
     {
-        return $this->hasMany(matapelajaran::class, 'kode');
+        //return $this->hasMany(matapelajaran::class, 'kode');
+        return $this->hasMany(matapelajaran::class, 'kode_mapel');
     }
 
     public function jadwalPelajaran()

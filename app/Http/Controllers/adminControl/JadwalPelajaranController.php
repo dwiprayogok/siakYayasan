@@ -23,7 +23,7 @@ class JadwalPelajaranController extends Controller
         if ($request->filled('search')) {
             $search = $request->input('search');
             $query->where(function ($q) use ($search) {
-                $q->where('kelas', 'LIKE', "%{$search}%")
+                $q->where('kode_kelas', 'LIKE', "%{$search}%")
                   ->orWhere('hari', 'LIKE', "%{$search}%")
                   ->orWhere('kode_mapel', 'LIKE', "%{$search}%");
             });
@@ -35,7 +35,7 @@ class JadwalPelajaranController extends Controller
 
         $jadwalpelajarans = $query
         ->orderBy('start_time', 'asc')
-        ->orderBy('kelas', 'asc')
+        ->orderBy('kode_kelas', 'asc')
         ->paginate(11);
 
         //$jadwalPelajarans = JadwalPelajaran::with(['guru', 'matapelajaran'])->paginate(10);
@@ -56,7 +56,7 @@ class JadwalPelajaranController extends Controller
             'hari' => 'required',
             'start_time' => 'required',
             'end_time' => 'required',
-            'kelas' => 'required',
+            'kode_kelas' => 'required',
             'kode_guru' => 'required',
             'kode_mapel' => 'required',
            
@@ -71,7 +71,7 @@ class JadwalPelajaranController extends Controller
             'hari'          => $request->hari,
             'start_time'    => $request->start_time,
             'end_time'      => $request->end_time,
-            'kelas'         => $request->input('kelas'),
+            'kode_kelas'         => $request->input('kelas'),
             'kode_guru'     => $request->input('kode_guru'),
             'nama_guru'     => $request->input('name'),
             'kode_mapel'    => $request->input('kode_mapel'),
@@ -102,7 +102,7 @@ class JadwalPelajaranController extends Controller
             'hari' => 'required',
             'start_time' => 'required',
             'end_time' => 'required',
-            'kelas' => 'required',
+            'kode_kelas' => 'required',
             'kode_guru' => 'required',
             'kode_mapel' => 'required'
         ]);
@@ -126,7 +126,7 @@ class JadwalPelajaranController extends Controller
             'hari'          => $request->hari,
             'start_time'    => $request->start_time,
             'end_time'      => $request->end_time,
-            'kelas'         => $request->input('kelas'),
+            'kode_kelas'         => $request->input('kelas'),
             'kode_guru'     => $request->input('kode_guru'),
             'nama_guru'     => $request->input('name'),
             'kode_mapel'    => $request->input('kode_mapel'),

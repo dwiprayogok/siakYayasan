@@ -91,7 +91,7 @@
                         <select id="updatekode_mapel"  name="updatekode_mapel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option value="">-- Pilih Mata Pelajaran --</option>
                             @foreach ($matapelajarans as $mapel)
-                                <option value="{{ $mapel->kode }}">{{ $mapel->nama }}</option>
+                                <option value="{{ $mapel->kode_mapel }}">{{ $mapel->nama }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -128,7 +128,7 @@
                 $('#id').val(response.id);
 
                 $('#updatehari').val(response.hari);
-                $('#updatekelas').val(response.kelas);
+                $('#updatekelas').val(response.kode_kelas);
                 $('#updatestart_time').val(response.start_time);
                 $('#updateend_time').val(response.end_time);
                 $('#updatekode_guru').val(response.kode_guru);
@@ -150,7 +150,7 @@
             _token: $('input[name=_token]').val(),
             id: $('#id').val(),
             hari: $('#updatehari').val(),
-            kelas: $('#updatekelas').val(),
+            kode_kelas: $('#updatekelas').val(),
             start_time: $('#updatestart_time').val(),
             end_time: $('#updateend_time').val(),
             kode_guru: $('#updatekode_guru').val(),

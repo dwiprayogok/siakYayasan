@@ -29,12 +29,20 @@ class jadwalpelajaran extends Model
 
     public function matapelajaran()
     {
-        return $this->belongsTo(Matapelajaran::class, 'kode_mapel', 'kode');
+        //return $this->belongsTo(Matapelajaran::class, 'kode_mapel', 'kode');
+        return $this->belongsTo(Matapelajaran::class, 'kode_mapel', 'kode_mapel');
 
     }
   
     public function siswa()
     {
-        return $this->belongsTo(Siswa::class, 'kelas', 'kelas_id');
+        //return $this->belongsTo(Siswa::class, 'kelas', 'kelas_id');
+        return $this->belongsTo(Siswa::class, 'kode_kelas', 'kelas_id');
     }
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'kode_kelas', 'kode_kelas');
+    }
+
 }

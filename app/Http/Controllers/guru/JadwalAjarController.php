@@ -16,13 +16,13 @@ class JadwalAjarController extends Controller
 
         $jadwal = DB::table('jadwalpelajarans')
             ->join('gurus', 'jadwalpelajarans.kode_guru', '=', 'gurus.kode')
-            ->join('matapelajarans', 'jadwalpelajarans.kode_mapel', '=', 'matapelajarans.kode')
+            ->join('matapelajarans', 'jadwalpelajarans.kode_mapel', '=', 'matapelajarans.kode_mapel')
             ->select(
                 'jadwalpelajarans.id',
                 'jadwalpelajarans.hari',
                 'jadwalpelajarans.start_time',
                 'jadwalpelajarans.end_time',
-                'jadwalpelajarans.kelas',
+                'jadwalpelajarans.kode_kelas',
                 'gurus.nip as NIP',
                 'gurus.name as Nama_Guru',
                 'matapelajarans.nama as Nama_Mapel'

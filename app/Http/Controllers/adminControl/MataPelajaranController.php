@@ -49,7 +49,7 @@ class MataPelajaranController extends Controller
         }
 
         $matapelajarans = Matapelajaran::create([
-            'kode' => $request->kode_mapel,
+            'kode_mapel' => $request->kode_mapel,
             'nama' => $request->nama_mapel,
             'kode_guru' =>  $request->input('kode_guru'),
         ]);
@@ -95,7 +95,7 @@ class MataPelajaranController extends Controller
         }
         $matapelajarans->update([
             'id'                => $request->id,
-            'kode'              => $request->kode_mapel,
+            'kode_mapel'              => $request->kode_mapel,
             'nama'              => $request->nama_mapel,
             'kode_guru'         =>  $request->input('kode_guru')
         ]);

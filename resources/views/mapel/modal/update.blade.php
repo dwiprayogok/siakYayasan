@@ -75,7 +75,7 @@
                 console.log(response);
                 // //fill data to form
                 $('#id').val(response.id);
-                $('#updatekode_mapel').val(response.kode);
+                $('#updatekode_mapel').val(response.kode_mapel);
                 $('#updatenama_mapel').val(response.nama);
                 $('#updatekode_guru').val(response.kode_guru);
             }

@@ -62,7 +62,7 @@
             success:function(response){
                 console.log(response);
                 // //fill data to form
-                $('#detailkode_mapel').val(response.kode);
+                $('#detailkode_mapel').val(response.kode_mapel);
                 $('#detailnama_mapel').val(response.nama);
                 $('#detailkode_guru').val(response.kode_guru);
             }

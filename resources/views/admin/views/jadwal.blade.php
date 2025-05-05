@@ -91,7 +91,7 @@
                         <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->start_time }}</td>
                         <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->end_time }}</td>
                         <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->hari }}</td>
-                        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->kelas }}</td>
+                        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $japel->kode_kelas }}</td>
                         <td class="px-4 py-3 font-medium text-gray-900  whitespace-nowrap dark:text-black">{{ $japel->guru ? $japel->guru->name : $japel->kode_guru }}</td>
                         <td class="px-4 py-3 font-medium text-gray-900  whitespace-nowrap dark:text-black">{{ $japel->matapelajaran ? $japel->matapelajaran->nama : $japel->kode_mapel  }}</td>
                         <td class="p-4">

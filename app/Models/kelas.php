@@ -20,4 +20,10 @@ class kelas extends Model
         return $this->hasMany(Siswa::class, 'kelas_id','kode'); //This model belongs to one Kelas, and the foreign key in this model (probably Siswa) is kelas_id."
 
     }
+
+    public function jadwalpelajaran()
+    {
+        return $this->hasMany(JadwalPelajaran::class);
+    }
+
 }

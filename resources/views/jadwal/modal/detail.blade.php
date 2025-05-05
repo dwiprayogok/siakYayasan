@@ -89,7 +89,7 @@
                         <select id="detailkode_mapel"  name="detailkode_mapel" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option value="">-- Pilih Mata Pelajaran --</option>
                             @foreach ($matapelajarans as $mapel)
-                                <option value="{{ $mapel->kode}}">{{ $mapel->nama }}</option>
+                                <option value="{{ $mapel->kode_mapel}}">{{ $mapel->nama }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -117,7 +117,7 @@
                 console.log(response);
                 // //fill data to form
                 $('#detailhari').val(response.hari);
-                $('#detailkelas').val(response.kelas);
+                $('#detailkelas').val(response.kode_kelas);
                 $('#detailstart_time').val(response.start_time);
                 $('#detailend_time').val(response.end_time);
                 $('#detailkode_guru').val(response.kode_guru);
