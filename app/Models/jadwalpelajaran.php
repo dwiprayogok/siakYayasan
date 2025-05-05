@@ -17,13 +17,13 @@ class jadwalpelajaran extends Model
         'start_time', 
         'end_time', 
         'kode_guru', 
-        'kelas',
+        'kode_kelas',
         'kode_mapel', 
     ];
 
     public function guru()
     {
-        return $this->belongsTo(Guru::class, 'kode_guru', 'kode');
+        return $this->belongsTo(Guru::class, 'kode_guru', 'kode_guru');
 
     }
 
@@ -37,7 +37,7 @@ class jadwalpelajaran extends Model
     public function siswa()
     {
         //return $this->belongsTo(Siswa::class, 'kelas', 'kelas_id');
-        return $this->belongsTo(Siswa::class, 'kode_kelas', 'kelas_id');
+        return $this->belongsTo(Siswa::class, 'kode_kelas', 'kode_kelas');
     }
 
     public function kelas()

@@ -59,7 +59,7 @@ class ProfileGuruController extends Controller
 
 
         $gurus->update([
-            'kode' => $request->kode,
+            'kode_guru' => $request->kode,
             'name' => $request->name,
             'nip' => $request->nip,
             'role' => $request->role,

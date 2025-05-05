@@ -14,7 +14,7 @@ class Matapelajaran extends Model
 
     protected $fillable = [
         'id',
-        'kode',
+        'kode_mapel',
         'nama',
         'kode_guru',
     ];
@@ -23,12 +23,12 @@ class Matapelajaran extends Model
     // Define relationship with teacher
     public function guru()
     {
-        return $this->belongsTo(guru::class, 'kode_guru', 'kode');
+        return $this->belongsTo(guru::class, 'kode_guru', 'kode_guru');
     }
 
     public function jadwalPelajaran()
     {
-        return $this->hasMany(JadwalPelajaran::class,'kode_guru', 'kode');
+        return $this->hasMany(JadwalPelajaran::class,'kode_guru', 'kode_guru');
         //return $this->hasMany(JadwalPelajaran::class, 'kode_mapel', 'kode');
 
     }

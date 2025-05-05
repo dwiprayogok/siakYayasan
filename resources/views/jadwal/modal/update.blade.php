@@ -43,7 +43,7 @@
                         <select id="updatekelas"  name="updatekelas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Pilih kelas</option>
                             @foreach ($kelass as $kelas)
-                                <option value="{{ $kelas->kode_kelas }}" {{ request('kelas') == $kelas->kode_kelas ? 'selected' : '' }}>
+                                <option value="{{ $kelas->kode_kelas }}" {{ request('kode_kelas') == $kelas->kode_kelas ? 'selected' : '' }}>
                                     {{ $kelas->nama }}
                                 </option>
                             @endforeach
@@ -80,7 +80,7 @@
                             <option value="">-- Pilih Guru --</option>
                             <option value="all">ALL</option>
                             @foreach ($gurus as $guru)
-                                <option value="{{ $guru->kode }}">{{ $guru->name }}</option>
+                                <option value="{{ $guru->kode_guru }}">{{ $guru->name }}</option>
                             @endforeach
                         </select>
                     </div>

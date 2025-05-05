@@ -9,7 +9,7 @@ class guru extends Model
     //
     protected $table = 'gurus';
     protected $fillable = [
-        'kode',
+        'kode_guru',
         'name',
         'nip',
         'role',
@@ -32,7 +32,7 @@ class guru extends Model
     public function jadwalPelajaran()
     {
         //return $this->hasMany(JadwalPelajaran::class,'kode');
-        return $this->hasMany(JadwalPelajaran::class, 'kode_guru', 'kode');
+        return $this->hasMany(JadwalPelajaran::class, 'kode_guru', 'kode_guru');
 
     }
 

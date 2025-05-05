@@ -23,7 +23,7 @@ class MataPelajaranController extends Controller
         if ($request->filled('search')) {
             $search = $request->input('search');
             $query->where(function ($q) use ($search) {
-                $q->where('kode', 'LIKE', "%{$search}%")
+                $q->where('kode_mapel', 'LIKE', "%{$search}%")
                   ->orWhere('nama', 'LIKE', "%{$search}%");
             });
         }

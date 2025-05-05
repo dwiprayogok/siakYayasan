@@ -27,7 +27,7 @@
                     </div>
                     <div >
                         <label for="updatekode" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Guru</label>
-                        <input type="text" name="updatekode" id="updatekode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Kode Guru" required="">
+                        <input type="text" disabled name="updatekode" id="updatekode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Kode Guru" required="">
                     </div>
 
                     <div>
@@ -142,7 +142,7 @@ function formatDate(inputDate) {
                 console.log(response);
                 // //fill data to form
                 $('#UserID').val(response.id);
-                $('#updatekode').val(response.kode);
+                $('#updatekode').val(response.kode_guru);
                 $('#updatename').val(response.name);
                 $('#updatenip').val(response.nip);
                 $('#updategender').val(response.gender);

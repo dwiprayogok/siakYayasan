@@ -17,7 +17,9 @@ class kelas extends Model
     public function siswa()
     {
         //return $this->hasMany(Siswa::class);
-        return $this->hasMany(Siswa::class, 'kelas_id','kode'); //This model belongs to one Kelas, and the foreign key in this model (probably Siswa) is kelas_id."
+        //return $this->hasMany(Siswa::class, 'kelas_id','kode'); //This model belongs to one Kelas, and the foreign key in this model (probably Siswa) is kelas_id."
+        //return $this->hasMany(Siswa::class, 'kelas_id','kode_kelas'); //This model belongs to one Kelas, and the foreign key in this model (probably Siswa) is kelas_id."
+        return $this->hasMany(Siswa::class, 'kode_kelas','kode_kelas'); //This model belongs to one Kelas, and the foreign key in this model (probably Siswa) is kelas_id."
 
     }
 

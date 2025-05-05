@@ -78,7 +78,7 @@
                             <option value="">-- Pilih Guru --</option>
                             <option value="all">ALL</option>
                             @foreach ($gurus as $guru)
-                                <option value="{{ $guru->kode }}">{{ $guru->name }}</option>
+                                <option value="{{ $guru->kode_guru }}">{{ $guru->name }}</option>
                             @endforeach
                         </select>
                     </div>

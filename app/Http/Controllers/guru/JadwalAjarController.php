@@ -15,7 +15,7 @@ class JadwalAjarController extends Controller
         $nip =Auth::user()->guru->nip ; 
 
         $jadwal = DB::table('jadwalpelajarans')
-            ->join('gurus', 'jadwalpelajarans.kode_guru', '=', 'gurus.kode')
+            ->join('gurus', 'jadwalpelajarans.kode_guru', '=', 'gurus.kode_guru')
             ->join('matapelajarans', 'jadwalpelajarans.kode_mapel', '=', 'matapelajarans.kode_mapel')
             ->select(
                 'jadwalpelajarans.id',

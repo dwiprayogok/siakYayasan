@@ -60,7 +60,7 @@ class RegisterController extends Controller
                 $gurus = new guru();
                 $gurus->id = $user->id;
                 $gurus->name = $user->name;
-                $gurus->kode = $request->nip;
+                $gurus->kode_guru = $request->nip;
                 $gurus->email = $user->email;
                 $gurus->save();
             }

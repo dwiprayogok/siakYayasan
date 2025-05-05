@@ -18,13 +18,12 @@ class nilai extends Model
 
     public function matapelajaran()
     {
-        return $this->hasMany(matapelajaran::class, 'kode');
+        return $this->hasMany(matapelajaran::class, 'kode_mapel');
     }
 
     public function jadwalPelajaran()
     {
-        //return $this->hasMany(JadwalPelajaran::class,'kode');
-        return $this->hasMany(JadwalPelajaran::class, 'kode_guru', 'kode');
+        return $this->hasMany(JadwalPelajaran::class, 'kode_guru', 'kode_guru');
 
     }
 
