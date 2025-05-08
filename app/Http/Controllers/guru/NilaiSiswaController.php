@@ -8,6 +8,7 @@ use App\Models\kelas;
 use App\Models\Siswa;
 use App\Models\guru;
 use App\Models\matapelajaran;
+use App\Models\nilai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -36,9 +37,9 @@ class NilaiSiswaController extends Controller
             });
         }
         // Kelas filter
-        elseif ($request->filled('kelas')) {
-            $kelas = $request->input('kelas');
-            $query->where('kelas_id', $kelas);
+        elseif ($request->filled('kode_kelas')) {
+            $kelas = $request->input('kode_kelas');
+            $query->where('kode_kelas', $kelas);
         }
 
         $kelass = Kelas::all();
@@ -50,6 +51,27 @@ class NilaiSiswaController extends Controller
     }
 
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'id_student' => 'required',
+            'kode_mapel' => 'required',
+            'nilai' => 'required'
+        ]);
+
+
+        // Create and store the nilai
+        $nilai = nilai::create([
+            'id_student' => $request->nis,
+            'kode_mapel' => $request->nameofstudent,
+            'nilai' => $request->score,            
+        ]);
+
+
+        //return redirect()->route('NilaiSiswa')->with('success', 'User added successfully!');
+        return response()->json(['success' => 'Nilai Siswa added successfully!']);
+
+    }
 
 
 
