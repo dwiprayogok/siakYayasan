@@ -16,7 +16,7 @@ class Siswa extends Model
         'name',
         'email',
         'gender',
-        'kelas_id',
+        'kode_kelas',
         'born_place',
         'birth_date',
         'phone',

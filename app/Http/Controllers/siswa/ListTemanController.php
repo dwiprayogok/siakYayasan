@@ -18,10 +18,10 @@ class ListTemanController extends Controller
         
         $query = Siswa::query();
         
-        $kelas_id =Auth::user()->siswa->kelas_id ; // Get the logged-in user
+        $kode_kelas =Auth::user()->siswa->kode_kelas ; // Get the logged-in user
         $nameOfstudent =Auth::user()->siswa->name;
 
-        $query->where('kelas_id', $kelas_id)
+        $query->where('kode_kelas', $kode_kelas)
         ->where('name', '!=', $nameOfstudent);
         
         // Optional: Search by name or email

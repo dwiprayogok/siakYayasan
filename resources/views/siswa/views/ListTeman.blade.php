@@ -19,7 +19,7 @@
   
             <div>
                 <h3 class="text-2xl font-bold text-gray-900">{{Auth::user()->siswa->name}}</h3>
-                <p class="text-xl text-gray-600">Kelas {{ Auth::user()->siswa->kelas_id ?? 'No class found' }}</p>
+                <p class="text-xl text-gray-600">Kelas {{ Auth::user()->siswa->kode_kelas ?? 'No class found' }}</p>
             </div>
       
         </div>

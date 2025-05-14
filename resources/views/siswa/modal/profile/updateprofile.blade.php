@@ -56,7 +56,7 @@
 
                     <div >
                         <label for="updateclass" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
-                        <select id="updateclass"  name="kelas_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <select id="updateclass"  name="kode_kelas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Pilih Kelas</option>
                             @foreach ($kelass as $kelas)
                             <option value="{{ $kelas->kode_kelas }}" {{ request('kelas') == $kelas->nama ? 'selected' : '' }}>
@@ -132,7 +132,7 @@ function formatDate(inputDate) {
         let userid = $(this).data('id');
         let nis = $(this).data('nis');
         let name = $(this).data('name');
-        let kelas = $(this).data('kelas_id');
+        let kelas = $(this).data('kode_kelas');
         let born_place = $(this).data('born_place');
         let birth_date = $(this).data('birth_date');
         let email = $(this).data('email');
@@ -186,7 +186,7 @@ $('#editprofileSiswaForm').submit(function(e) {
             name: $('#updatename').val(),
             email: $('#updateemail').val(),
             gender: $('#updategender').val(),
-            kelas_id: $('#updateclass').val(),
+            kode_kelas: $('#updateclass').val(),
             born_place: $('#updateborn_place').val(),
             birth_date: formattedDate,
             phone: $('#updatephone').val(),
@@ -201,6 +201,7 @@ $('#editprofileSiswaForm').submit(function(e) {
             console.log("formData",formData);
             alert(response.success);
             location.reload(); // Refresh page to see changes
+            
         }).fail(function(xhr) {
             //alert('Error: ' + xhr.responseJSON.message);
             console.log("XHR ERROR", xhr);

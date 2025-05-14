@@ -16,7 +16,7 @@
 
           <div>
               <h3 class="text-2xl font-bold text-gray-900">{{ old('name', $data->name ?? '') }}</h3>
-              <p class="text-xl text-gray-600">Kelas {{ old('kelas_id', $data->kelas_id ?? '') }}</p>
+              <p class="text-xl text-gray-600">Kelas {{ old('kode_kelas', $data->kode_kelas ?? '') }}</p>
           </div>
           <div class="ml-auto">
               <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md" 
@@ -27,7 +27,7 @@
               data-name="{{ $data->name }}"
               data-email="{{ $data->email }}"
               data-gender="{{ $data->gender }}"
-              data-kelas_id = "{{ $data->kelas_id }}"
+              data-kode_kelas = "{{ $data->kode_kelas }}"
               data-birth_date="{{ $data->birth_date }}"
               data-born_place="{{ $data->born_place }}"
               data-phone="{{ $data->phone }}"
@@ -64,7 +64,7 @@
 
       <div>
         <label class="block text-sm font-medium text-gray-700">Kelas</label>
-        <input type="text" disabled placeholder="Your First Name" value=" {{ old('kelas_id', $data->kelas_id ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
+        <input type="text" disabled placeholder="Your First Name" value=" {{ old('kode_kelas', $data->kode_kelas ?? '') }}" class="mt-1 w-full border rounded-lg px-4 py-2 bg-gray-100" />
     </div>
 
 
