@@ -29,7 +29,6 @@ class RegisterController extends Controller
         // $user->role =$request->input('role');
         // $user->save();
 
-        // //userprofile::create(['user_id' => $user->id]);
 
         // Session::flash('message', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
         // return redirect('register');

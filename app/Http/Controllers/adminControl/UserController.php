@@ -4,9 +4,16 @@ namespace App\Http\Controllers\adminControl;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\kelas;
+use App\Models\Siswa;
+use App\Models\guru;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 
 
 
@@ -28,42 +35,115 @@ class UserController extends Controller
         }
 
         //$users = $query->paginate(10); // Paginate results
-        $users = $query->orderBy('id', 'asc')->paginate(7);
+        $kelass = Kelas::all();
+        $users = $query->orderBy('id', 'asc')->paginate(15);
 
 
-        return view('/admin/views/user', compact('users'));
-    }
-
-  
-    public function create()
-    {
-        //
+        return view('/admin/views/user', compact('users','kelass'));
     }
 
   
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
-            'role' => 'required|string|max:10',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
+            'name' => 'required',
+            'username' => 'required',
+            'role' => 'required',
+            'email' => 'required',
+            'password' => 'required',
         ]);
 
         // Create and store the user
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'username' => $request->username,
-            'role' => $request->input('role'),
-            'password' => bcrypt($request->password),
-            'active' => $request->input('active'),
-        ]);
+        // $user = User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'username' => $request->username,
+        //     'role' => $request->input('role'),
+        //     'password' => bcrypt($request->password),
+        //     'active' => $request->input('active'),
+        // ]);
+
+        DB::transaction(function () use ($request) {
+            // 👤 Create User
+            $user = new User();
+            $user->name = $request->name;
+            $user->username = $request->username;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->role = $request->input('role');
+            $user->active =  $request->input('active');
+            $user->save();
+    
+            // 🎓 Conditionally insert into siswas or gurus table
+            if ( $request->input('role') === 'siswa') {
+                $siswas = new Siswa();
+                $siswas->id = $user->id;
+                $siswas->name = $user->name;
+                $siswas->nis = $request->nis;
+                $siswas->id_student = $request->nis;
+                $siswas->email = $user->email;
+                $siswas->kode_kelas =  $request->input('kode_kelas');
+                $siswas->save();
+            } elseif ( $request->input('role') === 'guru') {
+                $gurus = new guru();
+                $gurus->id = $user->id;
+                $gurus->name = $user->name;
+                $gurus->kode_guru = $request->nip;
+                $gurus->nip = $request->nip;
+                $gurus->email = $user->email;
+                $gurus->save();
+            }
+        });
+
+
+        // try {
+        //     $user = User::create([
+        //         'name' => $request->name,
+        //         'email' => $request->email,
+        //         'username' => $request->username,
+        //         'role' => $request->input('role'),
+        //         'password' => bcrypt($request->password),
+        //         'active' => $request->input('active'),
+        //     ]);
+        // } catch (\Exception $e) {
+        //     return response()->json(['error' => $e->getMessage()]);
+        // }
+        
+
+        
+        //     // if ($request->input('role') === 'siswa') {
+        //     //     echo 'Role is siswa'; exit;
+        //     // } else {
+        //     //     echo 'Role is guru'; exit;
+        //     // }
+
+
+        //     if ($request->input('role') === 'siswa') {
+
+        //         $siswas = Siswa::create([
+        //             'id' => $user->id,
+        //             'id_student' => $request->nis,
+        //             'nis' => $request->nis,
+        //             'name' => $request->name,
+        //             'kode_kelas' => $request->input('kode_kelas'),  
+
+                      
+        //         ]);
+
+        //         } else {
+        //             $gurus = guru::create([
+        //                 'id' => $user->id,
+        //                 'kode_guru' => $request->nip,
+        //                 'name' => $request->name,
+        //                 'nip' => $request->nip,
+        //                 'email' => $request->email,
+        //         ]);
+        //         }
+
+
 
         //return response()->json(['message' => 'User created successfully!', 'user' => $user]);
         return redirect()->route('user')->with('success', 'User added successfully!');
-
     }
 
    

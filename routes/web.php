@@ -141,7 +141,7 @@ Route::get('/adminControl/nilai', [NilaiController::class, 'index'])->name('nila
 
 
 
-Route::get('/adminControl/user', [UserController::class, 'index'])->name('user')->middleware('auth');
+Route::get('/adminControl/user', [UserController::class, 'index'])->name('user');
 Route::post('/adminControl/user', [UserController::class, 'store'])->name('users.store');
 Route::get('/users/{id}', [UserController::class, 'show']);
 //Route::put('/users/{id}', [UserController::class, 'update']);

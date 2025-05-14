@@ -54,7 +54,7 @@
                         <td class="px-4 py-3 font-medium hidden text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->id }}</td>
                         <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->nis }}</td>
                         <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->name }}</td>
-                        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kelas_id }}</td>
+                        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kode_kelas }}</td>
                         
                         @if ($siswa->gender === 'Male')
                         <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">Laki - Laki</td>    

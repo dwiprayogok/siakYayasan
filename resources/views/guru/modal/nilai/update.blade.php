@@ -20,6 +20,7 @@
             </div>
             <!-- Modal body -->
             <form class="p-4 md:p-5"  action="{{ route('nilai.store') }}" method="POST" >
+                {{ csrf_field() }}
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                    
                     <div>
@@ -64,6 +65,7 @@
         let name = $(this).data('name');
         let mapel = $(this).data('mapel');
         
+
         $('#id_student').val(id_student);
         $('#nameofstudent').val(name);
         $('#kode_mapel').val(mapel);

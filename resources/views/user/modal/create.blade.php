@@ -53,7 +53,37 @@
                             <option value=1>Aktif</option>
                         </select>
                     </div>
-                      
+
+                    <div class="col-span-2" > 
+                        <label  id="labelNIP" style="display: none;"  class="text-white text-sm mb-2 block">NIP</label>
+                        <input  id="nip" name="nip" type="text" style="display: none;  margin-top: 10px;" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg
+                               focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                                dark:text-white dark:focus:ring-white dark:focus:border-green-700" placeholder="NIP" />
+                    </div>
+
+                    <div  class="col-span-2">
+                        <label  id="labelNISN" style="display: none;"  class="text-white text-sm mb-2 block">NISN</label>
+                        <input  id="nis" name="nis" type="text" style="display: none;  margin-top: 10px;" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg
+                               focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                                dark:text-white dark:focus:ring-white dark:focus:border-green-700" placeholder="No Induk Siswa" />
+                    </div>
+
+
+                    <div   class="col-span-2" >
+                        <label for="labelclass" id="labelclass" style="display: none;" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
+                        <select style="display: none;"  id="kode_kelas"  name="kode_kelas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option selected="">Pilih Kelas</option>
+                             @foreach ($kelass as $kelas)
+                            <option value="{{ $kelas->kode_kelas }}" {{ request('kelas') == $kelas->kode_kelas ? 'selected' : '' }}>
+                                {{ $kelas->nama }}
+                            </option>
+                        @endforeach
+                        </select>
+                    </div> 
+
+                  
+
+                   
                   </div>
                   <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                       <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
@@ -64,3 +94,57 @@
       </div>
   </div> 
   
+
+  
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const select = document.getElementById('role');
+        const labelNIP = document.getElementById('labelNIP');
+        const labelNISN = document.getElementById('labelNISN');
+
+        const labelclass = document.getElementById('labelclass');
+
+        const class_idInput = document.getElementById('kode_kelas');
+
+        const nisnInput = document.getElementById('nis');
+        const nipInput = document.getElementById('nip');
+
+        select.addEventListener('change', function () {
+            const role = this.value;
+
+            // Hide both first
+            nisnInput.style.display = 'none';
+            nipInput.style.display = 'none';
+            class_idInput.style.display = 'none';
+
+            labelNISN.style.display = 'none';
+            labelNIP.style.display = 'none';
+            labelclass.style.display = 'none';
+
+            if (role === 'siswa') {
+                nisnInput.style.display = 'block';
+                labelNISN.style.display = 'block';
+                labelclass.style.display = 'block';
+                class_idInput.style.display = 'block';
+
+                nipInput.style.display = 'none';
+                labelNIP.style.display = 'none';
+
+            } else if (role === 'guru') {
+                nipInput.style.display = 'block';
+                labelNIP.style.display = 'block';
+
+
+                nisnInput.style.display = 'none';
+                labelNISN.style.display = 'none';
+                labelclass.style.display = 'none';
+                class_idInput.style.display = 'none';
+
+                
+            } 
+        });
+    });
+
+
+ 
+</script>
