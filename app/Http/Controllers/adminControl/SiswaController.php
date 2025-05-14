@@ -31,7 +31,7 @@ class SiswaController extends Controller
         }
         elseif ($request->filled('kelas')) {
             $kelas = $request->input('kelas');
-            $query->where('kelas_id', $kelas); // kelas_id holds the value like "VIII1"
+            $query->where('kode_kelas', $kelas); // kelas_id holds the value like "VIII1"
         }
         
         $kelass = Kelas::all();
@@ -49,7 +49,7 @@ class SiswaController extends Controller
             'nis' => 'required',
             'name' => 'required',
             'gender' => 'required',
-            'class_id' => 'required',
+            'kode_kelas' => 'required',
             'address' => 'required',
             'born_place' => 'required',
             'birth_date' => 'required|date_format:m/d/Y',
@@ -65,11 +65,12 @@ class SiswaController extends Controller
        
         // Create and store the user
         $siswas = Siswa::create([
-            'id_student' => $request->id_student,
+            'id_student' => $request->nis,
             'nis' => $request->nis,
             'name' => $request->name,
             'gender' => $request->input('gender'),
-            'kelas_id' => $request->input('class_id'),
+            //'kelas_id' => $request->input('class_id'),
+            'kode_kelas' => $request->input('kode_kelas'),
             'address' => $request->address,
             'phone' => $request->phone,
             'born_place' => $request->born_place,
@@ -78,23 +79,23 @@ class SiswaController extends Controller
             
         ]);
 
-            $fullName = $request->name;
-            $parts = explode(' ', $fullName);
+        //     $fullName = $request->name;
+        //     $parts = explode(' ', $fullName);
 
-            $firstName = $parts[0]; // "Alan"
-            $lastInitial = isset($parts[1]) ? substr($parts[1], 0, 1) : ''; // "M"
+        //     $firstName = $parts[0]; // "Alan"
+        //     $lastInitial = isset($parts[1]) ? substr($parts[1], 0, 1) : ''; // "M"
 
-            $result = $firstName . $lastInitial; // "AlanM"
+        //     $result = $firstName . $lastInitial; // "AlanM"
 
-        $user = User::create([
-            'id'       => $siswas->id,
-            'name'     => $request->name,
-            'email'    => 'siswa@mail.com',
-            'username' => $result,
-            'password' => Hash::make('1'),
-            'role'     => 'siswa',
-            'active'   => '1',
-        ]);
+        // $user = User::create([
+        //     'id'       => $siswas->id,
+        //     'name'     => $request->name,
+        //     'email'    => 'siswa@mail.com',
+        //     'username' => $result,
+        //     'password' => Hash::make('1'),
+        //     'role'     => 'siswa',
+        //     'active'   => '1',
+        // ]);
         
 
         //return response()->json(['message' => 'User created successfully!', 'siswa' => $siswa]);
@@ -129,7 +130,7 @@ class SiswaController extends Controller
             'nis' => 'required',
             'name' => 'required',
             'gender' => 'required',
-            'kelas_id' => 'required',
+            'kode_kelas' => 'required',
             'address' => 'required',
             'born_place' => 'required',
             'birth_date' => 'required',
@@ -146,16 +147,16 @@ class SiswaController extends Controller
         }
     
         // Find the user or return a 404 error
-        $user = siswa::find($id);
+        $siswas = siswa::find($id);
         
-        if (!$user) {
+        if (!$siswas) {
             return response()->json(['error' => 'User not found'], 404);
         }
-        $user->update([
+        $siswas->update([
             'nis' => $request->nis,
             'name' => $request->name,
             'gender' => $request->gender,
-            'kelas_id' => $request->kelas_id,
+            'kode_kelas' => $request->kode_kelas,
             'address' => $request->address,
             'phone' => $request->phone,
             'born_place' => $request->born_place,
