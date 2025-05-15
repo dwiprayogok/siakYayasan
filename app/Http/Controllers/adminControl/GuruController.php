@@ -155,5 +155,15 @@ class GuruController extends Controller
         return $pdf->download('daftar-Guru.pdf');
     }
 
+    public function GuruPrintPdf(Request $request)
+    {
+        $id = $request->input('id');
+        $gurus = guru::findOrFail($id);
+
+        $pdf = Pdf::loadView('admin.views.detailPDF.DetailGuruPDF', compact('gurus'))
+            ->setPaper('A4', 'portrait');
+
+        return $pdf->download('guru-details-' . $gurus->id . '.pdf');
+    }
     
 }

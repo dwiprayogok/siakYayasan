@@ -167,5 +167,15 @@ class SiswaController extends Controller
         return $pdf->download('daftar-Siswa.pdf');
     }
 
+    public function SiswaPrintPdf(Request $request)
+    {
+        $id = $request->input('id');
+        $siswas = Siswa::findOrFail($id);
+
+        $pdf = Pdf::loadView('admin.views.detailPDF.DetailSiswaPDF', compact('siswas'))
+            ->setPaper('A4', 'portrait');
+
+        return $pdf->download('siswa-details-' . $siswas->id . '.pdf');
+    }
   
 }

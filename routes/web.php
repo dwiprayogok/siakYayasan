@@ -107,6 +107,8 @@ Route::get('/gurus/{id}', [GuruController::class, 'show']);
 Route::post('/gurus/{id}/update', [GuruController::class, 'update']);
 Route::delete('/gurus/{id}', [GuruController::class, 'destroy']);
 Route::get('/gurus.print', [GuruController::class, 'printPdf'])->name('gurus.print');
+Route::get('/gurus.printDetail', [GuruController::class, 'GuruPrintPdf'])->name('gurus.printDetail');
+
 
 
 Route::get('/adminControl/siswa', [SiswaController::class, 'index'])->name('siswa')->middleware('auth');
@@ -115,6 +117,7 @@ Route::get('/siswas/{id}', [SiswaController::class, 'show']);
 Route::post('/siswas/{id}/update', [SiswaController::class, 'update']);
 Route::delete('/siswas/{id}', [SiswaController::class, 'destroy']);
 Route::get('/siswas.print', [SiswaController::class, 'printPdf'])->name('siswas.print');
+Route::get('/siswas.printDetail', [SiswaController::class, 'SiswaPrintPdf'])->name('siswas.printDetail');
 
 
 Route::get('/adminControl/jadwal', [JadwalPelajaranController::class, 'index'])->name('jadwalpelajaran')->middleware('auth');
@@ -123,6 +126,7 @@ Route::get('/jadwalpelajarans/{id}', [JadwalPelajaranController::class, 'show'])
 Route::post('/jadwalpelajarans/{id}/update', [JadwalPelajaranController::class, 'update']);
 Route::delete('/jadwalpelajarans/{id}', [JadwalPelajaranController::class, 'destroy']);
 Route::get('/jadwalpelajarans.print', [JadwalPelajaranController::class, 'printPdf'])->name('jadwalpelajarans.print');
+Route::get('/jadwalpelajarans.printDetail', [JadwalPelajaranController::class, 'JadwalprintPdf'])->name('jadwalpelajarans.printDetail');
 
 
 
@@ -134,6 +138,7 @@ Route::get('/matapelajarans/{id}', [MataPelajaranController::class, 'show']);
 Route::post('/matapelajarans/{id}/update', [MataPelajaranController::class, 'update']);
 Route::delete('/matapelajarans/{id}', [MataPelajaranController::class, 'destroy']);
 Route::get('/matapelajarans.print', [MataPelajaranController::class, 'printPdf'])->name('matapelajarans.print');
+Route::get('/matapelajarans.printDetail', [MataPelajaranController::class, 'MapelprintPdf'])->name('matapelajarans.printDetail');
 
 
 
@@ -150,5 +155,6 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 Route::post('/users/{id}/update', [UserController::class, 'update']);
 Route::delete('/users/{id}', [UserController::class, 'destroy']);
 Route::get('/users.print', [UserController::class, 'printPdf'])->name('users.print');
+Route::get('/users.printDetail', [UserController::class, 'UserPrintPdf'])->name('users.printDetail');
 
 

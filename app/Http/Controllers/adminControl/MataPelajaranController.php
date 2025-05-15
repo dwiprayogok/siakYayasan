@@ -123,6 +123,18 @@ class MataPelajaranController extends Controller
             return $pdf->download('daftar-matapelajarans.pdf');
         }
 
+
+        public function MapelprintPdf(Request $request)
+        {
+            $id = $request->input('id');
+            $matapelajarans = Matapelajaran::findOrFail($id);
+    
+            $pdf = Pdf::loadView('admin.views.detailPDF.DetailMataPelajaranPDF', compact('matapelajarans'))
+                ->setPaper('A4', 'portrait');
+    
+            return $pdf->download('matapelajaran-details-' . $matapelajarans->id . '.pdf');
+        }
+
       
     
 }

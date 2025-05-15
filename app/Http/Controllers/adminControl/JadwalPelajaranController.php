@@ -158,4 +158,16 @@ class JadwalPelajaranController extends Controller
         return $pdf->download('daftar-jadwalpelajaran.pdf');
     }
     
+
+    
+    public function JadwalprintPdf(Request $request)
+    {
+        $id = $request->input('id');
+        $jadwalpelajarans = jadwalpelajaran::findOrFail($id);
+
+        $pdf = Pdf::loadView('admin.views.detailPDF.DetailJadwalPelajaranPDF', compact('jadwalpelajarans'))
+            ->setPaper('A4', 'portrait');
+
+        return $pdf->download('jadwalpelajarans-details-' . $jadwalpelajarans->id . '.pdf');
+    }
 }
