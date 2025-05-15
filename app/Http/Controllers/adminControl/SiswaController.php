@@ -69,7 +69,6 @@ class SiswaController extends Controller
             'nis' => $request->nis,
             'name' => $request->name,
             'gender' => $request->input('gender'),
-            //'kelas_id' => $request->input('class_id'),
             'kode_kelas' => $request->input('kode_kelas'),
             'address' => $request->address,
             'phone' => $request->phone,
@@ -79,26 +78,6 @@ class SiswaController extends Controller
             
         ]);
 
-        //     $fullName = $request->name;
-        //     $parts = explode(' ', $fullName);
-
-        //     $firstName = $parts[0]; // "Alan"
-        //     $lastInitial = isset($parts[1]) ? substr($parts[1], 0, 1) : ''; // "M"
-
-        //     $result = $firstName . $lastInitial; // "AlanM"
-
-        // $user = User::create([
-        //     'id'       => $siswas->id,
-        //     'name'     => $request->name,
-        //     'email'    => 'siswa@mail.com',
-        //     'username' => $result,
-        //     'password' => Hash::make('1'),
-        //     'role'     => 'siswa',
-        //     'active'   => '1',
-        // ]);
-        
-
-        //return response()->json(['message' => 'User created successfully!', 'siswa' => $siswa]);
         return redirect()->route('siswa')->with('success', 'Data Siswa added successfully!');
 
 

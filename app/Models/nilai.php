@@ -13,7 +13,7 @@ class nilai extends Model
         'kode_mapel',
         'nilai',
         'tanggal',
-       
+        'nameofstudent', // <- make sure this is added
     ];
 
     public function matapelajaran()
@@ -29,7 +29,7 @@ class nilai extends Model
 
     public function siswa()
     {
-        return $this->hasOne(Siswa::class, 'id');
+        return $this->belongsTo(Siswa::class, 'id_student', 'id_student');
     }
 
     public function user()

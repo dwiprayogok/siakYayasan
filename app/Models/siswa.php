@@ -38,4 +38,10 @@ class Siswa extends Model
         return $this->belongsTo(User::class);
     }
 
+
+    public function nilai()
+    {
+        return $this->hasMany(Nilai::class, 'id_student', 'id_student');
+    }
+
 }

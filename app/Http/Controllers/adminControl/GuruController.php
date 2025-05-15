@@ -75,18 +75,6 @@ class GuruController extends Controller
             'education' => $request->input('education'),
         ]);
 
-
-        $user = User::create([
-        'id'       => $gurus->id,
-        'name'     => $request->name,
-        'email'    => $result.'@mail.com',
-        'username' => $result,
-        'password' => Hash::make('1'),
-        'role'     => 'guru',
-        'active'   => '1',
-    ]);
-    
-
         return redirect()->route('guru')->with('success', 'User added successfully!');
     }
 
@@ -127,7 +115,7 @@ class GuruController extends Controller
         }
 
         $gurus->update([
-            'kode_guru'          => $request->kode,
+            'kode_guru'     => $request->kode_guru,
             'name'          => $request->name,
             'nip'           => $request->nip,
             'role'          => $request->role,

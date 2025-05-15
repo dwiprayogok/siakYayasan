@@ -19,6 +19,7 @@ use App\Http\Controllers\adminControl\UserController;
 use App\Http\Controllers\siswa\SiswaDashboardController;
 use App\Http\Controllers\siswa\JadwalPelajaranSiswaController;
 use App\Http\Controllers\siswa\ProfileSiswaController;
+use App\Http\Controllers\siswa\InfoDataGuruController;
 use App\Http\Controllers\siswa\ListTemanController;
 
 use App\Http\Controllers\guru\GuruDashboardController;
@@ -65,6 +66,7 @@ Route::middleware(['auth', 'role:siswa'])->group(function () {
     Route::get('/siswa/dashboard', [SiswaDashboardController::class, 'index'])->name('siswa.dashboard');
     Route::get('/siswa/jadwalpelajaransiswa', [JadwalPelajaranSiswaController::class, 'index'])->middleware('auth');
     Route::get('/siswa/profilesiswa', [ProfileSiswaController::class, 'index'])->middleware('auth');
+    Route::get('/siswa/infoGuru', [InfoDataGuruController::class, 'index'])->middleware('auth');
     Route::get('/siswa/listteman', [ListTemanController::class, 'index'])->middleware('auth');
     Route::post('/siswas/{id}/updateProfilSiswa', [ProfileSiswaController::class, 'update']);
 

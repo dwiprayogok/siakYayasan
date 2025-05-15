@@ -142,7 +142,7 @@ function formatDate(inputDate) {
         var formData = {
             _token: $('input[name=_token]').val(),
             userid: $('#UserID').val(),
-            kode: $('#updatenip').val(),
+            kode_guru: $('#updatenip').val(),
             name: $('#updatename').val(),
             nip: $('#updatenip').val(),
             tempat_lahir: $('#updatetempat_lahir').val(),

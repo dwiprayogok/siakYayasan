@@ -74,7 +74,6 @@ class UserController extends Controller
             $user->active =  $request->input('active');
             $user->save();
     
-            // 🎓 Conditionally insert into siswas or gurus table
             if ( $request->input('role') === 'siswa') {
                 $siswas = new Siswa();
                 $siswas->id = $user->id;
@@ -94,53 +93,6 @@ class UserController extends Controller
                 $gurus->save();
             }
         });
-
-
-        // try {
-        //     $user = User::create([
-        //         'name' => $request->name,
-        //         'email' => $request->email,
-        //         'username' => $request->username,
-        //         'role' => $request->input('role'),
-        //         'password' => bcrypt($request->password),
-        //         'active' => $request->input('active'),
-        //     ]);
-        // } catch (\Exception $e) {
-        //     return response()->json(['error' => $e->getMessage()]);
-        // }
-        
-
-        
-        //     // if ($request->input('role') === 'siswa') {
-        //     //     echo 'Role is siswa'; exit;
-        //     // } else {
-        //     //     echo 'Role is guru'; exit;
-        //     // }
-
-
-        //     if ($request->input('role') === 'siswa') {
-
-        //         $siswas = Siswa::create([
-        //             'id' => $user->id,
-        //             'id_student' => $request->nis,
-        //             'nis' => $request->nis,
-        //             'name' => $request->name,
-        //             'kode_kelas' => $request->input('kode_kelas'),  
-
-                      
-        //         ]);
-
-        //         } else {
-        //             $gurus = guru::create([
-        //                 'id' => $user->id,
-        //                 'kode_guru' => $request->nip,
-        //                 'name' => $request->name,
-        //                 'nip' => $request->nip,
-        //                 'email' => $request->email,
-        //         ]);
-        //         }
-
-
 
         //return response()->json(['message' => 'User created successfully!', 'user' => $user]);
         return redirect()->route('user')->with('success', 'User added successfully!');

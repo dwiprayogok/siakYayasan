@@ -6,12 +6,9 @@ namespace App\Http\Controllers\guru;
 use App\Http\Controllers\Controller;
 use App\Models\kelas;
 use App\Models\Siswa;
-use App\Models\guru;
-use App\Models\matapelajaran;
 use App\Models\nilai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 
 
@@ -45,7 +42,7 @@ class NilaiSiswaController extends Controller
         $kelass = Kelas::all();
         $siswas = $query->orderBy('id', 'asc')->paginate(10);
 
-        return view('/guru/views/nilaisiswa', compact('siswas', 'kelass'));
+        return view('/guru/views/NilaiSiswa', compact('siswas', 'kelass'));
 
 
     }
@@ -54,22 +51,24 @@ class NilaiSiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_student' => 'required',
-            'kode_mapel' => 'required',
-            'nilai' => 'required'
+            'id_student'     => 'required',
+            'kode_mapel'     => 'required',
+            'nilai'          => 'required',
+            'nameofstudent'  => 'required',
         ]);
-
-
-        // Create and store the nilai
+    
+        $currentDate = Carbon::now();
+    
         $nilai = nilai::create([
-            'id_student' => $request->nis,
-            'kode_mapel' => $request->nameofstudent,
-            'nilai' => $request->score,            
+            'id_student'     => $request->id_student,
+            'kode_mapel'     => $request->kode_mapel,
+            'nilai'          => $request->nilai,
+            'tanggal'        => $currentDate,
+            'nameofstudent'  => $request->nameofstudent,
         ]);
-
-
-        //return redirect()->route('NilaiSiswa')->with('success', 'User added successfully!');
-        return response()->json(['success' => 'Nilai Siswa added successfully!']);
+    
+        //return response()->json(['success' => 'Nilai Siswa added successfully!']);
+        return redirect()->route('guru.inputnilai')->with('success', 'Nilai Siswa added successfully!');
 
     }
 

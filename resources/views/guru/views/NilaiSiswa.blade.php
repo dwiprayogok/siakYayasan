@@ -89,7 +89,11 @@
 
                         
                             </td> 
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kode_kelas }}</td>
+                            {{-- <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->nilai->kode_mapel }}</td> --}}
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                                {{ optional($siswa->nilai->first())->nilai }}
+                            </td>
+                            
                             <td class="p-4">
                                 <button class="mr-4 update" title="Tambah Nilai" id="btnUpdate" 
                                 
@@ -137,7 +141,4 @@
   
   </div>
 @include('guru.modal.nilai.update')
-@include('guru.modal.detail')
-
-
 @endsection
