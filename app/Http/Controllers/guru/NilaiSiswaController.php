@@ -55,18 +55,58 @@ class NilaiSiswaController extends Controller
             'kode_mapel'     => 'required',
             'nilai'          => 'required',
             'nameofstudent'  => 'required',
+            'kode_kelas'     => 'required',
         ]);
     
         $currentDate = Carbon::now();
     
-        $nilai = nilai::create([
-            'id_student'     => $request->id_student,
-            'kode_mapel'     => $request->kode_mapel,
-            'nilai'          => $request->nilai,
-            'tanggal'        => $currentDate,
-            'nameofstudent'  => $request->nameofstudent,
-        ]);
-    
+        // $nilai = nilai::create([
+        //     'id_student'     => $request->id_student,
+        //     'kode_mapel'     => $request->kode_mapel,
+        //     'nilai'          => $request->nilai,
+        //     'tanggal'        => $currentDate,
+        //     'nameofstudent'  => $request->nameofstudent,
+        //     'kode_kelas'     => $request->kode_kelas,
+        // ]);
+
+
+    //     // Upsert: update if exists, else create
+    //         $nilai = nilai::updateOrCreate(
+    //             [ // Search condition
+    //                 'id_student' => $request->id_student,
+    //                 'kode_mapel' => $request->kode_mapel,
+    //             ],
+    //             [ // Data to insert or update
+    //                 'nilai'          => $request->nilai,
+    //                 'tanggal'        => $currentDate,
+    //                 'nameofstudent'  => $request->nameofstudent,
+    //                 'kode_kelas'     => $request->kode_kelas,
+    //             ]
+    // );
+
+
+    $existing = nilai::where('id_student', $request->id_student)
+                 ->where('kode_mapel', $request->kode_mapel)
+                 ->first();
+
+        if ($existing) {
+            // Manually update
+            $existing->update([
+                'nilai'         => $request->nilai,
+                'kode_kelas'    => $request->kode_kelas,
+            ]);
+        } else {
+            // Create new
+            nilai::create([
+                'id_student'    => $request->id_student,
+                'kode_mapel'    => $request->kode_mapel,
+                'nilai'         => $request->nilai,
+                'tanggal'       => $currentDate,
+                'nameofstudent' => $request->nameofstudent,
+                'kode_kelas'    => $request->kode_kelas,
+            ]);
+        }
+            
         //return response()->json(['success' => 'Nilai Siswa added successfully!']);
         return redirect()->route('guru.inputnilai')->with('success', 'Nilai Siswa added successfully!');
 

@@ -31,9 +31,9 @@
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                 <form method="GET" action="{{ url('/guru/inputnilai') }}" class="mb-4">
                     <input type="text" name="search" class="border p-2 rounded-lg focus:ring-4 focus:ring-primary-700 " value="{{ request('search') }}" placeholder="Search by name">
-                    <button type="submit" class="mt-2 ml-15 bg-primary-700 text-white px-4 py-2 rounded">Search</button>
+                    
 
-                    <select name="kelas"  class="border mt-2 ml-10 p-2 rounded-lg focus:ring-4 focus:ring-primary-500">
+                    <select name="kode_kelas"  class="border mt-2 ml-5 p-2 rounded-lg focus:ring-4 focus:ring-primary-500">
                         <option value="">-- Pilih Kelas --</option>
                         @foreach ($kelass as $kelas)
                             <option value="{{ $kelas->kode_kelas }}" {{ request('kode_kelas') == $kelas->kode_kelas ? 'selected' : '' }}>
@@ -41,6 +41,9 @@
                             </option>
                         @endforeach
                     </select>
+
+                    <button type="submit" class="mt-2 ml-14 bg-primary-700 text-white px-4 py-2 rounded">Search</button>
+
                 </form>
                 {{-- <button type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4
                  focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-700 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
@@ -90,9 +93,18 @@
                         
                             </td> 
                             {{-- <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->nilai->kode_mapel }}</td> --}}
-                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                            {{-- <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">
                                 {{ optional($siswa->nilai->first())->nilai }}
+                            </td> --}}
+
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                                {{
+                                    optional(
+                                        $siswa->nilai->where('kode_mapel', $jadwalGuru->matapelajaran->kode_mapel)->first()
+                                    )->nilai ?? '-'
+                                }}
                             </td>
+                            
                             
                             <td class="p-4">
                                 <button class="mr-4 update" title="Tambah Nilai" id="btnUpdate" 
@@ -100,6 +112,7 @@
                                     data-id="{{ $siswa->id }}" 
                                     data-id_student="{{ $siswa->id_student }}" 
                                     data-name="{{ $siswa->name }}" 
+                                    data-kode_kelas="{{ $siswa->kode_kelas }}" 
                                     data-mapel="{{ $jadwalGuru->matapelajaran->kode_mapel ?? '-' }}"
 
                                     

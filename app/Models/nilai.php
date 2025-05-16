@@ -13,17 +13,18 @@ class nilai extends Model
         'kode_mapel',
         'nilai',
         'tanggal',
-        'nameofstudent', // <- make sure this is added
+        'nameofstudent',
+        'kode_kelas',
     ];
 
-    public function matapelajaran()
-    {
-        return $this->hasMany(matapelajaran::class, 'kode_mapel');
-    }
+    // public function matapelajaran()
+    // {
+    //     return $this->hasMany(matapelajaran::class, 'kode_mapel','kode_mapel');
+    // }
 
     public function jadwalPelajaran()
     {
-        return $this->hasMany(JadwalPelajaran::class, 'kode_guru', 'kode_guru');
+        return $this->belongsTo(JadwalPelajaran::class, 'kode_guru', 'kode_guru');
 
     }
 
@@ -35,5 +36,10 @@ class nilai extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function matapelajaran()
+    {
+        return $this->belongsTo(Matapelajaran::class, 'kode_mapel', 'kode_mapel');
     }
 }

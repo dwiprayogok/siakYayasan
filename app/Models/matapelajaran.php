@@ -32,5 +32,10 @@ class Matapelajaran extends Model
         //return $this->hasMany(JadwalPelajaran::class, 'kode_mapel', 'kode');
 
     }
+
+    public function scores()
+    {
+        return $this->hasMany(nilai::class, 'kode_mapel', 'kode_mapel');
+    }
     
 }
