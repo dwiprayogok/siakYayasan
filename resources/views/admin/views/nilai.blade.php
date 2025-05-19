@@ -22,34 +22,43 @@
                                 <th scope="col" class="px-4 py-3  dark:text-white">Nis</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">Nama</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">Kelas</th>
-                                <th scope="col" class="px-4 py-3  dark:text-white">Matematika</th>
+                                <th scope="col" class="px-4 py-3  dark:text-white">B.INDONESIA</th>
+                                <th scope="col" class="px-4 py-3  dark:text-white">IPA</th>
+
+                                {{-- <th scope="col" class="px-4 py-3  dark:text-white">Matematika</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">PKN</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">PAI</th>
-                                <th scope="col" class="px-4 py-3  dark:text-white">B.INDONESIA</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">B.INGGRIS</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">B.SUNDA</th>
-                                <th scope="col" class="px-4 py-3  dark:text-white">IPA</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">IPS</th>
-                                <th scope="col" class="px-4 py-3  dark:text-white">PEND. KOMPUTER</th>
+                                <th scope="col" class="px-4 py-3  dark:text-white">PEND. KOMPUTER</th> --}}
                                 
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ( $nilai as $score )
+                            @foreach ( $siswas as $siswa )
+
+                            @php
+                            // Cari nilai dari masing-masing mapel
+                            $nilaiBindo = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL003');
+                            $nilaiIpa = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL009');
+                             @endphp
+
+
                             <tr class="border-b dark:border-gray-700">
-                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->id_student }}</td>
-                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->nameofstudent }}</td>
-                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->kode_kelas }}</td>
-                                <td class="px-10 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->nilai }}</td>
+                                <td class="px-4 py-3 font-medium  text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->nis }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->name }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kode_kelas }}</td>
+                                <td class="px-10 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiBindo->nilai ?? '-' }}</td>
+                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiIpa->nilai ?? '-' }}</td>
+                                {{-- <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->nilai }}</td>
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->nilai }}</td>
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->nilai }}</td>
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->nilai }}</td>
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->nilai }}</td>
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->nilai }}</td>
-                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->nilai }}</td>
-                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->nilai }}</td>
-                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->nilai }}</td>
+                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $score->nilai }}</td> --}}
                                 
 
                             </tr>
@@ -58,7 +67,7 @@
                     </table>
                     <br>
                     <div class="d-flex justify-content-center mb-3 mr-3 ml-3">
-                        {{ $nilai->links() }}
+                        {{ $siswas->links() }}
                     </div>
                     
                 </div>

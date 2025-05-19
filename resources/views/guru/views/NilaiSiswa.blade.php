@@ -92,20 +92,20 @@
 
                         
                             </td> 
-                            {{-- <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->nilai->kode_mapel }}</td> --}}
-                            {{-- <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                                {{ optional($siswa->nilai->first())->nilai }}
-                            </td> --}}
-
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                                {{
-                                    optional(
-                                        $siswa->nilai->where('kode_mapel', $jadwalGuru->matapelajaran->kode_mapel)->first()
-                                    )->nilai ?? '-'
-                                }}
+
+                                @php
+                                $nip = Auth::user()->guru->nip;
+                                $jadwalGuru = $siswa->kelas->jadwalpelajaran->firstWhere('guru.nip', $nip);
+                                // Atau jika kamu lebih aman ingin ambil dari relasi matapelajaran:
+                                $kodeMapel = $jadwalGuru->kode_mapel ?? null;
+                                $nilaiMapelTertentu = $siswa->nilai->where('kode_mapel', $kodeMapel)->first();
+                                @endphp
+
+                                {{ $nilaiMapelTertentu->nilai ?? 'Belum ada nilai' }}
                             </td>
-                            
-                            
+            
+                
                             <td class="p-4">
                                 <button class="mr-4 update" title="Tambah Nilai" id="btnUpdate" 
                                 
@@ -113,7 +113,8 @@
                                     data-id_student="{{ $siswa->id_student }}" 
                                     data-name="{{ $siswa->name }}" 
                                     data-kode_kelas="{{ $siswa->kode_kelas }}" 
-                                    data-mapel="{{ $jadwalGuru->matapelajaran->kode_mapel ?? '-' }}"
+                                    data-kode_mapel="{{ $jadwalGuru->matapelajaran->kode_mapel ?? '-' }}"
+                                    data-mapel="{{ $jadwalGuru->matapelajaran->nama ?? '-' }}"
 
                                     
                                     data-modal-target="updateNilaiSiswaModal" data-modal-toggle="updateNilaiSiswaModal"  > 
@@ -137,15 +138,14 @@
                               </td>
                         </tr>
                         @endforeach
+
+
+                        
                     </tbody>
 
 
                 </table>
                 <br>
-                {{-- <div class="d-flex justify-content-center mb-3 mr-3 ml-3">
-                    {{ $users->links() }}
-                </div> --}}
-                
             </div>
         </div>
 

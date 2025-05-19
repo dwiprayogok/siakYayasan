@@ -19,10 +19,7 @@ class NilaiSiswaController extends Controller
     public function index(Request $request)
     {
 
-        //$query = Siswa::query();
-        $query = Siswa::with('kelas.jadwalpelajaran.guru', 'kelas.jadwalpelajaran.matapelajaran');
-
-
+        $query = Siswa::with('kelas.jadwalpelajaran.guru', 'kelas.jadwalpelajaran.matapelajaran',  'nilai.matapelajaran');
         $nip =Auth::user()->guru->nip ; // Get the logged-in user
                 
         // Search filter

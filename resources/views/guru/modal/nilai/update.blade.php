@@ -34,10 +34,17 @@
                     </div>
 
                     <div>
-                        <label for="kode_mapel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">MataPelajaran</label>
-                        <input type="text"   name="kode_mapel" id="kode_mapel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Matapelajaran" required="">
+                        <label for="kode_mapel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Pelajaran</label>
+                        <input type="text"  name="kode_mapel" id="kode_mapel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Matapelajaran" required="">
                     </div>
 
+
+                    <div>
+                        <label for="mapel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">MataPelajaran</label>
+                        <input type="text" name="mapel" id="mapel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Matapelajaran" required="">
+                    </div>
+
+                    
                     <div>
                         <label for="kode_kelas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
                         <input type="text"   name="kode_kelas" id="kode_kelas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Matapelajaran" required="">
@@ -68,13 +75,15 @@
         let userid = $(this).data('id');
         let id_student = $(this).data('id_student');
         let name = $(this).data('name');
+        let kodeMapel = $(this).data('kode_mapel');
         let mapel = $(this).data('mapel');
         let kode_kelas = $(this).data('kode_kelas');
         
 
         $('#id_student').val(id_student);
         $('#nameofstudent').val(name);
-        $('#kode_mapel').val(mapel);
+        $('#kode_mapel').val(kodeMapel);
+        $('#mapel').val(mapel);
         $('#kode_kelas').val(kode_kelas);
     
         });
