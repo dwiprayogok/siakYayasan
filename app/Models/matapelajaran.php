@@ -29,13 +29,13 @@ class Matapelajaran extends Model
     public function jadwalPelajaran()
     {
         return $this->hasMany(JadwalPelajaran::class,'kode_guru', 'kode_guru');
-        //return $this->hasMany(JadwalPelajaran::class, 'kode_mapel', 'kode');
 
     }
 
-    public function scores()
+    public function nilai()
     {
         return $this->hasMany(nilai::class, 'kode_mapel', 'kode_mapel');
     }
+
     
 }

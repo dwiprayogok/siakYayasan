@@ -42,4 +42,9 @@ class nilai extends Model
     {
         return $this->belongsTo(Matapelajaran::class, 'kode_mapel', 'kode_mapel');
     }
+
+    public function kelas()
+    {
+    return $this->belongsTo(Kelas::class, 'kode_kelas','kode_kelas');
+    }
 }
