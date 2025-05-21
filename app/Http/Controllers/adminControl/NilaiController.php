@@ -9,6 +9,8 @@ use App\Models\nilai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class NilaiController extends Controller
@@ -28,16 +30,41 @@ class NilaiController extends Controller
             });
         }
         // Kelas filter
-        elseif ($request->filled('kode_kelas')) {
-            $kelas = $request->input('kode_kelas');
+        elseif ($request->filled('kelas')) {
+            $kelas = $request->input('kelas');
             $query->where('kode_kelas', $kelas);
         }
 
         $kelass = Kelas::all();
         $siswas = $query->orderBy('id', 'asc')->paginate(10);
 
-        return view('/admin/views/nilai', compact('siswas'));
+        return view('/admin/views/nilai', compact('siswas', 'kelass'));
     }
 
-  
+
+    // public function printPdf()
+    // {
+        
+    //     $siswas = Siswa::with('kelas.jadwalpelajaran.guru', 'kelas.jadwalpelajaran.matapelajaran',  'nilai.matapelajaran');
+
+
+    //     $pdf = Pdf::loadView('/admin/views/downloadPDF/NilaiPDF', compact('siswas'))
+    //             ->setPaper('A4', 'portrait');
+
+    //     return $pdf->download('daftar-users.pdf');
+    // }
+ 
+    
+
+    // public function SiswaPrintPdf(Request $request)
+    // {
+    //     $id = $request->input('id');
+    //     $siswas = Siswa::findOrFail($id);
+
+    //     $pdf = Pdf::loadView('admin.views.detailPDF.DetailSiswaPDF', compact('siswas'))
+    //         ->setPaper('A4', 'portrait');
+
+    //     return $pdf->download('siswa-details-' . $siswas->id . '.pdf');
+    // }
+
 }

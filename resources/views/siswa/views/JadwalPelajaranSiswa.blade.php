@@ -58,10 +58,6 @@
                 </tbody>
             </table>
             <br>
-            {{-- <div class="d-flex justify-content-center mb-3 mr-3 ml-3">
-                {{ $users->links() }}
-            </div> --}}
-            
         </div>
     </div>
     
