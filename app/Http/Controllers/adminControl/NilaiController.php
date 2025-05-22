@@ -58,13 +58,15 @@ class NilaiController extends Controller
 
     public function NilaiSiswaPrintPdf(Request $request)
     {
-        $id_student = $request->input('id_student');
-        $siswas = Siswa::findOrFail($id_student);
+        $id = $request->input('id');
+        $siswas = Siswa::findOrFail($id);
+
+      
 
         $pdf = Pdf::loadView('admin.views.detailPDF.DetailNilaiSiswaPDF', compact('siswas'))
             ->setPaper('A4', 'portrait');
 
-        return $pdf->download('siswa-details-' . $siswas->id . '.pdf');
+        return $pdf->download('nilaiSiswa' . $siswas->id . '.pdf');
     }
 
 }

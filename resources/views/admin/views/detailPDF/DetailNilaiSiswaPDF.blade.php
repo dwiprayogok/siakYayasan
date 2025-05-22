@@ -40,14 +40,20 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ( $nilai as $item )
+            {{-- @foreach ( $nilai as $item )
             <tr class="border-b dark:border-gray-700">
                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $item->kode_mapel }}</td>
                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black"> {{ $item->matapelajaran->nama ?? '-' }}</td>
                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $item->nilai }}</td>
                
             </tr>
-            @endforeach
+            @endforeach --}}
+
+            <tr class="border-b dark:border-gray-700">
+                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswas->matapelajaran->kode_mapel }}</td>
+                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswas->matapelajaran->nama }}</td>
+                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswas->nilai->nilai }}</td>  
+                </tr>
         </tbody>
     </table>
 </body>

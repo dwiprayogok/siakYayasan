@@ -9,7 +9,7 @@ class Siswa extends Model
 {
     //
     use HasFactory;
-
+    protected $table = 'siswas'; // Only if the table name isn't the default
     protected $fillable = [
         'id_student',
         'nis',
