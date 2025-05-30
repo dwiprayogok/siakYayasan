@@ -33,27 +33,23 @@
     <table>
         <thead class="text-xs text-black uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-4 py-3 dark:text-white">Kode</th>
-                <th scope="col" class="px-4 py-3 dark:text-white">Mata Pelajaran</th>
-                <th scope="col" class="px-4 py-3  dark:text-white">Nilai</th>
-
+                <th class="px-4 py-3 dark:text-white">Kelas</th>
+                <th class="px-4 py-3 dark:text-white">Kode Mapel</th>
+                <th class="px-4 py-3 dark:text-white">Nama Mapel</th>
+                <th class="px-4 py-3 dark:text-white">Nilai</th>
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach ( $nilai as $item )
-            <tr class="border-b dark:border-gray-700">
-                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $item->kode_mapel }}</td>
-                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black"> {{ $item->matapelajaran->nama ?? '-' }}</td>
-                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $item->nilai }}</td>
-               
+            @foreach ($siswas->nilai as $item)
+            <tr>
+                <td>{{ $item->kode_kelas }}</td>
+                <td>{{ $item->kode_mapel }}</td>
+                <td>{{ $item->matapelajaran->nama ?? '-' }}</td>
+                <td>{{ $item->nilai }}</td>
             </tr>
-            @endforeach --}}
+        @endforeach
 
-            <tr class="border-b dark:border-gray-700">
-                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswas->matapelajaran->kode_mapel }}</td>
-                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswas->matapelajaran->nama }}</td>
-                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswas->nilai->nilai }}</td>  
-                </tr>
+          
         </tbody>
     </table>
 </body>

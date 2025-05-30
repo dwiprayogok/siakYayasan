@@ -76,7 +76,7 @@
                         <th scope="col" class="px-4 py-3  dark:text-white">Kode</th>
                         <th scope="col" class="px-4 py-3  dark:text-white">Mata Pelajaran</th>
                         <th scope="col" class="px-4 py-3   dark:text-white">Nama Guru</th>
-                        <th scope="col" class="px-16 py-6  dark:text-white">Actions</th>
+                        <th scope="col" class="px-16 py-6  dark:text-white">Aksi</th>
                     </tr>
                 </thead>
 

@@ -44,4 +44,10 @@ class Siswa extends Model
         return $this->hasMany(Nilai::class, 'id_student', 'id_student');
     }
 
+    public function matapelajaran()
+{
+    //return $this->belongsTo(Matapelajaran::class, 'kode_mapel','kode'); // or the correct foreign key
+    return $this->belongsTo(Matapelajaran::class, 'kode_mapel','kode_mapel'); // or the correct foreign key
+}
+
 }

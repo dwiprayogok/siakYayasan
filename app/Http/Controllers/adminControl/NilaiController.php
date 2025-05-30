@@ -42,31 +42,35 @@ class NilaiController extends Controller
     }
 
 
-    // public function printPdf()
-    // {
+    public function printNIlaiPdf(Request $request)
+    {
         
-    //     $siswas = Siswa::with('kelas.jadwalpelajaran.guru', 'kelas.jadwalpelajaran.matapelajaran',  'nilai.matapelajaran');
+        $siswas = Siswa::with('kelas.jadwalpelajaran.guru', 'kelas.jadwalpelajaran.matapelajaran',  'nilai.matapelajaran');
 
 
-    //     $pdf = Pdf::loadView('/admin/views/downloadPDF/NilaiPDF', compact('siswas'))
-    //             ->setPaper('A4', 'portrait');
+        $pdf = Pdf::loadView('admin.views.downloadPDF.NilaiPDF', compact('siswas'))
+                ->setPaper('A4', 'portrait');
 
-    //     return $pdf->download('daftar-users.pdf');
-    // }
+        return $pdf->download('daftar-users.pdf');
+    }
  
     
 
     public function NilaiSiswaPrintPdf(Request $request)
     {
-        $id = $request->input('id');
-        $siswas = Siswa::findOrFail($id);
+        $id_student = $request->input('id_student'); // ✅ No trailing space
 
-      
+        $siswas = Siswa::with(['nilai.matapelajaran']) // ✅ Uses 'nilai' as defined in the model
+            ->where('id_student', $id_student)         // ✅ No space in column name
+            ->firstOrFail();
+
 
         $pdf = Pdf::loadView('admin.views.detailPDF.DetailNilaiSiswaPDF', compact('siswas'))
             ->setPaper('A4', 'portrait');
 
-        return $pdf->download('nilaiSiswa' . $siswas->id . '.pdf');
+        //return $pdf->download('nilaiSiswa' . $siswas->id_student . '.pdf');
+        return $pdf->download('Nilai_Siswa' . $siswas->name . '.pdf');
+
     }
 
 }

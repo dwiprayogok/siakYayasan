@@ -29,7 +29,7 @@ class JadwalPelajaranController extends Controller
             });
         }elseif ($request->filled('kelas')) {
             $kelas = $request->input('kelas');
-            $query->where('kelas', $kelas); // kelas_id holds the value like "VIII1"
+            $query->where('kode_kelas', $kelas); // kelas_id holds the value like "VIII1"
         }
         
 
@@ -146,10 +146,22 @@ class JadwalPelajaranController extends Controller
     }
 
     
-    public function printPdf()
+    public function printPdf(Request $request)
     {
 
-        $jadwalpelajarans = jadwalpelajaran::with(['guru', 'matapelajaran'])->get();
+        $query = jadwalpelajaran::with(['guru', 'matapelajaran']);
+
+        if ($request->filled('kelas')) {
+            $query->where('kode_kelas', $request->kelas);
+        }
+    
+        if ($request->filled('hari')) {
+            $query->where('hari', $request->hari);
+        }
+    
+        // Add more filters if needed
+    
+        $jadwalpelajarans = $query->get();
 
 
         $pdf = Pdf::loadView('/admin/views/downloadPDF/jadwalpelajaranPDF', compact('jadwalpelajarans'))

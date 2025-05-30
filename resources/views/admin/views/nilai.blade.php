@@ -25,18 +25,18 @@
                     </form>
 
 
-                    {{-- <div class="flex space-x-4"> 
+                    <div class="flex space-x-4"> 
                           <!-- Print Data Button -->
                           <button type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 
                           focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-700 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800" 
-                          onclick="window.open('{{ route('nilai.print') }}', '_blank')">
+                          onclick="window.open('{{ route('nilai.printAllSiswa') }}', '_blank')">
                               <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                   <path clip-rule="evenodd" fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1V9a1 1 0 011-1h4a1 1 0 011 1v6h1a2 2 0 002-2V9a2 2 0 00-2-2H6V4a2 2 0 00-2-2H4zm0 9h6v-1H4v1zm0-3h6V6H4v3zm7 0v4h1v-4h-1zm0-3v1h1V6h-1zm0-3v1h1V3h-1z" />
                               </svg>
                               Print Data
                           </button>
                            
-                    </div> --}}
+                    </div>
                  
                    
                 </div>
@@ -45,7 +45,7 @@
                     <table class="w-full text-sm text-left text-black dark:text-black" id="user-table">
                         <thead class="text-xs text-black uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="px-4 py-3  dark:text-white">Actions</th>
+                                <th scope="col" class="px-4 py-3  dark:text-white">Aksi</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">Nis</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">Nama</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">Kelas</th>
@@ -59,8 +59,6 @@
                                 <th scope="col" class="px-4 py-3  dark:text-white">B.SUNDA</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">IPS</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">PEND. KOMPUTER</th> 
-
-
 
                                 <th scope="col" class="px-4 py-3  dark:text-white">SENI BUDAYA</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">PJOK</th>
@@ -106,7 +104,7 @@
 
                             <tr class="border-b dark:border-gray-700">
                                 <td class="p-4 px-10">
-                                    <button class="mr-2 detail" title="view" id="detail" onclick="window.open('{{ route('nilai.printDetail', ['id' => $siswa->id]) }}', '_blank')" >
+                                    <button class="mr-2 detail" title="view" id="detail" onclick="window.open('{{ route('nilai.printDetail', ['id_student'=> $siswa->id_student]) }}', '_blank')" >
                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                           <polyline points="6 9 6 2 18 2 18 9"></polyline>
                                           <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>

@@ -147,7 +147,7 @@ Route::get('/matapelajarans.printDetail', [MataPelajaranController::class, 'Mape
 
 
 Route::get('/adminControl/nilai', [NilaiController::class, 'index'])->name('nilai')->middleware('auth');
-//Route::get('/adminControl/nilai', [NilaiController::class, 'printPdf'])->name('nilai.print');
+Route::get('/nilai.printAllSiswa', [NilaiController::class, 'printNIlaiPdf'])->name('nilai.printAllSiswa');
 Route::get('/nilai.printDetail', [NilaiController::class, 'NilaiSiswaPrintPdf'])->name('nilai.printDetail');
 
 

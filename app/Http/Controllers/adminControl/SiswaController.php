@@ -156,16 +156,43 @@ class SiswaController extends Controller
     }
 
 
-    public function printPdf()
-    {
-        //$siswas = Siswa::with('kelas')->get();
-        $siswas = Siswa::all();
+    // public function printPdf()
+    // {
+    //     //$siswas = Siswa::with('kelas')->get();
+    //     $siswas = Siswa::all();
+
+    //     $pdf = Pdf::loadView('/admin/views/downloadPDF/siswaPDF', compact('siswas'))
+    //             ->setPaper('A4', 'portrait');
+
+    //     return $pdf->download('daftar-Siswa.pdf');
+    // }
+
+
+        public function printPdf(Request $request)
+        {
+
+            $query = Siswa::query();
+
+            if ($request->filled('search')) {
+                $search = $request->input('search');
+                $query->where(function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                      ->orWhere('nis', 'like', "%{$search}%");
+                });
+            }
+        
+            if ($request->filled('kelas')) {
+                $kelas = $request->input('kelas');
+                $query->where('kode_kelas', $kelas);
+            }
+        
+            $siswas = $query->get();
 
         $pdf = Pdf::loadView('/admin/views/downloadPDF/siswaPDF', compact('siswas'))
-                ->setPaper('A4', 'portrait');
+                    ->setPaper('A4', 'portrait');
 
         return $pdf->download('daftar-Siswa.pdf');
-    }
+        }
 
     public function SiswaPrintPdf(Request $request)
     {

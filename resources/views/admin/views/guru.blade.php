@@ -64,13 +64,13 @@
                 <thead class="text-xs text-black uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-10 py-3   dark:text-white">Nip</th>
-                        <th scope="col" class="px-10 py-3   dark:text-white">Name</th>
+                        <th scope="col" class="px-10 py-3   dark:text-white">Nama</th>
                         <th scope="col" class="px-4 py-3  dark:text-white">Posisi</th>
                         <th scope="col" class="px-32 py-3  dark:text-white">SK</th>
                         <th scope="col" class="px-1 py-3  dark:text-white">Tempat & Tanggal Lahir</th>
                         <th scope="col" class="px-4 py-3  dark:text-white">Pendidikan</th>
-                        <th scope="col" class="px-14 py-3  dark:text-white">Phone</th>
-                        <th scope="col" class="px-10 py-3  dark:text-white">Actions</th>
+                        <th scope="col" class="px-14 py-3  dark:text-white">No Telepon</th>
+                        <th scope="col" class="px-10 py-3  dark:text-white">Aksi</th>
                     </tr>
                 </thead>
 

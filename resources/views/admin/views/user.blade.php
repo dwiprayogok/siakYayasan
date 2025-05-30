@@ -63,9 +63,9 @@
                         <th scope="col" class="px-4 py-3 dark:text-white">Nama</th>
                         <th scope="col" class="px-4 py-3  dark:text-white">Username</th>
                         <th scope="col" class="px-4 py-3  dark:text-white">Email</th>
-                        <th scope="col" class="px-4 py-3  dark:text-white">Role</th>
+                        <th scope="col" class="px-4 py-3  dark:text-white">Posisi</th>
                         <th scope="col" class="px-4 py-3  dark:text-white">Status</th>
-                        <th scope="col" class="px-16 py-6  dark:text-white">Actions</th>
+                        <th scope="col" class="px-16 py-6  dark:text-white">Aksi</th>
                     </tr>
                 </thead>
 
