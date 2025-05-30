@@ -34,7 +34,6 @@
         <thead class="text-xs text-black uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
             <tr>
                 <th class="px-4 py-3 dark:text-white">Kelas</th>
-                <th class="px-4 py-3 dark:text-white">Kode Mapel</th>
                 <th class="px-4 py-3 dark:text-white">Nama Mapel</th>
                 <th class="px-4 py-3 dark:text-white">Nilai</th>
             </tr>
@@ -43,7 +42,6 @@
             @foreach ($siswas->nilai as $item)
             <tr>
                 <td>{{ $item->kode_kelas }}</td>
-                <td>{{ $item->kode_mapel }}</td>
                 <td>{{ $item->matapelajaran->nama ?? '-' }}</td>
                 <td>{{ $item->nilai }}</td>
             </tr>

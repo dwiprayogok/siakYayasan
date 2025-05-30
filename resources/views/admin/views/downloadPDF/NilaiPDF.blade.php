@@ -32,7 +32,6 @@
 
     <table>
         <thead>
-            <th scope="col" class="px-4 py-3  dark:text-white">Actions</th>
             <th scope="col" class="px-4 py-3  dark:text-white">Nis</th>
             <th scope="col" class="px-4 py-3  dark:text-white">Nama</th>
             <th scope="col" class="px-4 py-3  dark:text-white">Kelas</th>
@@ -65,25 +64,25 @@
             @php
             // Cari nilai dari masing-masing mapel
             $nilaiBindo = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL003');
-            // $nilaiIpa = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL009');
+            $nilaiIpa = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL009');
 
-            // $nilaiMtk = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL005');
-            // $nilaiPkn = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL002');
-            // $nilaiPai = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL001');
-            // $nilaiEnglish = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL004');
-            // $nilaiSunda = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL011');
-            // $nilaiIps = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL006');
-            // $nilaiKomp = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL017');
+            $nilaiMtk = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL005');
+            $nilaiPkn = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL002');
+            $nilaiPai = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL001');
+            $nilaiEnglish = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL004');
+            $nilaiSunda = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL011');
+            $nilaiIps = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL006');
+            $nilaiKomp = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL017');
 
 
-            // $nilaiBudaya = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL007');
-            // $nilaiPJOK = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL008');
-            // $nilaiPrakarya = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL010');
-            // $nilaiBacaAlq = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL012');
-            // $nilaiFiqih = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL013');
-            // $nilaiAswaja = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL014');
-            // $nilaiTik = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL015');
-            // $nilaiAqidah = $siswa->nilai->firstWhere('matapelajaran.kode_mapel', 'MAPEL016');
+            $nilaiBudaya = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL007');
+            $nilaiPJOK = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL008');
+            $nilaiPrakarya = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL010');
+            $nilaiBacaAlq = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL012');
+            $nilaiFiqih = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL013');
+            $nilaiAswaja = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL014');
+            $nilaiTik = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL015');
+            $nilaiAqidah = optional($siswa->nilai)->firstWhere(fn($n) => optional($n->matapelajaran)->kode_mapel === 'MAPEL016');
 
              @endphp
 
@@ -94,7 +93,7 @@
             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->name }}</td>
             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kode_kelas }}</td>
             <td class="px-10 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiBindo->nilai ?? '-' }}</td>
-            {{-- <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiIpa->nilai ?? '-' }}</td>
+            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiIpa->nilai ?? '-' }}</td>
 
             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiMtk->nilai ?? '-' }}</td>
             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiPkn->nilai ?? '-' }}</td>
@@ -112,9 +111,7 @@
             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiFiqih->nilai ?? '-' }}</td>
             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiAswaja->nilai ?? '-' }}</td>
             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiTik->nilai ?? '-' }}</td>
-            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiAqidah->nilai ?? '-' }}</td> --}}
-
-            
+            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiAqidah->nilai ?? '-' }}</td>
 
             </tr>
             @endforeach

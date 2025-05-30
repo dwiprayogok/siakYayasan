@@ -45,13 +45,28 @@ class NilaiController extends Controller
     public function printNIlaiPdf(Request $request)
     {
         
-        $siswas = Siswa::with('kelas.jadwalpelajaran.guru', 'kelas.jadwalpelajaran.matapelajaran',  'nilai.matapelajaran');
+        $query = Siswa::with('kelas.jadwalpelajaran.guru', 'kelas.jadwalpelajaran.matapelajaran',  'nilai.matapelajaran');
+
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('nis', 'like', "%{$search}%");
+            });
+        }
+    
+        if ($request->filled('kelas')) {
+            $kelas = $request->input('kelas');
+            $query->where('kode_kelas', $kelas);
+        }
+
+        $siswas = $query->get();
 
 
         $pdf = Pdf::loadView('admin.views.downloadPDF.NilaiPDF', compact('siswas'))
-                ->setPaper('A4', 'portrait');
+                ->setPaper('A4', 'landscape');
 
-        return $pdf->download('daftar-users.pdf');
+        return $pdf->download('daftar-nilai.pdf');
     }
  
     
@@ -68,7 +83,6 @@ class NilaiController extends Controller
         $pdf = Pdf::loadView('admin.views.detailPDF.DetailNilaiSiswaPDF', compact('siswas'))
             ->setPaper('A4', 'portrait');
 
-        //return $pdf->download('nilaiSiswa' . $siswas->id_student . '.pdf');
         return $pdf->download('Nilai_Siswa' . $siswas->name . '.pdf');
 
     }
