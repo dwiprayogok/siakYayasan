@@ -45,8 +45,7 @@
                     <table class="w-full text-sm text-left text-black dark:text-black" id="user-table">
                         <thead class="text-xs text-black uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="px-4 py-3  dark:text-white">Aksi</th>
-                                <th scope="col" class="px-4 py-3  dark:text-white">Nis</th>
+                                <th scope="col" class="px-8 py-3  dark:text-white">Aksi</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">Nama</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">Kelas</th>
                                 <th scope="col" class="px-4 py-3  dark:text-white">B.INDONESIA</th>
@@ -113,11 +112,9 @@
                                     </button>
       
                                 </td>
-                                
-                            <td class="px-4 py-3 font-medium  text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->nis }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->name }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $siswa->kode_kelas }}</td>
-                            <td class="px-10 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiBindo->nilai ?? '-' }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiBindo->nilai ?? '-' }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiIpa->nilai ?? '-' }}</td>
 
                             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-black">{{ $nilaiMtk->nilai ?? '-' }}</td>
