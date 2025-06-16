@@ -129,6 +129,8 @@ Route::post('/jadwalpelajarans/{id}/update', [JadwalPelajaranController::class, 
 Route::delete('/jadwalpelajarans/{id}', [JadwalPelajaranController::class, 'destroy']);
 Route::get('/jadwalpelajarans.print', [JadwalPelajaranController::class, 'printPdf'])->name('jadwalpelajarans.print');
 Route::get('/jadwalpelajarans.printDetail', [JadwalPelajaranController::class, 'JadwalprintPdf'])->name('jadwalpelajarans.printDetail');
+Route::get('/get-mapel-by-guru/{kode_guru}', [JadwalPelajaranController::class, 'getMapelByGuru']);
+
 
 
 

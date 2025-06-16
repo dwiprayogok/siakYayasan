@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\guru;
 use App\Models\kelas;
 use App\Models\matapelajaran;
+use App\Models\Matapelajaran as ModelsMatapelajaran;
 use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -182,4 +183,13 @@ class JadwalPelajaranController extends Controller
 
         return $pdf->download('jadwalpelajarans-details-' . $jadwalpelajarans->id . '.pdf');
     }
+
+
+    public function getMapelByGuru($kode_guru)
+{
+    $matapelajarans = ModelsMatapelajaran::where('kode_guru', $kode_guru)->get(['kode_mapel', 'nama']);
+
+    return response()->json($matapelajarans);
+}
+
 }

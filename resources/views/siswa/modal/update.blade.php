@@ -32,7 +32,7 @@
                       </div>
 
                     <div class="col-span-2">
-                        <label for="updatename" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                        <label for="updatename" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
                         <input type="text" name="updatename" id="updatename" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="Name" required="">
                     </div>
 
@@ -85,7 +85,7 @@
 
                     
                     <div class="col-span-2">
-                        <label for="updatephone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Telepone</label>
+                        <label for="updatephone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Telepon</label>
                         <input type="number" name="updatephone" id="updatephone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  maxlength="12" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"  placeholder="No Telephone" required="">
                     </div>
 

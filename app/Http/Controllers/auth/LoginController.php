@@ -26,10 +26,22 @@ class LoginController extends Controller
     public function actionlogin(Request $request)
     {
         
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+        // $credentials = $request->validate([
+        //     'email' => 'required|email',
+        //     'password' => 'required',
+        // ]);
+        
+        $request->validate([
+            'login' => 'required|string',
+            'password' => 'required|string',
         ]);
+
+        $loginType = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        $credentials = [
+            $loginType => $request->login,
+            'password' => $request->password,
+        ];
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
