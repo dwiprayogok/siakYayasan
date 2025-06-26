@@ -94,7 +94,6 @@ Route::post('/auth/resetpassword', [ResetPasswordController::class, 'store'])
 
 
 
-
 Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::middleware(['auth'])->group(function () {

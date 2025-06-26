@@ -11,9 +11,12 @@ use App\Models\User;
 class ResetPasswordController extends Controller
 {
     //
-    public function create($token)
+    public function create(Request $request,$token)
     {
-        return view('auth.resetpassword', ['token' => $token]);
+        return view('auth.resetpassword', [
+            'token' => $token,
+            'email' => $request->email,
+        ]);
     }
 
     public function store(Request $request)
@@ -21,20 +24,20 @@ class ResetPasswordController extends Controller
         $request->validate([
             'token' => 'required',
             'email' => 'required|email|exists:users,email',
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required|min:2|confirmed',
         ]);
-
+        
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user, $password) {
                 $user->forceFill([
-                    'password' => Hash::make($password),
+                    'password' =>  bcrypt($password),
                 ])->save();
             }
         );
 
         return $status === Password::PASSWORD_RESET
-            ? redirect()->route('login')->with('status', __($status))
-            : back()->withErrors(['forgotpassword' => [__($status)]]);
+        ? redirect()->route('login')->with('status', 'Password berhasil direset.')
+        : back()->withErrors(['email' => [trans($status)]]);
     }
 }

@@ -17,6 +17,11 @@
                 <b>Opps!</b> {{session('error')}}
             </div>
             @endif
+            @if (session('status'))
+            <div class="mb-4 font-medium text-sm text-green-600">
+                {{ session('status') }}
+            </div>
+            @endif
             
             <form class="max-w-sm mx-auto space-y-3 md:space-y-5" action="{{ route('actionlogin') }}" method="post">
                 @csrf
