@@ -22,7 +22,7 @@
 
       <nav class="bg-gray-400 border-gray-200 dark:bg-gray-900">
             <div class="flex flex-wrap items-center justify-between mx-auto p-4">
-                  <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                  <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
                   <img  src="\iconYapa.png" alt="logo" style="margin: 0; border: 0; padding: 0; display: block; width:100px !important; height:100px !important" class="h-8" alt="YAPA Logo" />
                   <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SMP YAPA 1</span>
                   </a>
