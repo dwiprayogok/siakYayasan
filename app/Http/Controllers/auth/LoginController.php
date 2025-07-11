@@ -25,12 +25,7 @@ class LoginController extends Controller
 
     public function actionlogin(Request $request)
     {
-        
-        // $credentials = $request->validate([
-        //     'email' => 'required|email',
-        //     'password' => 'required',
-        // ]);
-        
+       
         $request->validate([
             'login' => 'required|string',
             'password' => 'required|string',
@@ -45,7 +40,6 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            //dd($user);
 
             // Redirect based on role
             if ($user->role === 'admin') {

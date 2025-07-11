@@ -157,10 +157,19 @@ function formatDate(inputDate) {
 
 
         $.post('/gurus/' + userid + '/update', formData, function(response) {
-            alert(response.success);
-            location.reload(); // Refresh page to see changes
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses!',
+                text: response.success 
+                }).then(() => {
+                location.reload(); // Reload after OK clicked
+                });
         }).fail(function(xhr) {
-            alert('Error: ' + xhr.responseJSON.message);
+             Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: xhr.responseJSON.message
+                        });
         });
     });
 </script>

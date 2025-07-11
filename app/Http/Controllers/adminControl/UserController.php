@@ -54,15 +54,6 @@ class UserController extends Controller
         ]);
 
         // Create and store the user
-        // $user = User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'username' => $request->username,
-        //     'role' => $request->input('role'),
-        //     'password' => bcrypt($request->password),
-        //     'active' => $request->input('active'),
-        // ]);
-
         DB::transaction(function () use ($request) {
             // 👤 Create User
             $user = new User();

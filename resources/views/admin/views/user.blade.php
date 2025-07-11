@@ -30,6 +30,19 @@
         <p class="text-2xl font-bold  text-gray-800"> {{ now()->locale('id')->translatedFormat('l, d F Y') }}</p>     
     </div>
 
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
+
+
   
     <!-- Profile Card -->
     <div class="bg-gradient-to-r from-blue-100 to-yellow-100 p-6 rounded-xl mb-6">
@@ -132,8 +145,8 @@
                                   data-original="#000000" />
                               </svg>
                             </button>
-                            {{-- <button class="mr-4 btnDelete" title="delete" id="btnDelete" data-id="{{ $user->id }}" data-modal-target="deleteModal" data-modal-toggle="deleteModal"> --}}
-                                <button class="mr-4 btnDeleteUser"  data-id="{{ $user->id }}">
+                            <button class="mr-4 btnDelete" title="delete" id="btnDelete" data-id="{{ $user->id }}" data-modal-target="deleteModal" data-modal-toggle="deleteModal">
+                                {{-- <button class="mr-4 btnDeleteUser"  data-id="{{ $user->id }}"> --}}
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-red-500 hover:fill-red-700" viewBox="0 0 24 24">
                                 <path
                                   d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
@@ -173,31 +186,8 @@
 
 
 @include('user.modal.create')
-{{-- @include('user.modal.delete') --}}
+@include('user.modal.delete')
 @include('user.modal.update')
 @include('user.modal.detail')
 
 @endsection
-
-@push('scripts')
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.btnDeleteUser').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const userId = this.getAttribute('data-id');
-
-                // Fire custom event
-                window.dispatchEvent(new CustomEvent('btnDeleteUser', {
-                    detail: {
-                        id: userId,
-                        type: 'delete',
-                        title: 'Delete User?',
-                        text: 'This action is permanent.',
-                        icon: 'error'
-                    }
-                }));
-            });
-        });
-    });
-</script>
-@endpush

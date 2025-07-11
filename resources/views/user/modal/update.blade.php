@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-span-2">
                         <label for="updateName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" name="updateName" id="updateName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Neame" required="">
+                        <input type="text" name="updateName" id="updateName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Name" required="">
                     </div>
                     <div class="col-span-2">
                       <label for="updateUsername" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
@@ -117,10 +117,19 @@
         };
 
         $.post('/users/' + userid + '/update', formData, function(response) {
-            alert(response.success);
-            location.reload(); // Refresh page to see changes
+                Swal.fire({
+                icon: 'success',
+                title: 'Sukses!',
+                text: response.success 
+                }).then(() => {
+                location.reload(); // Reload after OK clicked
+                });
         }).fail(function(xhr) {
-            alert('Error: ' + xhr.responseJSON.message);
+             Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: xhr.responseJSON.message
+                        });
         });
     });
 </script>

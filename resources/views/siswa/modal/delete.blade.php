@@ -57,12 +57,21 @@ $('body').on('click', '#btnDelete', function () {
 
                     },
                     success: function (response) {
-                        alert(response.success);
-                        location.reload(); // Refresh page to see changes
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Deleted!',
+                            text: response.success || 'Siswa has been deleted.'
+                        }).then(() => {
+                            location.reload(); // Reload after OK clicked
+                        });
 
                     },
                     error: function () {
-                        alert("Something went wrong!");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!'
+                        });
 
                     }
         });
