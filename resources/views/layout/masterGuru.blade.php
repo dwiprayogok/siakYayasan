@@ -29,7 +29,7 @@
                   <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                   <button type="button" class="flex text-sm bg-gray-400 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                   <span class="sr-only">Open user menu</span>
-                  <img class="w-8 h-8 rounded-full" src="/profile.png" alt="user photo">
+                   <img class="w-15 h-20 rounded-full border-4 border-white shadow-md" src="/profile.png" alt="user photo">
                   </button>
                   <!-- Dropdown menu -->
                   <div class="z-50 hidden my-4 text-base list-none bg-gray-200 divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
