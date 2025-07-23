@@ -155,8 +155,6 @@ class UserController extends Controller
         return response()->json(['success' => 'User deleted successfully']);
         
     }
-
-
     
     public function printPdf()
     {
@@ -171,13 +169,13 @@ class UserController extends Controller
 
     public function UserPrintPdf(Request $request)
     {
-        $id = $request->input('id');
+    $id = $request->input('id');
     $user = User::findOrFail($id);
 
     $pdf = Pdf::loadView('admin.views.detailPDF.DetailUserPDF', compact('user'))
             ->setPaper('A4', 'portrait');
 
-    return $pdf->download('user-details-' . $user->id . '.pdf');
+    return $pdf->download('user-details_' . $user->name . '.pdf');
     }
 
 }

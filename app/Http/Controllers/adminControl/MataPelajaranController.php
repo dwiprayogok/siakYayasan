@@ -132,7 +132,7 @@ class MataPelajaranController extends Controller
             $pdf = Pdf::loadView('admin.views.detailPDF.DetailMataPelajaranPDF', compact('matapelajarans'))
                 ->setPaper('A4', 'portrait');
     
-            return $pdf->download('matapelajaran-details-' . $matapelajarans->id . '.pdf');
+            return $pdf->download('matapelajaran-details-' . $matapelajarans->nama . '.pdf');
         }
 
       

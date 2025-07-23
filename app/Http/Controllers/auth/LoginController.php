@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+
 
 class LoginController extends Controller
 {
@@ -59,5 +62,38 @@ class LoginController extends Controller
     {
         Auth::logout();
         return redirect('/');
+    }
+
+    public function actionResetPassword() { 
+
+       if (Auth::check()) {
+        $user = Auth::user(); 
+        return view('layout.masterResetPassword', [
+            'email' => $user->email,
+            'userid' => $user->id
+        ]);
+    }
+
+    // If not logged in, you might redirect to login
+    return redirect()->route('login')->with('error', 'Please login first.');
+
+    }
+
+
+    public function update(Request $request,string $id)
+    {
+       
+        $user = User::find($id);
+        
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+        $user->update([
+            'id'            => $request->id,
+            'email'         => $request->email,
+            'password'      => bcrypt($request->password),
+        ]);
+
+        return response()->json(['success' => 'User updated successfully!']);
     }
 }

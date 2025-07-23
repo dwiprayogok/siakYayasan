@@ -163,7 +163,7 @@ class GuruController extends Controller
         $pdf = Pdf::loadView('admin.views.detailPDF.DetailGuruPDF', compact('gurus'))
             ->setPaper('A4', 'portrait');
 
-        return $pdf->download('guru-details-' . $gurus->id . '.pdf');
+        return $pdf->download('guru-details-' . $gurus->name . '.pdf');
     }
     
 }

@@ -4,11 +4,12 @@
 </head>
 <body>
 
-<div class="flex flex-col justify-center font-[sans-serif] sm:h-screen p-4">
+{{-- <div class="flex flex-col justify-center font-[sans-serif] sm:h-screen p-4"> --}}
+    <div class="flex flex-col justify-center font-[sans-serif] mx-auto md:h-screen lg:py-60">
       <div class="max-w-md w-full mx-auto border dark:bg-green-700 dark:border-gray-900 rounded-2xl p-8">
         <div class="text-center">
                     <img src="\iconYapa.png" alt="logo" style="margin-left: 110px;border: 0; padding: 0; display: block; width:150px !important; height:150px !important"/>
-                    <a href="#" class="flex items-center text-2xl font-semibold text-black-900 dark:text-black"">
+                    <a href="#" class="flex items-center text-xl font-semibold text-black-900 dark:text-black">
                     Yayasan Pendidikan Islam Al-isti'aanah    
                 </a>
         </div>
@@ -53,6 +54,7 @@
                          focus:ring-white focus:border-white block w-full p-2.5 dark:bg-white dark:border-white dark:placeholder-black
                           dark:text-black dark:focus:ring-yellow-400 dark:focus:border-yellow-400">
                 <option value="">-- Select Role --</option>
+                <option value="admin">Admin</option>
                 <option value="siswa">Siswa</option>
                 <option value="guru">Guru</option>
                 </select>
@@ -108,7 +110,7 @@
             } else if (role === 'guru') {
                 nipInput.style.display = 'block';
                 labelNIP.style.display = 'block';
-            }
+            } 
         });
     });
 

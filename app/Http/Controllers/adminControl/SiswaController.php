@@ -155,19 +155,6 @@ class SiswaController extends Controller
         
     }
 
-
-    // public function printPdf()
-    // {
-    //     //$siswas = Siswa::with('kelas')->get();
-    //     $siswas = Siswa::all();
-
-    //     $pdf = Pdf::loadView('/admin/views/downloadPDF/siswaPDF', compact('siswas'))
-    //             ->setPaper('A4', 'portrait');
-
-    //     return $pdf->download('daftar-Siswa.pdf');
-    // }
-
-
         public function printPdf(Request $request)
         {
 
@@ -202,7 +189,7 @@ class SiswaController extends Controller
         $pdf = Pdf::loadView('admin.views.detailPDF.DetailSiswaPDF', compact('siswas'))
             ->setPaper('A4', 'portrait');
 
-        return $pdf->download('siswa-details-' . $siswas->id . '.pdf');
+        return $pdf->download('siswa-details_' . $siswas->name . '.pdf');
     }
   
 }

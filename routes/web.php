@@ -42,6 +42,7 @@ Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('acti
 
 
 
+
 // Admin Routes
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])
@@ -99,6 +100,10 @@ Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('
 Route::middleware(['auth'])->group(function () {
     Route::get('/User/Profile', [ProfileController::class, 'index'])->name('profile');
 });
+
+Route::get('actionResetPassword', [LoginController::class, 'actionResetPassword'])->name('actionResetPassword');
+Route::post('/actionResetPassword/user', [LoginController::class, 'ResetPassword'])->name('ResetPassword');
+
 
 
 

@@ -20,21 +20,14 @@ class RegisterController extends Controller
     
     public function actionregister(Request $request)
     {
+        $adminCount = User::where('role', 'admin')->count();
 
-        // $user = new User();
-        // $user->name = $request->name;
-        // $user->username = $request->username;
-        // $user->email = $request->email;
-        // $user->password = Hash::make($request->password);
-        // $user->role =$request->input('role');
-        // $user->save();
+        if ($request->input('role') === 'admin' && $adminCount >= 3) {
+            Session::flash('message', 'Maximum number of admins reached.');
+            return redirect('/auth/register');
+   
+        }
 
-
-        // Session::flash('message', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
-        // return redirect('register');
-
-
-        
         DB::transaction(function () use ($request) {
             // 👤 Create User
             $user = new User();

@@ -181,15 +181,15 @@ class JadwalPelajaranController extends Controller
         $pdf = Pdf::loadView('admin.views.detailPDF.DetailJadwalPelajaranPDF', compact('jadwalpelajarans'))
             ->setPaper('A4', 'portrait');
 
-        return $pdf->download('jadwalpelajarans-details-' . $jadwalpelajarans->id . '.pdf');
+        return $pdf->download('jadwalpelajarans-details-' . $jadwalpelajarans->hari . '.pdf');
     }
 
 
     public function getMapelByGuru($kode_guru)
-{
-    $matapelajarans = ModelsMatapelajaran::where('kode_guru', $kode_guru)->get(['kode_mapel', 'nama']);
+    {
+        $matapelajarans = ModelsMatapelajaran::where('kode_guru', $kode_guru)->get(['kode_mapel', 'nama']);
 
-    return response()->json($matapelajarans);
-}
+        return response()->json($matapelajarans);
+    }
 
 }

@@ -10,7 +10,6 @@ use App\Models\User;
 
 class ResetPasswordController extends Controller
 {
-    //
     public function create(Request $request,$token)
     {
         return view('auth.resetpassword', [

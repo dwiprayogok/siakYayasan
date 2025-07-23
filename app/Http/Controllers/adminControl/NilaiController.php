@@ -69,21 +69,16 @@ class NilaiController extends Controller
         return $pdf->download('daftar-nilai.pdf');
     }
  
-    
 
     public function NilaiSiswaPrintPdf(Request $request)
     {
-        $id_student = $request->input('id_student'); // ✅ No trailing space
-
-        $siswas = Siswa::with(['nilai.matapelajaran']) // ✅ Uses 'nilai' as defined in the model
-            ->where('id_student', $id_student)         // ✅ No space in column name
+        $id_student = $request->input('id_student'); 
+        $siswas = Siswa::with(['nilai.matapelajaran']) 
+            ->where('id_student', $id_student)         
             ->firstOrFail();
-
-
         $pdf = Pdf::loadView('admin.views.detailPDF.DetailNilaiSiswaPDF', compact('siswas'))
             ->setPaper('A4', 'portrait');
-
-        return $pdf->download('Nilai_Siswa' . $siswas->name . '.pdf');
+        return $pdf->download('Nilai_Siswa_' . $siswas->name . '.pdf');
 
     }
 
