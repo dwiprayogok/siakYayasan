@@ -59,9 +59,15 @@
     <!-- Form Grid -->
     <div class="bg-white dark:bg-white relative shadow-md sm:rounded-lg overflow-hidden">
          
-        <form class="p-4 md:p-5" action="{{ route('ResetPassword') }}" method="POST" >
+        <form class="p-4 md:p-5"  id="updatePassword" >
             {{ csrf_field() }}
               <div class="grid gap-6 mb-6 md:grid-cols-2">
+
+                <div class="col-span-2">
+                    <input type="hidden" name="UserID" id="UserID" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ID" required="">
+                </div>
+
+
                   <div>
                       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Email</label>
                       <input type="email" name="email" id="email" class="bg-white border border-white text-gray-900 text-sm rounded-lg
@@ -90,6 +96,52 @@
           </form>
         
     </div>
+
+
+
+    <script>
+
+       
+        
+            // Update user data
+            $('#updatePassword').submit(function(e) {
+                e.preventDefault();
+                let userid = $('#UserID').val();
+        
+                var formData = {
+                    _token: $('input[name=_token]').val(),
+                    id_student: $('#updateid_sudent').val(),
+                    nis: $('#updatenis').val(),
+                    name: $('#updatename').val(),
+                    gender: $('#updategender').val(),
+                    kode_kelas: $('#updateclass').val(),
+                    address: $('#updateaddress').val(),
+                    born_place: $('#updateborn_place').val(),
+                    birth_date: formattedDate,
+                    phone: $('#updatephone').val(),
+                    name_of_parent: $('#updatename_of_parent').val(),
+                };
+        
+                console.log("formData",formData);
+        
+        
+                $.post('/siswas/' + userid + '/update', formData, function(response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sukses!',
+                        text: response.success 
+                        }).then(() => {
+                        location.reload(); // Reload after OK clicked
+                        });
+                }).fail(function(xhr) {
+                     Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: xhr.responseJSON.message
+                                });
+                });
+            });
+        </script>
     
 
 @endsection

@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @vite(['resources/css/app.css','resources/js/app.js'])
+    {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-uHMN2fJqxPpYzNQ86Ds8Ee69zR2fuR2z8MJeCec3gXk=" crossorigin=""/> --}}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
     <title>Siak</title>
+    <style>
+      #footer-map {
+          height: 100px;
+          width: 100%;
+      }
+  </style>
 </head>
 <body class="flex flex-col min-h-screen">
 
@@ -82,13 +91,22 @@
 
         <!-- Footer -->
     <footer class="bg-gray-900 text-white text-sm py-4 text-center">
-      <div style="width: 100%;
+      {{-- <div style="width: 100%;
       position: fixed;
       bottom: 0;
       padding-top: 30px;" >
-          @extends('layout.footer')
-    </div>
+         @include('layout.footer')
+    </div> --}}
+
+    <div style="width: 100%;   bottom: 0; padding-top: 30px;">
+      @include('layout.footer')
+  </div>
 
   </footer>
+
+  {{-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-3vQjIuDkdFGr2PILxzGgV+yvoMfx2Pb9Z0+ddYcyNf0=" crossorigin=""></script> --}}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
 </body>
 </html>
