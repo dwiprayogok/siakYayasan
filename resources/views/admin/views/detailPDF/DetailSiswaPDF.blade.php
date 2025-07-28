@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Daftar Siswa</title>
+    <title>Siswa</title>
     <style>
         body {
             font-family: sans-serif;
@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-    <h2>Daftar Siswa</h2>
+    <h2>Siswa : {{ $siswas->name}}</h2>
 
     <table>
         <thead>

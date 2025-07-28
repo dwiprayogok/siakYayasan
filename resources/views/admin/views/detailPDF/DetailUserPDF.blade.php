@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-    <h2>Daftar User</h2>
+    <h2>Detail User : {{$user->name}}</h2>
 
     <table>
         <thead>

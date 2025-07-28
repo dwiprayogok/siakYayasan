@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Daftar Guru</title>
+    <title>Detail Guru</title>
     <style>
         body {
             font-family: sans-serif;
@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-    <h2>Daftar Guru</h2>
+    <h2>Detail Guru</h2>
 
     <table>
         <thead>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Daftar Jadwal Pelajaran</title>
+    <title>Detail Jadwal Pelajaran</title>
     <style>
         body {
             font-family: sans-serif;
@@ -28,8 +28,9 @@
     </style>
 </head>
 <body>
-    <h2>Daftar Jadwal Pelajaran </h2>
-
+    <h2>Jadwal Pelajaran </h2>
+    <h1>Hari : {{ $jadwalpelajarans->hari }} </h1>
+    <p> Mata Pelajaran : {{ $jadwalpelajarans->matapelajaran->nama }} </p>
     <table>
         <thead>
             <tr>

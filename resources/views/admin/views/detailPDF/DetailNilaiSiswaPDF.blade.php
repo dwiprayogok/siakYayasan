@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-    <h2>Nilai Siswa</h2>
+    <h2>Nilai Siswa: {{ $siswas->name }}</h2>
 
     <table>
         <thead class="text-xs text-black uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
