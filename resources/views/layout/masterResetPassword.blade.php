@@ -1,4 +1,4 @@
-@extends('layout.master')
+{{-- @extends('layout.master')
 @section('konten')
 
 
@@ -144,4 +144,30 @@
         </script>
     
 
-@endsection
+@endsection --}}
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<!-- Main modal -->
+<div id="userModal" tabindex="-1" aria-hidden="true" class="hidden fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+    <div class="relative w-full h-full max-w-2xl md:h-auto">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    User Modal
+                </h3>
+                <button type="button" class="text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg p-1.5" data-modal-hide="userModal">
+                    ✕
+                </button>
+            </div>
+            <div class="p-6">
+                <p class="text-gray-700">This modal was included from a separate file.</p>
+            </div>
+            <div class="flex justify-end p-4 border-t border-gray-200">
+                <button data-modal-hide="userModal" type="button" class="bg-blue-600 text-white px-4 py-2 rounded">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

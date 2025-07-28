@@ -8,6 +8,13 @@
     <!-- Add this in <head> or before </body> -->
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @vite(['resources/css/app.css','resources/js/app.js'])
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #footer-map {
+            height: 100px;
+            width: 100%;
+        }
+    </style>
     <title>Siak</title>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -39,7 +46,7 @@
                   </div>
                   <ul class="py-2" aria-labelledby="user-menu-button">
                   <li>
-                  <a href="{{route('actionResetPassword')}}"  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Reset Password</a>
+                        <a href="#" data-modal-target="userModal" data-modal-toggle="userModal"  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white underline">Reset Password</a>
                   </li>
                   <li>
                   <a href="{{route('actionlogout')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
@@ -80,16 +87,23 @@
       </main>
       
  
-         <!-- Footer -->
-    <footer class="bg-gray-900 text-white text-sm py-4 text-center">
-      <div style="width: 100%;
+          <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-sm py-4 text-center">
+      {{-- <div style="width: 100%;
       position: fixed;
       bottom: 0;
       padding-top: 30px;" >
-          @extends('layout.footer')
-    </div>
-
+         @include('layout.footer')
+    </div> --}}
+  
+    <div style="width: 100%;   bottom: 0; padding-top: 30px;">
+      @include('layout.footer')
+  </div>
+  
   </footer>
+  
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
 
 </body>
 </html>
