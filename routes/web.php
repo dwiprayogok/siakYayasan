@@ -102,7 +102,9 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('actionResetPassword', [LoginController::class, 'actionResetPassword'])->name('actionResetPassword');
-Route::post('/actionResetPassword/user', [LoginController::class, 'ResetPassword'])->name('ResetPassword');
+Route::post('/reset-password', [ForgotPasswordController::class, 'ResetPassword'])->name('ResetPassword');
+//Route::post('/reset-password', [ForgotPasswordController::class, 'reset'])->name('password.reset');
+
 
 
 

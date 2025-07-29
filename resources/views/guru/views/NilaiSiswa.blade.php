@@ -87,7 +87,7 @@
                             @if ($jadwalGuru)
                             {{ $jadwalGuru->matapelajaran->nama ?? '-' }}<br>
                             @else
-                            <span class="text-red-500">No jadwal for this guru</span><br>
+                            <span class="text-red-500">Belum Ada Jadwal</span><br>
                             @endif
 
                         

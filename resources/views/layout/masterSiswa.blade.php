@@ -44,7 +44,6 @@
                         </div>
                         <ul class="py-2" aria-labelledby="user-menu-button">
                         <li>
-                        {{-- <a href="{{route('actionResetPassword')}}"  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Reset Password</a> --}}
                         <a href="#" data-modal-target="userModal" data-modal-toggle="userModal"  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white underline">Reset Password</a>
                         </li>
                         <li>

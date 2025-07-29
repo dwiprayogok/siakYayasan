@@ -12,7 +12,7 @@
       </a>
       <div class="w-full bg-white rounded-xl shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-green-700 dark:border-gray-900">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-            @if(session('error'))
+            {{-- @if(session('error'))
             <div class="alert alert-danger text-white">
                 <b>Opps!</b> {{session('error')}}
             </div>
@@ -21,7 +21,27 @@
             <div class="mb-4 font-medium text-sm text-white">
                 {{ session('status') }}
             </div>
+            @endif --}}
+
+            @if($errors->has('login'))
+            <div class="alert alert-danger text-black">
+            <b>Opps!</b> {{ $errors->first('login') }}
+            </div>
             @endif
+
+            @if(session('error'))
+            <div class="alert alert-danger text-black">
+            <b>Opps!</b> {{ session('error') }}
+            </div>
+            @endif
+
+            @if (session('status'))
+            <div class="mb-4 font-medium text-sm text-black">
+            {{ session('status') }}
+            </div>
+            @endif
+
+
             
             <form class="max-w-sm mx-auto space-y-3 md:space-y-5" action="{{ route('actionlogin') }}" method="post">
                 @csrf

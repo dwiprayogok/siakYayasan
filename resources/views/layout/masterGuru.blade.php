@@ -46,7 +46,7 @@
                   </div>
                   <ul class="py-2" aria-labelledby="user-menu-button">
                   <li>
-                        <a href="#" data-modal-target="userModal" data-modal-toggle="userModal"  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white underline">Reset Password</a>
+                    <a href="#" data-modal-target="userModal" data-modal-toggle="userModal"  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white underline">Reset Password</a>
                   </li>
                   <li>
                   <a href="{{route('actionlogout')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
@@ -61,7 +61,7 @@
                   </button>
                   </div>
                   <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-                  <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-400 rounded-lg bg-gray-400 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-gray-00 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ">
                   <li>
                   <a href="\guru\dashboard" class="block py-2 px-3 text-gray-900  text-lg  hover:bg-gray-200 md:hover:bg-transparent md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Home</a>
                   </li>
@@ -104,6 +104,7 @@
   
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   
+  @include('layout.masterResetPassword')
 
 </body>
 </html>

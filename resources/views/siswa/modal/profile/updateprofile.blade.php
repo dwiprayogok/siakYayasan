@@ -202,15 +202,23 @@ $('#editprofileSiswaForm').submit(function(e) {
 
         $.post('/siswas/' + userid + '/updateProfilSiswa', formData, function(response) {
             console.log("formData",formData);
-            alert(response.success);
-            location.reload(); // Refresh page to see changes
+            Swal.fire({
+                        icon: 'success',
+                        title: 'Sukses!',
+                        text: response.success 
+                        }).then(() => {
+                        location.reload(); // Reload after OK clicked
+                    });
             
         }).fail(function(xhr) {
-            //alert('Error: ' + xhr.responseJSON.message);
             console.log("XHR ERROR", xhr);
 
                 if (xhr.responseJSON && xhr.responseJSON.message) {
-                    alert('Error: ' + xhr.responseJSON.message);
+                    Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: xhr.responseJSON.message
+                        });
                 } else if (xhr.responseJSON) {
                     // Tampilkan semua error validasi
                     let allErrors = xhr.responseJSON;
@@ -222,9 +230,17 @@ $('#editprofileSiswaForm').submit(function(e) {
                         }
                     }
 
-                    alert("Validation Error:\n" + messages.join("\n"));
+                    Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text:  "Validation Error:\n" + messages.join("\n")
+                        });
                 } else {
-                    alert("Terjadi kesalahan yang tidak diketahui.");
+                    Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text:  "Terjadi kesalahan yang tidak diketahui."
+                        });
                 }
                             
         });

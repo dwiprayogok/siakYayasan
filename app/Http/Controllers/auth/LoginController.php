@@ -55,7 +55,9 @@ class LoginController extends Controller
             }
         }
 
-        return back()->withErrors(['email' => 'Invalid credentials']);
+        //return back()->withErrors(['email' => 'Invalid credentials']);
+        return back()->withInput()->with('error', 'The provided credentials do not match our records.');
+
     }
 
     public function actionlogout()
@@ -79,21 +81,4 @@ class LoginController extends Controller
 
     }
 
-
-    public function update(Request $request,string $id)
-    {
-       
-        $user = User::find($id);
-        
-        if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
-        }
-        $user->update([
-            'id'            => $request->id,
-            'email'         => $request->email,
-            'password'      => bcrypt($request->password),
-        ]);
-
-        return response()->json(['success' => 'User updated successfully!']);
-    }
 }

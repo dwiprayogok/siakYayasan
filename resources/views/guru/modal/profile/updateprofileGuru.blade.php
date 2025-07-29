@@ -99,7 +99,7 @@
                   <div class="col-span-2">
                             
                     <label for="updateaddress" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
-                    <textarea id="updateaddress" name="address" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  placeholder="Tulis alamat mu disini..."></textarea>
+                    <textarea id="updateaddress" name="address" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="Tulis alamat mu disini..."></textarea>
 
                     </div>
 
@@ -181,10 +181,6 @@ function formatDate(inputDate) {
             }
         });
 
-
-        console.log("updateemail: ", $('#updateemail').val());
-
-
         var formData = {
             //_token: $('input[name=_token]').val(),
             userid: $('#UserID').val(),
@@ -209,13 +205,23 @@ function formatDate(inputDate) {
                 method: 'POST',
                 data: formData,
                 success: function(response) {
-                    alert(response.success);
-                    location.reload();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sukses!',
+                        text: response.success 
+                        }).then(() => {
+                        location.reload(); // Reload after OK clicked
+                    });
                 },
                 error: function(xhr) {
                     console.log("XHR ERROR", xhr);
                     if (xhr.responseJSON && xhr.responseJSON.message) {
-                        alert('Error: ' + xhr.responseJSON.message);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: xhr.responseJSON.message
+                        });
+                        
                     } else if (xhr.responseJSON) {
                         let allErrors = xhr.responseJSON;
                         let messages = [];
@@ -226,9 +232,19 @@ function formatDate(inputDate) {
                             }
                         }
 
-                        alert("Validation Error:\n" + messages.join("\n"));
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text:  "Validation Error:\n" + messages.join("\n")
+                        });
+
                     } else {
-                        alert("Terjadi kesalahan yang tidak diketahui.");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text:  "Terjadi kesalahan yang tidak diketahui."
+                        });
+
                     }
                 }
             });
