@@ -10,6 +10,8 @@ use App\Models\Siswa;
 use App\Models\guru;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use App\Mail\RegistrationConfirmation;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -56,9 +58,13 @@ class RegisterController extends Controller
                 $gurus->email = $user->email;
                 $gurus->save();
             }
+            
+            Mail::to($user->email)->send(new RegistrationConfirmation($user, $request->password));
+
         });
+
+          // Send confirmation email
     
-        //return response()->json(['message' => 'Registration successful.']);
          Session::flash('message', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
          return redirect('/auth/register');
 

@@ -55,8 +55,7 @@ class LoginController extends Controller
             }
         }
 
-        //return back()->withErrors(['email' => 'Invalid credentials']);
-        return back()->withInput()->with('error', 'The provided credentials do not match our records.');
+        return back()->withInput()->with('error', 'User Tidak Ditemukan');
 
     }
 
