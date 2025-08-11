@@ -29,7 +29,6 @@
 </head>
 <body>
     <h2>Daftar Nilai</h2>
-    <h2>Nilai Siswa - Kelas {{ $siswas->first()->kelas }}</h2>
 
     <table>
         <thead>

@@ -25,7 +25,7 @@ class RegisterController extends Controller
         $adminCount = User::where('role', 'admin')->count();
 
         if ($request->input('role') === 'admin' && $adminCount >= 3) {
-            Session::flash('message', 'Maximum number of admins reached.');
+            Session::flash('message', 'Jumlah admin maksimum telah tercapai.');
             return redirect('/auth/register');
    
         }
@@ -55,6 +55,7 @@ class RegisterController extends Controller
                 $gurus->id = $user->id;
                 $gurus->name = $user->name;
                 $gurus->kode_guru = $request->nip;
+                $gurus->nip = $request->nip;
                 $gurus->email = $user->email;
                 $gurus->save();
             }

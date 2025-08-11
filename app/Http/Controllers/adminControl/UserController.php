@@ -85,8 +85,7 @@ class UserController extends Controller
             }
         });
 
-        //return response()->json(['message' => 'User created successfully!', 'user' => $user]);
-        return redirect()->route('user')->with('success', 'User added successfully!');
+        return redirect()->route('user')->with('success', 'User Berhasil Ditambah');
     }
 
    

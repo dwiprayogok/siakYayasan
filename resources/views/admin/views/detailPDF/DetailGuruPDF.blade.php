@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Detail Guru</title>
+    <title>Guru</title>
     <style>
         body {
             font-family: sans-serif;
@@ -28,8 +28,7 @@
     </style>
 </head>
 <body>
-    <h2>Detail Guru</h2>
-
+    <h2>Guru : {{ $gurus->name}}</h2>
     <table>
         <thead>
             <tr>
